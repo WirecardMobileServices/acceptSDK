@@ -1,7 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/acceptSDK" $(SDKROOT)/usr/include/libxml2
-LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/../../Pod/Classes/lib"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/acceptSDK"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-acceptSDK" -l"PodsSDK" -l"stdc++.6" -l"xml2" -l"z.1" -framework "AVFoundation" -framework "AudioToolbox" -framework "CoreAudio" -framework "ExternalAccessory" -framework "Foundation" -framework "MediaPlayer" -framework "SystemConfiguration"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
-PODS_ROOT = ${SRCROOT}/Pods

@@ -1,0 +1,3 @@
+PODS_ACCEPTSDK_HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2
+PODS_ACCEPTSDK_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/../../Pod/Classes/lib"
+PODS_ACCEPTSDK_OTHER_LDFLAGS = -l"PodsSDK" -l"stdc++.6" -l"xml2" -l"z.1" -framework "AVFoundation" -framework "AudioToolbox" -framework "CoreAudio" -framework "ExternalAccessory" -framework "Foundation" -framework "MediaPlayer" -framework "SystemConfiguration"

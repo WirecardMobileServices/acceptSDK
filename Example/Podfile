@@ -1,8 +1,11 @@
-source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, :deployment_target => "7.0"
+pod "acceptSDK", :path => "../"
 
-
-target 'acceptSDK', :exclusive => true do
-  pod "acceptSDK", :path => "../"
-
-  
+post_install do |installer_representation|
+  installer_representation.project.targets.each do |target|
+   target.build_configurations.each do |config|
+	   config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+       config.build_settings['ENABLE_STRICT_OBJC_MSGSEND'] = 'NO'
+   end
+  end
 end

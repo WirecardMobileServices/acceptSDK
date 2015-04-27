@@ -1,0 +1,2317 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AcceptUserResponseMerchant Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">acceptSDK </a></h1>
+				<a id="developerHome" href="../index.html">Wirecard</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AcceptUserResponseMerchant Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/acquirerIdentifier">&nbsp;&nbsp;&nbsp;&nbsp;acquirerIdentifier</option>
+	
+	<option value="//api/name/address1">&nbsp;&nbsp;&nbsp;&nbsp;address1</option>
+	
+	<option value="//api/name/address2">&nbsp;&nbsp;&nbsp;&nbsp;address2</option>
+	
+	<option value="//api/name/city">&nbsp;&nbsp;&nbsp;&nbsp;city</option>
+	
+	<option value="//api/name/cnpOperatorPin">&nbsp;&nbsp;&nbsp;&nbsp;cnpOperatorPin</option>
+	
+	<option value="//api/name/cnp_application_version_number">&nbsp;&nbsp;&nbsp;&nbsp;cnp_application_version_number</option>
+	
+	<option value="//api/name/cnp_constraint_checks">&nbsp;&nbsp;&nbsp;&nbsp;cnp_constraint_checks</option>
+	
+	<option value="//api/name/cnp_floor_limit">&nbsp;&nbsp;&nbsp;&nbsp;cnp_floor_limit</option>
+	
+	<option value="//api/name/cnp_force_online">&nbsp;&nbsp;&nbsp;&nbsp;cnp_force_online</option>
+	
+	<option value="//api/name/cnp_max_target_percentage">&nbsp;&nbsp;&nbsp;&nbsp;cnp_max_target_percentage</option>
+	
+	<option value="//api/name/cnp_tac_default">&nbsp;&nbsp;&nbsp;&nbsp;cnp_tac_default</option>
+	
+	<option value="//api/name/cnp_tac_denial">&nbsp;&nbsp;&nbsp;&nbsp;cnp_tac_denial</option>
+	
+	<option value="//api/name/cnp_tac_online">&nbsp;&nbsp;&nbsp;&nbsp;cnp_tac_online</option>
+	
+	<option value="//api/name/cnp_target_percentage">&nbsp;&nbsp;&nbsp;&nbsp;cnp_target_percentage</option>
+	
+	<option value="//api/name/cnp_terminal_additional_capabilities">&nbsp;&nbsp;&nbsp;&nbsp;cnp_terminal_additional_capabilities</option>
+	
+	<option value="//api/name/cnp_terminal_capabilities">&nbsp;&nbsp;&nbsp;&nbsp;cnp_terminal_capabilities</option>
+	
+	<option value="//api/name/cnp_terminal_type">&nbsp;&nbsp;&nbsp;&nbsp;cnp_terminal_type</option>
+	
+	<option value="//api/name/cnp_transaction_category_code">&nbsp;&nbsp;&nbsp;&nbsp;cnp_transaction_category_code</option>
+	
+	<option value="//api/name/cnp_transaction_type">&nbsp;&nbsp;&nbsp;&nbsp;cnp_transaction_type</option>
+	
+	<option value="//api/name/cnp_treshold_value">&nbsp;&nbsp;&nbsp;&nbsp;cnp_treshold_value</option>
+	
+	<option value="//api/name/countryCode">&nbsp;&nbsp;&nbsp;&nbsp;countryCode</option>
+	
+	<option value="//api/name/countryId">&nbsp;&nbsp;&nbsp;&nbsp;countryId</option>
+	
+	<option value="//api/name/countryState">&nbsp;&nbsp;&nbsp;&nbsp;countryState</option>
+	
+	<option value="//api/name/createdAt">&nbsp;&nbsp;&nbsp;&nbsp;createdAt</option>
+	
+	<option value="//api/name/currencies">&nbsp;&nbsp;&nbsp;&nbsp;currencies</option>
+	
+	<option value="//api/name/currency">&nbsp;&nbsp;&nbsp;&nbsp;currency</option>
+	
+	<option value="//api/name/customerSupportPhoneNumber">&nbsp;&nbsp;&nbsp;&nbsp;customerSupportPhoneNumber</option>
+	
+	<option value="//api/name/externalId">&nbsp;&nbsp;&nbsp;&nbsp;externalId</option>
+	
+	<option value="//api/name/gatewayLive">&nbsp;&nbsp;&nbsp;&nbsp;gatewayLive</option>
+	
+	<option value="//api/name/gatewayLogin">&nbsp;&nbsp;&nbsp;&nbsp;gatewayLogin</option>
+	
+	<option value="//api/name/gatewayPassword">&nbsp;&nbsp;&nbsp;&nbsp;gatewayPassword</option>
+	
+	<option value="//api/name/gatewaySignature">&nbsp;&nbsp;&nbsp;&nbsp;gatewaySignature</option>
+	
+	<option value="//api/name/id_">&nbsp;&nbsp;&nbsp;&nbsp;id_</option>
+	
+	<option value="//api/name/locale">&nbsp;&nbsp;&nbsp;&nbsp;locale</option>
+	
+	<option value="//api/name/merchantCategoryCode">&nbsp;&nbsp;&nbsp;&nbsp;merchantCategoryCode</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/net_taxation">&nbsp;&nbsp;&nbsp;&nbsp;net_taxation</option>
+	
+	<option value="//api/name/ownerId">&nbsp;&nbsp;&nbsp;&nbsp;ownerId</option>
+	
+	<option value="//api/name/phoneNumber">&nbsp;&nbsp;&nbsp;&nbsp;phoneNumber</option>
+	
+	<option value="//api/name/service_charge_tax">&nbsp;&nbsp;&nbsp;&nbsp;service_charge_tax</option>
+	
+	<option value="//api/name/state">&nbsp;&nbsp;&nbsp;&nbsp;state</option>
+	
+	<option value="//api/name/status">&nbsp;&nbsp;&nbsp;&nbsp;status</option>
+	
+	<option value="//api/name/taxRates">&nbsp;&nbsp;&nbsp;&nbsp;taxRates</option>
+	
+	<option value="//api/name/terminalId">&nbsp;&nbsp;&nbsp;&nbsp;terminalId</option>
+	
+	<option value="//api/name/updatedAt">&nbsp;&nbsp;&nbsp;&nbsp;updatedAt</option>
+	
+	<option value="//api/name/vatId">&nbsp;&nbsp;&nbsp;&nbsp;vatId</option>
+	
+	<option value="//api/name/whiteLabelApp">&nbsp;&nbsp;&nbsp;&nbsp;whiteLabelApp</option>
+	
+	<option value="//api/name/whiteLabelAppId">&nbsp;&nbsp;&nbsp;&nbsp;whiteLabelAppId</option>
+	
+	<option value="//api/name/zipCode">&nbsp;&nbsp;&nbsp;&nbsp;zipCode</option>
+	
+	
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/acquirerIdentifier">acquirerIdentifier</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/address1">address1</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/address2">address2</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/city">city</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnpOperatorPin">cnpOperatorPin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_application_version_number">cnp_application_version_number</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_constraint_checks">cnp_constraint_checks</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_floor_limit">cnp_floor_limit</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_force_online">cnp_force_online</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_max_target_percentage">cnp_max_target_percentage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_tac_default">cnp_tac_default</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_tac_denial">cnp_tac_denial</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_tac_online">cnp_tac_online</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_target_percentage">cnp_target_percentage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_terminal_additional_capabilities">cnp_terminal_additional_capabilities</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_terminal_capabilities">cnp_terminal_capabilities</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_terminal_type">cnp_terminal_type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_transaction_category_code">cnp_transaction_category_code</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_transaction_type">cnp_transaction_type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cnp_treshold_value">cnp_treshold_value</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countryCode">countryCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countryId">countryId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countryState">countryState</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createdAt">createdAt</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currencies">currencies</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currency">currency</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerSupportPhoneNumber">customerSupportPhoneNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/externalId">externalId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gatewayLive">gatewayLive</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gatewayLogin">gatewayLogin</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gatewayPassword">gatewayPassword</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/gatewaySignature">gatewaySignature</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/id_">id_</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/locale">locale</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantCategoryCode">merchantCategoryCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/net_taxation">net_taxation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/ownerId">ownerId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/phoneNumber">phoneNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/service_charge_tax">service_charge_tax</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/state">state</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/status">status</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/taxRates">taxRates</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/terminalId">terminalId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updatedAt">updatedAt</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/vatId">vatId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/whiteLabelApp">whiteLabelApp</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/whiteLabelAppId">whiteLabelAppId</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/zipCode">zipCode</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AcceptUserResponseMerchant Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AcceptUserResponseMerchant Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AcceptUserResponse.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>@class AcceptUserResponseMerchant</p><p>Complete merchant info as defined and received from backend</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/status">&nbsp;&nbsp;status</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gatewaySignature">&nbsp;&nbsp;gatewaySignature</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/terminalId">&nbsp;&nbsp;terminalId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updatedAt">&nbsp;&nbsp;updatedAt</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currency">&nbsp;&nbsp;currency</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currencies">&nbsp;&nbsp;currencies</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countryCode">&nbsp;&nbsp;countryCode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gatewayLive">&nbsp;&nbsp;gatewayLive</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/id_">&nbsp;&nbsp;id_</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/city">&nbsp;&nbsp;city</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countryId">&nbsp;&nbsp;countryId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/taxRates">&nbsp;&nbsp;taxRates</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/state">&nbsp;&nbsp;state</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countryState">&nbsp;&nbsp;countryState</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/ownerId">&nbsp;&nbsp;ownerId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/phoneNumber">&nbsp;&nbsp;phoneNumber</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/address2">&nbsp;&nbsp;address2</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gatewayLogin">&nbsp;&nbsp;gatewayLogin</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/gatewayPassword">&nbsp;&nbsp;gatewayPassword</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/whiteLabelApp">&nbsp;&nbsp;whiteLabelApp</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/acquirerIdentifier">&nbsp;&nbsp;acquirerIdentifier</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createdAt">&nbsp;&nbsp;createdAt</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantCategoryCode">&nbsp;&nbsp;merchantCategoryCode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/whiteLabelAppId">&nbsp;&nbsp;whiteLabelAppId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnpOperatorPin">&nbsp;&nbsp;cnpOperatorPin</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/address1">&nbsp;&nbsp;address1</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/customerSupportPhoneNumber">&nbsp;&nbsp;customerSupportPhoneNumber</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/vatId">&nbsp;&nbsp;vatId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/zipCode">&nbsp;&nbsp;zipCode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/externalId">&nbsp;&nbsp;externalId</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_terminal_type">&nbsp;&nbsp;cnp_terminal_type</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_transaction_category_code">&nbsp;&nbsp;cnp_transaction_category_code</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_transaction_type">&nbsp;&nbsp;cnp_transaction_type</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_terminal_capabilities">&nbsp;&nbsp;cnp_terminal_capabilities</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_terminal_additional_capabilities">&nbsp;&nbsp;cnp_terminal_additional_capabilities</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_application_version_number">&nbsp;&nbsp;cnp_application_version_number</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_force_online">&nbsp;&nbsp;cnp_force_online</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_tac_default">&nbsp;&nbsp;cnp_tac_default</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_tac_denial">&nbsp;&nbsp;cnp_tac_denial</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_tac_online">&nbsp;&nbsp;cnp_tac_online</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_target_percentage">&nbsp;&nbsp;cnp_target_percentage</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_max_target_percentage">&nbsp;&nbsp;cnp_max_target_percentage</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_treshold_value">&nbsp;&nbsp;cnp_treshold_value</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_floor_limit">&nbsp;&nbsp;cnp_floor_limit</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cnp_constraint_checks">&nbsp;&nbsp;cnp_constraint_checks</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/net_taxation">&nbsp;&nbsp;net_taxation</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/service_charge_tax">&nbsp;&nbsp;service_charge_tax</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/acquirerIdentifier" title="acquirerIdentifier"></a>
+	<h3 class="subsubtitle method-title">acquirerIdentifier</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *acquirerIdentifier</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/address1" title="address1"></a>
+	<h3 class="subsubtitle method-title">address1</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *address1</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/address2" title="address2"></a>
+	<h3 class="subsubtitle method-title">address2</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *address2</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/city" title="city"></a>
+	<h3 class="subsubtitle method-title">city</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *city</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnpOperatorPin" title="cnpOperatorPin"></a>
+	<h3 class="subsubtitle method-title">cnpOperatorPin</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnpOperatorPin</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_application_version_number" title="cnp_application_version_number"></a>
+	<h3 class="subsubtitle method-title">cnp_application_version_number</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_application_version_number</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_constraint_checks" title="cnp_constraint_checks"></a>
+	<h3 class="subsubtitle method-title">cnp_constraint_checks</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_constraint_checks</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_floor_limit" title="cnp_floor_limit"></a>
+	<h3 class="subsubtitle method-title">cnp_floor_limit</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_floor_limit</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_force_online" title="cnp_force_online"></a>
+	<h3 class="subsubtitle method-title">cnp_force_online</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_force_online</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_max_target_percentage" title="cnp_max_target_percentage"></a>
+	<h3 class="subsubtitle method-title">cnp_max_target_percentage</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_max_target_percentage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_tac_default" title="cnp_tac_default"></a>
+	<h3 class="subsubtitle method-title">cnp_tac_default</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_tac_default</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_tac_denial" title="cnp_tac_denial"></a>
+	<h3 class="subsubtitle method-title">cnp_tac_denial</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_tac_denial</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_tac_online" title="cnp_tac_online"></a>
+	<h3 class="subsubtitle method-title">cnp_tac_online</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_tac_online</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_target_percentage" title="cnp_target_percentage"></a>
+	<h3 class="subsubtitle method-title">cnp_target_percentage</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_target_percentage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_terminal_additional_capabilities" title="cnp_terminal_additional_capabilities"></a>
+	<h3 class="subsubtitle method-title">cnp_terminal_additional_capabilities</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_terminal_additional_capabilities</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_terminal_capabilities" title="cnp_terminal_capabilities"></a>
+	<h3 class="subsubtitle method-title">cnp_terminal_capabilities</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_terminal_capabilities</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_terminal_type" title="cnp_terminal_type"></a>
+	<h3 class="subsubtitle method-title">cnp_terminal_type</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_terminal_type</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_transaction_category_code" title="cnp_transaction_category_code"></a>
+	<h3 class="subsubtitle method-title">cnp_transaction_category_code</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_transaction_category_code</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_transaction_type" title="cnp_transaction_type"></a>
+	<h3 class="subsubtitle method-title">cnp_transaction_type</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_transaction_type</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cnp_treshold_value" title="cnp_treshold_value"></a>
+	<h3 class="subsubtitle method-title">cnp_treshold_value</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cnp_treshold_value</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countryCode" title="countryCode"></a>
+	<h3 class="subsubtitle method-title">countryCode</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *countryCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countryId" title="countryId"></a>
+	<h3 class="subsubtitle method-title">countryId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger countryId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countryState" title="countryState"></a>
+	<h3 class="subsubtitle method-title">countryState</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *countryState</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createdAt" title="createdAt"></a>
+	<h3 class="subsubtitle method-title">createdAt</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *createdAt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currencies" title="currencies"></a>
+	<h3 class="subsubtitle method-title">currencies</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray *currencies</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currency" title="currency"></a>
+	<h3 class="subsubtitle method-title">currency</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *currency</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/customerSupportPhoneNumber" title="customerSupportPhoneNumber"></a>
+	<h3 class="subsubtitle method-title">customerSupportPhoneNumber</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *customerSupportPhoneNumber</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/externalId" title="externalId"></a>
+	<h3 class="subsubtitle method-title">externalId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *externalId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gatewayLive" title="gatewayLive"></a>
+	<h3 class="subsubtitle method-title">gatewayLive</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL gatewayLive</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gatewayLogin" title="gatewayLogin"></a>
+	<h3 class="subsubtitle method-title">gatewayLogin</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *gatewayLogin</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gatewayPassword" title="gatewayPassword"></a>
+	<h3 class="subsubtitle method-title">gatewayPassword</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *gatewayPassword</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/gatewaySignature" title="gatewaySignature"></a>
+	<h3 class="subsubtitle method-title">gatewaySignature</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *gatewaySignature</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/id_" title="id_"></a>
+	<h3 class="subsubtitle method-title">id_</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger id_</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/locale" title="locale"></a>
+	<h3 class="subsubtitle method-title">locale</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *locale</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantCategoryCode" title="merchantCategoryCode"></a>
+	<h3 class="subsubtitle method-title">merchantCategoryCode</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantCategoryCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *name</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/net_taxation" title="net_taxation"></a>
+	<h3 class="subsubtitle method-title">net_taxation</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL net_taxation</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/ownerId" title="ownerId"></a>
+	<h3 class="subsubtitle method-title">ownerId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger ownerId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/phoneNumber" title="phoneNumber"></a>
+	<h3 class="subsubtitle method-title">phoneNumber</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *phoneNumber</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/service_charge_tax" title="service_charge_tax"></a>
+	<h3 class="subsubtitle method-title">service_charge_tax</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *service_charge_tax</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/state" title="state"></a>
+	<h3 class="subsubtitle method-title">state</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *state</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/status" title="status"></a>
+	<h3 class="subsubtitle method-title">status</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *status</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/taxRates" title="taxRates"></a>
+	<h3 class="subsubtitle method-title">taxRates</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray *taxRates</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/terminalId" title="terminalId"></a>
+	<h3 class="subsubtitle method-title">terminalId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *terminalId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updatedAt" title="updatedAt"></a>
+	<h3 class="subsubtitle method-title">updatedAt</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *updatedAt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/vatId" title="vatId"></a>
+	<h3 class="subsubtitle method-title">vatId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *vatId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/whiteLabelApp" title="whiteLabelApp"></a>
+	<h3 class="subsubtitle method-title">whiteLabelApp</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) AcceptUserResponseMerchantWhiteLabelApp *whiteLabelApp</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/whiteLabelAppId" title="whiteLabelAppId"></a>
+	<h3 class="subsubtitle method-title">whiteLabelAppId</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSInteger whiteLabelAppId</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/zipCode" title="zipCode"></a>
+	<h3 class="subsubtitle method-title">zipCode</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *zipCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptUserResponse.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-04-22)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

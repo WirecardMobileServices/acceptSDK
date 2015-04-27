@@ -1,0 +1,2065 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>AcceptReceipt Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">acceptSDK </a></h1>
+				<a id="developerHome" href="../index.html">Wirecard</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">AcceptReceipt Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/aid">&nbsp;&nbsp;&nbsp;&nbsp;aid</option>
+	
+	<option value="//api/name/aidHeader">&nbsp;&nbsp;&nbsp;&nbsp;aidHeader</option>
+	
+	<option value="//api/name/amount">&nbsp;&nbsp;&nbsp;&nbsp;amount</option>
+	
+	<option value="//api/name/approvalCode">&nbsp;&nbsp;&nbsp;&nbsp;approvalCode</option>
+	
+	<option value="//api/name/cardHolder">&nbsp;&nbsp;&nbsp;&nbsp;cardHolder</option>
+	
+	<option value="//api/name/cardNumber">&nbsp;&nbsp;&nbsp;&nbsp;cardNumber</option>
+	
+	<option value="//api/name/cardType">&nbsp;&nbsp;&nbsp;&nbsp;cardType</option>
+	
+	<option value="//api/name/expiryDate">&nbsp;&nbsp;&nbsp;&nbsp;expiryDate</option>
+	
+	<option value="//api/name/footer">&nbsp;&nbsp;&nbsp;&nbsp;footer</option>
+	
+	<option value="//api/name/footerCopyright">&nbsp;&nbsp;&nbsp;&nbsp;footerCopyright</option>
+	
+	<option value="//api/name/footerThankYou">&nbsp;&nbsp;&nbsp;&nbsp;footerThankYou</option>
+	
+	<option value="//api/name/header">&nbsp;&nbsp;&nbsp;&nbsp;header</option>
+	
+	<option value="//api/name/localisedAmountHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedAmountHeader</option>
+	
+	<option value="//api/name/localisedApprovalCodeHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedApprovalCodeHeader</option>
+	
+	<option value="//api/name/localisedCardHolderHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedCardHolderHeader</option>
+	
+	<option value="//api/name/localisedCardNumberHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedCardNumberHeader</option>
+	
+	<option value="//api/name/localisedCardTypeHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedCardTypeHeader</option>
+	
+	<option value="//api/name/localisedExpiryDateHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedExpiryDateHeader</option>
+	
+	<option value="//api/name/localisedPaymentDateHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedPaymentDateHeader</option>
+	
+	<option value="//api/name/localisedPaymentDetailsHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedPaymentDetailsHeader</option>
+	
+	<option value="//api/name/localisedReceiptDateHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedReceiptDateHeader</option>
+	
+	<option value="//api/name/localisedReceiptIDHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedReceiptIDHeader</option>
+	
+	<option value="//api/name/localisedReceiptNumberHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedReceiptNumberHeader</option>
+	
+	<option value="//api/name/localisedReceiptTimeHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedReceiptTimeHeader</option>
+	
+	<option value="//api/name/localisedTerminalIDHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedTerminalIDHeader</option>
+	
+	<option value="//api/name/localisedTransactionStatusHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedTransactionStatusHeader</option>
+	
+	<option value="//api/name/localisedTransactionTypeHeader">&nbsp;&nbsp;&nbsp;&nbsp;localisedTransactionTypeHeader</option>
+	
+	<option value="//api/name/merchantAddressCityAndCountry">&nbsp;&nbsp;&nbsp;&nbsp;merchantAddressCityAndCountry</option>
+	
+	<option value="//api/name/merchantAddressLine1">&nbsp;&nbsp;&nbsp;&nbsp;merchantAddressLine1</option>
+	
+	<option value="//api/name/merchantAddressLine2">&nbsp;&nbsp;&nbsp;&nbsp;merchantAddressLine2</option>
+	
+	<option value="//api/name/merchantAddressZipCode">&nbsp;&nbsp;&nbsp;&nbsp;merchantAddressZipCode</option>
+	
+	<option value="//api/name/merchantID">&nbsp;&nbsp;&nbsp;&nbsp;merchantID</option>
+	
+	<option value="//api/name/merchantIDHeader">&nbsp;&nbsp;&nbsp;&nbsp;merchantIDHeader</option>
+	
+	<option value="//api/name/merchantName">&nbsp;&nbsp;&nbsp;&nbsp;merchantName</option>
+	
+	<option value="//api/name/merchantPhone">&nbsp;&nbsp;&nbsp;&nbsp;merchantPhone</option>
+	
+	<option value="//api/name/paymentItems">&nbsp;&nbsp;&nbsp;&nbsp;paymentItems</option>
+	
+	<option value="//api/name/receiptDate">&nbsp;&nbsp;&nbsp;&nbsp;receiptDate</option>
+	
+	<option value="//api/name/receiptID">&nbsp;&nbsp;&nbsp;&nbsp;receiptID</option>
+	
+	<option value="//api/name/receiptTime">&nbsp;&nbsp;&nbsp;&nbsp;receiptTime</option>
+	
+	<option value="//api/name/taxSummary">&nbsp;&nbsp;&nbsp;&nbsp;taxSummary</option>
+	
+	<option value="//api/name/terminalID">&nbsp;&nbsp;&nbsp;&nbsp;terminalID</option>
+	
+	<option value="//api/name/transactionStatus">&nbsp;&nbsp;&nbsp;&nbsp;transactionStatus</option>
+	
+	<option value="//api/name/transactionTypeString">&nbsp;&nbsp;&nbsp;&nbsp;transactionTypeString</option>
+	
+	
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/aid">aid</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/aidHeader">aidHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/amount">amount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/approvalCode">approvalCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardHolder">cardHolder</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardNumber">cardNumber</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cardType">cardType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/expiryDate">expiryDate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/footer">footer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/footerCopyright">footerCopyright</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/footerThankYou">footerThankYou</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/header">header</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedAmountHeader">localisedAmountHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedApprovalCodeHeader">localisedApprovalCodeHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedCardHolderHeader">localisedCardHolderHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedCardNumberHeader">localisedCardNumberHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedCardTypeHeader">localisedCardTypeHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedExpiryDateHeader">localisedExpiryDateHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedPaymentDateHeader">localisedPaymentDateHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedPaymentDetailsHeader">localisedPaymentDetailsHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedReceiptDateHeader">localisedReceiptDateHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedReceiptIDHeader">localisedReceiptIDHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedReceiptNumberHeader">localisedReceiptNumberHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedReceiptTimeHeader">localisedReceiptTimeHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedTerminalIDHeader">localisedTerminalIDHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedTransactionStatusHeader">localisedTransactionStatusHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/localisedTransactionTypeHeader">localisedTransactionTypeHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantAddressCityAndCountry">merchantAddressCityAndCountry</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantAddressLine1">merchantAddressLine1</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantAddressLine2">merchantAddressLine2</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantAddressZipCode">merchantAddressZipCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantID">merchantID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantIDHeader">merchantIDHeader</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantName">merchantName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantPhone">merchantPhone</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentItems">paymentItems</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptDate">receiptDate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptID">receiptID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptTime">receiptTime</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/taxSummary">taxSummary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/terminalID">terminalID</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionStatus">transactionStatus</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transactionTypeString">transactionTypeString</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="AcceptReceipt Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">AcceptReceipt Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">AcceptReceipt.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>@class AcceptReceipt</p><p>Receipt content class</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/header">&nbsp;&nbsp;header</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantName">&nbsp;&nbsp;merchantName</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantIDHeader">&nbsp;&nbsp;merchantIDHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantID">&nbsp;&nbsp;merchantID</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantAddressLine1">&nbsp;&nbsp;merchantAddressLine1</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantAddressLine2">&nbsp;&nbsp;merchantAddressLine2</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantAddressZipCode">&nbsp;&nbsp;merchantAddressZipCode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantAddressCityAndCountry">&nbsp;&nbsp;merchantAddressCityAndCountry</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/merchantPhone">&nbsp;&nbsp;merchantPhone</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedReceiptDateHeader">&nbsp;&nbsp;localisedReceiptDateHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedPaymentDateHeader">&nbsp;&nbsp;localisedPaymentDateHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptDate">&nbsp;&nbsp;receiptDate</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedReceiptTimeHeader">&nbsp;&nbsp;localisedReceiptTimeHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptTime">&nbsp;&nbsp;receiptTime</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedReceiptIDHeader">&nbsp;&nbsp;localisedReceiptIDHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedReceiptNumberHeader">&nbsp;&nbsp;localisedReceiptNumberHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/receiptID">&nbsp;&nbsp;receiptID</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/aidHeader">&nbsp;&nbsp;aidHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/aid">&nbsp;&nbsp;aid</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedCardTypeHeader">&nbsp;&nbsp;localisedCardTypeHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cardType">&nbsp;&nbsp;cardType</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transactionTypeString">&nbsp;&nbsp;transactionTypeString</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedTransactionTypeHeader">&nbsp;&nbsp;localisedTransactionTypeHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedCardNumberHeader">&nbsp;&nbsp;localisedCardNumberHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cardNumber">&nbsp;&nbsp;cardNumber</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedCardHolderHeader">&nbsp;&nbsp;localisedCardHolderHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cardHolder">&nbsp;&nbsp;cardHolder</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedExpiryDateHeader">&nbsp;&nbsp;localisedExpiryDateHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/expiryDate">&nbsp;&nbsp;expiryDate</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedTerminalIDHeader">&nbsp;&nbsp;localisedTerminalIDHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/terminalID">&nbsp;&nbsp;terminalID</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedApprovalCodeHeader">&nbsp;&nbsp;localisedApprovalCodeHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/approvalCode">&nbsp;&nbsp;approvalCode</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedAmountHeader">&nbsp;&nbsp;localisedAmountHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/amount">&nbsp;&nbsp;amount</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedTransactionStatusHeader">&nbsp;&nbsp;localisedTransactionStatusHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/transactionStatus">&nbsp;&nbsp;transactionStatus</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/paymentItems">&nbsp;&nbsp;paymentItems</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/taxSummary">&nbsp;&nbsp;taxSummary</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/localisedPaymentDetailsHeader">&nbsp;&nbsp;localisedPaymentDetailsHeader</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/footer">&nbsp;&nbsp;footer</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/footerThankYou">&nbsp;&nbsp;footerThankYou</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/footerCopyright">&nbsp;&nbsp;footerCopyright</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/aid" title="aid"></a>
+	<h3 class="subsubtitle method-title">aid</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *aid</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/aidHeader" title="aidHeader"></a>
+	<h3 class="subsubtitle method-title">aidHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *aidHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/amount" title="amount"></a>
+	<h3 class="subsubtitle method-title">amount</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *amount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/approvalCode" title="approvalCode"></a>
+	<h3 class="subsubtitle method-title">approvalCode</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *approvalCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cardHolder" title="cardHolder"></a>
+	<h3 class="subsubtitle method-title">cardHolder</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cardHolder</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cardNumber" title="cardNumber"></a>
+	<h3 class="subsubtitle method-title">cardNumber</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cardNumber</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cardType" title="cardType"></a>
+	<h3 class="subsubtitle method-title">cardType</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *cardType</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/expiryDate" title="expiryDate"></a>
+	<h3 class="subsubtitle method-title">expiryDate</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *expiryDate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/footer" title="footer"></a>
+	<h3 class="subsubtitle method-title">footer</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *footer</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/footerCopyright" title="footerCopyright"></a>
+	<h3 class="subsubtitle method-title">footerCopyright</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *footerCopyright</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/footerThankYou" title="footerThankYou"></a>
+	<h3 class="subsubtitle method-title">footerThankYou</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *footerThankYou</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/header" title="header"></a>
+	<h3 class="subsubtitle method-title">header</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *header</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedAmountHeader" title="localisedAmountHeader"></a>
+	<h3 class="subsubtitle method-title">localisedAmountHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedAmountHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedApprovalCodeHeader" title="localisedApprovalCodeHeader"></a>
+	<h3 class="subsubtitle method-title">localisedApprovalCodeHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedApprovalCodeHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedCardHolderHeader" title="localisedCardHolderHeader"></a>
+	<h3 class="subsubtitle method-title">localisedCardHolderHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedCardHolderHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedCardNumberHeader" title="localisedCardNumberHeader"></a>
+	<h3 class="subsubtitle method-title">localisedCardNumberHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedCardNumberHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedCardTypeHeader" title="localisedCardTypeHeader"></a>
+	<h3 class="subsubtitle method-title">localisedCardTypeHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedCardTypeHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedExpiryDateHeader" title="localisedExpiryDateHeader"></a>
+	<h3 class="subsubtitle method-title">localisedExpiryDateHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedExpiryDateHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedPaymentDateHeader" title="localisedPaymentDateHeader"></a>
+	<h3 class="subsubtitle method-title">localisedPaymentDateHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedPaymentDateHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedPaymentDetailsHeader" title="localisedPaymentDetailsHeader"></a>
+	<h3 class="subsubtitle method-title">localisedPaymentDetailsHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedPaymentDetailsHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedReceiptDateHeader" title="localisedReceiptDateHeader"></a>
+	<h3 class="subsubtitle method-title">localisedReceiptDateHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedReceiptDateHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedReceiptIDHeader" title="localisedReceiptIDHeader"></a>
+	<h3 class="subsubtitle method-title">localisedReceiptIDHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedReceiptIDHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedReceiptNumberHeader" title="localisedReceiptNumberHeader"></a>
+	<h3 class="subsubtitle method-title">localisedReceiptNumberHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedReceiptNumberHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedReceiptTimeHeader" title="localisedReceiptTimeHeader"></a>
+	<h3 class="subsubtitle method-title">localisedReceiptTimeHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedReceiptTimeHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedTerminalIDHeader" title="localisedTerminalIDHeader"></a>
+	<h3 class="subsubtitle method-title">localisedTerminalIDHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedTerminalIDHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedTransactionStatusHeader" title="localisedTransactionStatusHeader"></a>
+	<h3 class="subsubtitle method-title">localisedTransactionStatusHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedTransactionStatusHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/localisedTransactionTypeHeader" title="localisedTransactionTypeHeader"></a>
+	<h3 class="subsubtitle method-title">localisedTransactionTypeHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *localisedTransactionTypeHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantAddressCityAndCountry" title="merchantAddressCityAndCountry"></a>
+	<h3 class="subsubtitle method-title">merchantAddressCityAndCountry</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantAddressCityAndCountry</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantAddressLine1" title="merchantAddressLine1"></a>
+	<h3 class="subsubtitle method-title">merchantAddressLine1</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantAddressLine1</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantAddressLine2" title="merchantAddressLine2"></a>
+	<h3 class="subsubtitle method-title">merchantAddressLine2</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantAddressLine2</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantAddressZipCode" title="merchantAddressZipCode"></a>
+	<h3 class="subsubtitle method-title">merchantAddressZipCode</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantAddressZipCode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantID" title="merchantID"></a>
+	<h3 class="subsubtitle method-title">merchantID</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantIDHeader" title="merchantIDHeader"></a>
+	<h3 class="subsubtitle method-title">merchantIDHeader</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantIDHeader</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantName" title="merchantName"></a>
+	<h3 class="subsubtitle method-title">merchantName</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantName</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/merchantPhone" title="merchantPhone"></a>
+	<h3 class="subsubtitle method-title">merchantPhone</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantPhone</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/paymentItems" title="paymentItems"></a>
+	<h3 class="subsubtitle method-title">paymentItems</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *paymentItems</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptDate" title="receiptDate"></a>
+	<h3 class="subsubtitle method-title">receiptDate</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *receiptDate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptID" title="receiptID"></a>
+	<h3 class="subsubtitle method-title">receiptID</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *receiptID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/receiptTime" title="receiptTime"></a>
+	<h3 class="subsubtitle method-title">receiptTime</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *receiptTime</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/taxSummary" title="taxSummary"></a>
+	<h3 class="subsubtitle method-title">taxSummary</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *taxSummary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/terminalID" title="terminalID"></a>
+	<h3 class="subsubtitle method-title">terminalID</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *terminalID</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transactionStatus" title="transactionStatus"></a>
+	<h3 class="subsubtitle method-title">transactionStatus</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *transactionStatus</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/transactionTypeString" title="transactionTypeString"></a>
+	<h3 class="subsubtitle method-title">transactionTypeString</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *transactionTypeString</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">AcceptReceipt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-04-22)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

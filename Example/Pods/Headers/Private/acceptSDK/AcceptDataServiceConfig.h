@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/include/AcceptDataServiceConfig.h

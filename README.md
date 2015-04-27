@@ -1,6 +1,6 @@
 # acceptSDK
 
-![alt text](https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/logo.png =240x95 "acceptSDK")
+<img src="https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/logo.png" alt="acceptSDK" width=240 height=95>
 
 [![CI Status](http://img.shields.io/travis/radoslav.danko/acceptSDK.svg?style=flat)](https://travis-ci.org/radoslav.danko/acceptSDK)
 [![Version](https://img.shields.io/cocoapods/v/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
@@ -14,12 +14,12 @@ Check out the applications using the **acceptSDK** and created as **re-branding*
 
 accept.|Pay Way|Lexware pay|Accept SGP|Amway pay|
 -------|-------|-----------|-------|------|
-[![alt text](http://a3.mzstatic.com/us/r30/Purple3/v4/84/40/96/844096f6-04c3-1b74-81fc-ed6b82ab51bb/icon175x175.jpeg =100x100 "accept.")](https://itunes.apple.com/us/app/accept-ger/id935572605?ls=1&mt=8 "accept.")|[![alt text](http://a3.mzstatic.com/us/r30/Purple3/v4/44/76/9d/44769d4a-721a-d771-de52-4389163821c6/icon175x175.png =100x100 "Pay Way")](https://itunes.apple.com/us/app/pay-way-by-payment-gateway-ltd/id982176916?ls=1&mt=8 "Pay Way")|[![alt text](http://a3.mzstatic.com/eu/r30/Purple3/v4/d4/e5/6d/d4e56ddf-fcb1-367a-aaa3-7b5dd52235c8/icon175x175.png =100x100 "Lexware Pay")](https://itunes.apple.com/de/app/lexware-pay/id794986995?l=en&mt=8 "Lexware pay")|[![alt text](http://a3.mzstatic.com/us/r30/Purple1/v4/d8/57/ee/d857eebd-3f7f-a74a-30b2-a43febc78d89/icon175x175.png =100x100 "Accept SGP")](https://itunes.apple.com/us/app/accept-sgp/id953080653?ls=1&mt=8 "Accept SGP")|[![alt text](http://a5.mzstatic.com/us/r30/Purple1/v4/0a/fe/1e/0afe1e01-c7b8-ab72-17b0-367e2242dd96/icon175x175.png =100x100 "Amway pay")](https://itunes.apple.com/us/app/amway-pay/id935261472?ls=1&mt=8 "Amway pay")|
+[<img src="http://a3.mzstatic.com/us/r30/Purple3/v4/84/40/96/844096f6-04c3-1b74-81fc-ed6b82ab51bb/icon175x175.jpeg" alt="accept." width=100 height=100>](https://itunes.apple.com/us/app/accept-ger/id935572605?ls=1&mt=8 "accept.")|[<img src="http://a3.mzstatic.com/us/r30/Purple3/v4/44/76/9d/44769d4a-721a-d771-de52-4389163821c6/icon175x175.png" width=100 height=100 alt="Pay Way">](https://itunes.apple.com/us/app/pay-way-by-payment-gateway-ltd/id982176916?ls=1&mt=8 "Pay Way")|[<img src="http://a3.mzstatic.com/eu/r30/Purple3/v4/d4/e5/6d/d4e56ddf-fcb1-367a-aaa3-7b5dd52235c8/icon175x175.png" width=100 height=100 alt="Lexware Pay">](https://itunes.apple.com/de/app/lexware-pay/id794986995?l=en&mt=8 "Lexware pay")|[<img src="http://a3.mzstatic.com/us/r30/Purple1/v4/d8/57/ee/d857eebd-3f7f-a74a-30b2-a43febc78d89/icon175x175.png" width=100 height=100 alt="Accept SGP">](https://itunes.apple.com/us/app/accept-sgp/id953080653?ls=1&mt=8 "Accept SGP")|[<img src="http://a5.mzstatic.com/us/r30/Purple1/v4/0a/fe/1e/0afe1e01-c7b8-ab72-17b0-367e2242dd96/icon175x175.png" width=100 height=100 alt="Amway pay">](https://itunes.apple.com/us/app/amway-pay/id935261472?ls=1&mt=8 "Amway pay")|
 
 ##Whitelabel solution
 Wirecard Technologies is using the acceptSDK in their Whitelabel application which is fully integrated professional mPOS solution. The **Whitelabel** app is **VISA and Mastercard certified** and utilises the Wirecard infrastructure for card payment processing.
 
-[![alt text](https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/SDK_arch.jpg =274x515 "Whitelabel architecture")](./docs/SDK_arch.jpg "Whitelabel Architecture")
+[<img src="https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/SDK_arch.jpg" alt="Whitelabel architecture" width=274 height=515>](./docs/SDK_arch.jpg "Whitelabel Architecture")
 
 *Overview of Whitelabel app functions and SDK architecture*
 

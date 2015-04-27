@@ -9,21 +9,24 @@
 
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.0.0"
+  s.version          = "1.6.104"
   s.summary          = "Accept Payment Platform SDK"
   s.description      = <<-DESC
-                       An optional longer description of acceptSDK
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       The library extends the point of sale to modern mobile environment. 
+                       
+                       Fully integrated with licensed Wirecard Payment infrastructure.
+                       
+                       Set of Wirecard approved terminals is supported (more to come):
+                       * IDTech Unimag Pro
+                       * BBPOS uEMVSwiper *Chipper
+                       * Spire PosMate
+                       * Spire SPm2
+                       * Datecs DPP-250
                        DESC
   s.homepage         = "https://github.com/mposSVK/acceptSDK"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "radoslav.danko" => "radoslav.danko@wirecard.com","francisco.fortes" => "francisco.fortes@wirecard.com","Damian Kołakowski" => "damian.kolakowski@up-next.com" }
   s.source           = { :git => "https://github.com/mposSVK/acceptSDK.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
   s.platform     = :ios, '7.0'
   s.requires_arc = true
   s.xcconfig     = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }

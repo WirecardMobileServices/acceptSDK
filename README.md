@@ -65,8 +65,6 @@ API reference documentation is available in ./docs/Reference Documentation subfo
 	* Spire [SPm2](http://www.spirepayments.com/product/spm2/ "SPm2")
 	* Datecs printer [DPP-250](http://www.datecs.bg/en/products/DPP-250/2/175 "DPP-250")
 	
-	
-* 1<sup>n</sup> Cups of coffee 
 
 ## Authors
 

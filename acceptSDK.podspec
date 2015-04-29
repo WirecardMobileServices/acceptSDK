@@ -1,9 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.6.104"
-  s.summary          = "Accept Payment Platform SDK"
+  s.version          = "1.6.105"
+  s.summary          = "Accept Payment Platform SDK - card payments, Chip and PIN, magstripe"
   s.description      = <<-DESC
                        The library extends the point of sale to modern mobile environment. 
+                       Major Credit and Debit Card payment processing (Master, Visa, American Express)
                        
                        Fully integrated with licensed Wirecard Payment infrastructure.
                        

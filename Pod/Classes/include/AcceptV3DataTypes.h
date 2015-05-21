@@ -71,7 +71,8 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
     AcceptTransactionTerminatedErrorCode,
     AcceptTransactionDeclinedErrorCode,
     AcceptBlockedCardTypeErrorCode,
-    AcceptFailedBluetoothConnectionError
+    AcceptFailedBluetoothConnectionError,
+    AcceptTerminalNotReady
 } ;
 
 /**
@@ -116,7 +117,9 @@ typedef NS_ENUM(NSInteger, AcceptDevicesDiscoveryErrorCode) {
  **/
 typedef NS_ENUM(NSInteger, AcceptResetPasswordErrorCode) {
     AcceptResetPasswordConnectionErrorCode = 0,         // no internet connection
-    AcceptExternalIdNotFoundErrorCode                   // there is no user/merchant with given external id. ( HTTP 422 )
+    AcceptExternalIdNotFoundErrorCode,                   // there is no user/merchant with given external id. ( HTTP 422 )
+    AcceptChangePasswordCriteriaNotMet                  //password change criteria not met
+    
 };
 
 /**

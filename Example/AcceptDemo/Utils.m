@@ -45,9 +45,12 @@ static Utils *sharedInstance = nil;
     NSTimeZone *zone=[NSTimeZone defaultTimeZone];
     [self.dateFormatter setTimeZone:zone];
     self.backendConfig = [AcceptDataServiceConfig new];
-    self.backendConfig.url = @"https://yourBackendURL.com/"; //Note the slash for closing "/"
-    self.backendConfig.clientId = @"yourCliendID";
-    self.backendConfig.clientSecret = @"yourSecretID";
+
+    //EncryptedResources/accept.conf contains default DEV backend config
+    //If you use default EncryptedResources/accept.conf there is no need to supply custom backendConfig
+    self.backendConfig.url = nil;//@"https://yourBackendURL.com/"; //Note the slash for closing "/"
+    self.backendConfig.clientId = nil;// @"yourCliendID";
+    self.backendConfig.clientSecret = nil; // @"yourSecretID";
     self.accept = [[Accept alloc] init];
     
     return self;

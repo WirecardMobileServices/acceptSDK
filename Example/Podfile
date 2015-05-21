@@ -1,6 +1,9 @@
 platform :ios, :deployment_target => "7.0"
 pod "acceptSDK", :path => "../"
 
+pod 'ZipArchive', '~> 1.4'
+pod 'KissXML', '~> 5.0'
+
 post_install do |installer_representation|
   installer_representation.project.targets.each do |target|
    target.build_configurations.each do |config|

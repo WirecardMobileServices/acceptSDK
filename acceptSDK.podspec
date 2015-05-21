@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.6.106"
+  s.version          = "1.6.116"
   s.summary          = "Accept Payment Platform SDK - card payments, Chip and PIN, magstripe"
   s.description      = <<-DESC
                        The library extends the point of sale to modern mobile environment. 
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = "https://github.com/mposSVK/acceptSDK"
   s.license          = 'MIT'
-  s.author           = { "radoslav.danko" => "radoslav.danko@wirecard.com","francisco.fortes" => "francisco.fortes@wirecard.com","Damian Kołakowski" => "damian.kolakowski@up-next.com" }
+  s.author           = { "Radoslav Danko" => "radoslav.danko@wirecard.com","Francisco Fortes" => "francisco.fortes@wirecard.com","Damian Kołakowski" => "damian.kolakowski@up-next.com" }
   s.source           = { :git => "https://github.com/mposSVK/acceptSDK.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true

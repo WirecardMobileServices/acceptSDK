@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.106"
+#define SDK_VERSION @"1.6.115"
 
 /**
  */
@@ -217,6 +217,34 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic) BOOL isCaptureRequired;
+@end
+
+/**
+ *  @class AcceptOnlinePaymentConfig
+ *  @discussion Online Payment configuration class. Content required to execute the online payment flow
+ **/
+@interface AcceptOnlinePaymentConfig : NSObject
+/**
+ */
+@property (nonatomic, strong) NSString * paymentUrl;
+/**
+ */
+@property (nonatomic, strong) NSString * merchantAccountId;
+/**
+ */
+@property (nonatomic, strong) NSString * successUrl;
+/**
+ */
+@property (nonatomic, strong) NSString * failureUrl;
+/**
+ */
+@property (nonatomic, strong) NSString * secretKey;
+/**
+ */
+@property (nonatomic, strong) NSString * pspName;
+/**
+ */
+@property (nonatomic, strong) NSString *locale;
 @end
 
 /**
@@ -467,4 +495,5 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
  *  @param completionBlock Block that will receive the battery level as a signed integer. If negative, then it indicates an error between three possible cases: "-1" for showing that the selected terminalID is wrong or that the terminal does not support battery level info. "-2" for indicating that the terminal does not respond (not ready or not connected). "-3" for indicating that the terminal is currently charging through a cable.
  **/
 - (void)percentageBatteryRemainingForTerminal:(NSString*)vendorID completion:(void (^)(NSInteger))completionBlock;
+
 @end

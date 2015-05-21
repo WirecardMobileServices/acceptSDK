@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define WAIT_INTERVAL_SIGNATURE 30
 
@@ -46,5 +47,12 @@
 -(BOOL)isVendorHavingBluetoothTerminals:(NSString*)vendorName;
 
 +(BOOL)isRequiringSignatureCVMResult:(NSString*)resultCVM;
+
+
++(void)showActivityIndicatorOnView:(UIView *)onView withMessage:(NSString *)message;
+
++(void)hideActivityIndicator:(UIView *)onView;
+
++(void)hideActivityIndicator:(UIView *)onView completion:(void (^)(void))moreCompletion;
 
 @end

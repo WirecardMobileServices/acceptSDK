@@ -104,7 +104,7 @@
 /*
  * Description: Change password - user want to replace old with new one and rewrites it as confirmation
  */
-- (BOOL) changePassword:(NSString*)userToken newPassword:(NSString*)newPassword reNewPassword:(NSString*)reNewPassword error:(NSError**)error;
+- (NSDictionary *) changePassword:(NSString*)userToken newPassword:(NSString*)newPassword reNewPassword:(NSString*)reNewPassword error:(NSError**)error;
 
 - (NSArray*) requestTransactions:(NSString*)accessToken query:(AcceptTransactionsQuery*)query error:(NSError**)error;
 

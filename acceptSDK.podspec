@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
   s.public_header_files = '**/*.{h}'
   s.vendored_libraries  = 'Pod/Classes/lib/*.{a}'
   s.resource = ['Pod/Assets/*.xml']
-  s.dependency 'ZipArchive'
-  s.dependency 'KissXML'  
+  s.dependency 'ZipArchive', '~> 1.4'
+  s.dependency 'KissXML', '~> 5.0'
+
 
 end

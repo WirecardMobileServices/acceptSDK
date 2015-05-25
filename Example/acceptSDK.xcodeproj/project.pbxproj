@@ -20,6 +20,7 @@
 		C05A1CC41AEA2E540022CC34 /* RequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C6401F1AE9321D007A6D1A /* RequestViewController.m */; };
 		C05A1CC51AEA2E540022CC34 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C640221AE9321D007A6D1A /* UserViewController.m */; };
 		C05A1CC61AEA2E540022CC34 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C640241AE9321D007A6D1A /* Utils.m */; };
+		C0AE41EA1B0F4E7F00533290 /* OnlinePaymentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE41E91B0F4E7F00533290 /* OnlinePaymentVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		8F9185071A57193311D898BA /* acceptSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = acceptSDK.podspec; path = ../acceptSDK.podspec; sourceTree = "<group>"; };
 		C0398E2C1B0DAB5000667215 /* accept.conf */ = {isa = PBXFileReference; lastKnownFileType = file; path = accept.conf; sourceTree = "<group>"; };
+		C0AE41E81B0F4E7F00533290 /* OnlinePaymentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlinePaymentVC.h; sourceTree = "<group>"; };
+		C0AE41E91B0F4E7F00533290 /* OnlinePaymentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlinePaymentVC.m; sourceTree = "<group>"; };
 		C0C63FFC1AE9321D007A6D1A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0C63FFD1AE9321D007A6D1A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C0C63FFF1AE9321D007A6D1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				C0C640221AE9321D007A6D1A /* UserViewController.m */,
 				C0C640231AE9321D007A6D1A /* Utils.h */,
 				C0C640241AE9321D007A6D1A /* Utils.m */,
+				C0AE41E81B0F4E7F00533290 /* OnlinePaymentVC.h */,
+				C0AE41E91B0F4E7F00533290 /* OnlinePaymentVC.m */,
 			);
 			path = AcceptDemo;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				C05A1CC51AEA2E540022CC34 /* UserViewController.m in Sources */,
 				C05A1CC21AEA2E540022CC34 /* main.m in Sources */,
 				C05A1CC61AEA2E540022CC34 /* Utils.m in Sources */,
+				C0AE41EA1B0F4E7F00533290 /* OnlinePaymentVC.m in Sources */,
 				C05A1CC41AEA2E540022CC34 /* RequestViewController.m in Sources */,
 				C05A1CC11AEA2E540022CC34 /* AppDelegate.m in Sources */,
 			);

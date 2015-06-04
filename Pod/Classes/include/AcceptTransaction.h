@@ -24,6 +24,7 @@
 #define kTransactionReversalFailed @"Transaction reversal failed"
 #define kSignatureRejectedByTerminal @"Signature was rejected by terminal"
 #define kTransactionUpdateFailed @"Transaction update failed"
+#define kValidAppDataFailed @"Can't find valid Transaction And Application data"
 
 /**
  *  @class AcceptTransactionPaymentItem

@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.120"
+#define SDK_VERSION @"1.6.122"
 
 /**
  */
@@ -265,6 +265,16 @@ extern NSString * const AcceptErrorDomain;
  */
 @property (nonatomic, strong) NSString * userPassword;
 @end
+
+/**
+ *  @class AcceptExtensionConnectionStatus
+ *  @discussion The terminal connection status enumerator
+ **/
+typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus){
+    AcceptExtensionConnectionStatusConnected,
+    AcceptExtensionConnectionStatusDisconnected,
+    AcceptExtensionConnectionStatusUnknown
+};
 
 /**
 *  @class Accept
@@ -528,4 +538,10 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
  **/
 -(void)startCardPayment:(NSUInteger)amount currency:(NSString *)currency locale:(NSString *)locale token:(NSString *)token parentViewController:(id)parentViewController completion:(void (^)(NSDictionary *, NSError *))completion;
 
+/**
+ *  @brief Request the terminal connection status. NOTE: this function should NOT be called if an operation in the terminal is ongoing (ie startPay has not finished)
+ *  @param vendorID Unique id of the terminal's vendor we are requesting the info
+ *  @param completionBlock Block that will receive the terminal connection status.
+ **/
+- (void)terminalConnectionStatus:(NSString*)vendorID completion:(void (^)(AcceptExtensionConnectionStatus))completionBlock;
 @end

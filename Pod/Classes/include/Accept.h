@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.117"
+#define SDK_VERSION @"1.6.122"
 
 /**
  */
@@ -246,6 +246,35 @@ extern NSString * const AcceptErrorDomain;
  */
 @property (nonatomic, strong) NSString *locale;
 @end
+
+/**
+ *  @class ElasticEnginePaymentConfig
+ *  @discussion Online Payment configuration class. Content required to execute the online payment flow
+ **/
+@interface ElasticEnginePaymentConfig : NSObject
+/**
+ */
+@property (nonatomic, strong) NSString * paymentUrl;
+/**
+ */
+@property (nonatomic, strong) NSString * merchantAccountId;
+/**
+ */
+@property (nonatomic, strong) NSString * userName;
+/**
+ */
+@property (nonatomic, strong) NSString * userPassword;
+@end
+
+/**
+ *  @class AcceptExtensionConnectionStatus
+ *  @discussion The terminal connection status enumerator
+ **/
+typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus){
+    AcceptExtensionConnectionStatusConnected,
+    AcceptExtensionConnectionStatusDisconnected,
+    AcceptExtensionConnectionStatusUnknown
+};
 
 /**
 *  @class Accept
@@ -497,5 +526,22 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
 - (void)percentageBatteryRemainingForTerminal:(NSString*)vendorID completion:(void (^)(NSInteger))completionBlock;
 
 
+/**
+ *  @brief Start the card payment process - config is read from the encrypted accept.plist file present in application bundle
+ *  @param amount to charge the cardholder (unit cents)
+ *  @param currency of the payment
+ *  @param locale of the online payment page
+ *  @param token of the last card payment
+ *  @param parentViewController parent view controller to display the payment view within - if the parentViewController is of UINavigationController class
+ *                              then the payment view is pushed otherwise the view is displayed modally
+ *  @param completion Block that will be called at the very end of payment flow. It provides transaction result or a descriptive error
+ **/
+-(void)startCardPayment:(NSUInteger)amount currency:(NSString *)currency locale:(NSString *)locale token:(NSString *)token parentViewController:(id)parentViewController completion:(void (^)(NSDictionary *, NSError *))completion;
 
+/**
+ *  @brief Request the terminal connection status. NOTE: this function should NOT be called if an operation in the terminal is ongoing (ie startPay has not finished)
+ *  @param vendorID Unique id of the terminal's vendor we are requesting the info
+ *  @param completionBlock Block that will receive the terminal connection status.
+ **/
+- (void)terminalConnectionStatus:(NSString*)vendorID completion:(void (^)(AcceptExtensionConnectionStatus))completionBlock;
 @end

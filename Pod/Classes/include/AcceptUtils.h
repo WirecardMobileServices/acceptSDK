@@ -48,6 +48,7 @@
 
 +(BOOL)isRequiringSignatureCVMResult:(NSString*)resultCVM;
 
++ (BOOL) luhnCheck:(NSString *)stringToTest;
 
 +(void)showActivityIndicatorOnView:(UIView *)onView withMessage:(NSString *)message;
 

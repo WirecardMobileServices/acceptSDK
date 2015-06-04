@@ -211,9 +211,6 @@
 /**
  */
 @property (nonatomic) BOOL net_taxation;
-/**
- */
-@property (nonatomic,strong) NSString * service_charge_tax;
 
 @end
 
@@ -273,6 +270,9 @@
 /**
  */
 @property (nonatomic, strong) NSString* defaultCurrency;
+/**
+ */
+@property (nonatomic,strong) NSString * service_charge_tax;
 @end
 
 /**

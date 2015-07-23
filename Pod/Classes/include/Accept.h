@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.122"
+#define SDK_VERSION @"1.6.140"
 
 /**
  */
@@ -147,6 +147,15 @@ extern NSString * const AcceptErrorDomain;
 @property (nonatomic, strong) NSString *cardNumber;
 /**
  */
+@property (nonatomic, strong) NSString * cardType;
+/**
+ */
+@property (nonatomic, strong) NSString * issuer;
+/**
+ */
+@property (nonatomic, strong) NSString *maskedPAN;
+/**
+ */
 @property (nonatomic) NSInteger gratuityAmount;
 /**
  */
@@ -217,53 +226,6 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic) BOOL isCaptureRequired;
-@end
-
-/**
- *  @class AcceptOnlinePaymentConfig
- *  @discussion Online Payment configuration class. Content required to execute the online payment flow
- **/
-@interface AcceptOnlinePaymentConfig : NSObject
-/**
- */
-@property (nonatomic, strong) NSString * paymentUrl;
-/**
- */
-@property (nonatomic, strong) NSString * merchantAccountId;
-/**
- */
-@property (nonatomic, strong) NSString * successUrl;
-/**
- */
-@property (nonatomic, strong) NSString * failureUrl;
-/**
- */
-@property (nonatomic, strong) NSString * secretKey;
-/**
- */
-@property (nonatomic, strong) NSString * pspName;
-/**
- */
-@property (nonatomic, strong) NSString *locale;
-@end
-
-/**
- *  @class ElasticEnginePaymentConfig
- *  @discussion Online Payment configuration class. Content required to execute the online payment flow
- **/
-@interface ElasticEnginePaymentConfig : NSObject
-/**
- */
-@property (nonatomic, strong) NSString * paymentUrl;
-/**
- */
-@property (nonatomic, strong) NSString * merchantAccountId;
-/**
- */
-@property (nonatomic, strong) NSString * userName;
-/**
- */
-@property (nonatomic, strong) NSString * userPassword;
 @end
 
 /**
@@ -421,6 +383,16 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
      appSelection:(void (^)(AcceptAppSelectionRequest *))appSelection;
 
 /**
+ *  @brief Start the Cash payment process
+ *  @param config Instance needed to use backend services
+ *  @param completion Block that will be called at the very end of payment flow. It provides an AcceptTransaction object (that may be nil if unauthorised) or a descriptive error
+ *  @param progress Block with info to update the UI in base of alerts, errors or general info messages. Pure feedback for the user
+ **/
+- (void) startCashPayment:(AcceptPaymentConfig*)config
+               completion:(void (^)(AcceptTransaction*, NSError*))completion
+                 progress:(void (^)(AcceptStateUpdate))progress;
+
+/**
  *  @brief Cancel the payment flow. This is usually called from UI (cancel button when available) or some error from signature or completion block. Notice that an improper usage of this function (for example during online communication or level 2 flow in terminal) can produce unexpected errors
  **/
 - (void) cancelPay;
@@ -524,19 +496,6 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
  *  @param completionBlock Block that will receive the battery level as a signed integer. If negative, then it indicates an error between three possible cases: "-1" for showing that the selected terminalID is wrong or that the terminal does not support battery level info. "-2" for indicating that the terminal does not respond (not ready or not connected). "-3" for indicating that the terminal is currently charging through a cable.
  **/
 - (void)percentageBatteryRemainingForTerminal:(NSString*)vendorID completion:(void (^)(NSInteger))completionBlock;
-
-
-/**
- *  @brief Start the card payment process - config is read from the encrypted accept.plist file present in application bundle
- *  @param amount to charge the cardholder (unit cents)
- *  @param currency of the payment
- *  @param locale of the online payment page
- *  @param token of the last card payment
- *  @param parentViewController parent view controller to display the payment view within - if the parentViewController is of UINavigationController class
- *                              then the payment view is pushed otherwise the view is displayed modally
- *  @param completion Block that will be called at the very end of payment flow. It provides transaction result or a descriptive error
- **/
--(void)startCardPayment:(NSUInteger)amount currency:(NSString *)currency locale:(NSString *)locale token:(NSString *)token parentViewController:(id)parentViewController completion:(void (^)(NSDictionary *, NSError *))completion;
 
 /**
  *  @brief Request the terminal connection status. NOTE: this function should NOT be called if an operation in the terminal is ongoing (ie startPay has not finished)

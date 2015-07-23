@@ -219,6 +219,9 @@
 @property (nonatomic, strong) NSString* emvTransactionType;
 /**
  */
+@property (nonatomic) BOOL expectsTC;
+/**
+ */
 @property (nonatomic) BOOL capturable;
 /**
  */

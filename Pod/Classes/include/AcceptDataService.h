@@ -88,7 +88,7 @@
 - (AcceptCustomDataResponse*) requestCustomData:(NSString*)accessToken error:(NSError**)error;
 
 - (AcceptTransaction*) requestNewPayment:(NSString*)accessToken signature:(UIImage*)signature terminalInfo:(AcceptExtensionTerminalInfo*)terminalInfo basket:(AcceptBasket*)basket cardInfo:(id)cardInfo onlineAuthentication:(BOOL)onlineAuthentication error:(NSError**)error;
-
+- (AcceptTransaction*) requestNewCashPayment:(NSString*)accessToken basket:(AcceptBasket*)basket error:(NSError**)error;
 /**
  * Description: Resets the password for the specified User Id - the reset password instructions are sent by:
  *  - email if the merchant user has email address specified

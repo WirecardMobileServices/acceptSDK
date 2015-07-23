@@ -79,9 +79,15 @@
                                     <array>
                                         <dict>
                                             <key>issuer</key>
-                                            <string>#master</string>
+                                            <string>visa</string>
                                             <key>cardType</key>
-                                            <string>#credit_card</string>
+                                            <string>credit_card</string>
+                                        </dict>
+                                        <dict>
+                                            <key>issuer</key>
+                                            <string>visa</string>
+                                            <key>cardType</key>
+                                            <string>debit_card</string>
                                         </dict>
                                     </array>
                                 </dict>

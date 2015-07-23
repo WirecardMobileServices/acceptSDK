@@ -36,6 +36,7 @@
 +(NSString *)getMaskedPANFromTrack2:(NSString *)track2;
 -(NSDictionary *)getIssuerInformationFromPAN:(NSString *)pan;
 -(NSDictionary *)getIssuerInformationFromPreparedPAN:(NSString *)pan;
+-(NSDictionary *)getIssuerByAcceptCardType:(NSString *)acceptCardType;
 
 +(NSString*)getCurrencyStringCodeForLine:(NSString*)line;
 +(NSString*)getCountryStringCodeForLine:(NSString*)line;

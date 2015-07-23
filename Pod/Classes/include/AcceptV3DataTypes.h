@@ -72,7 +72,9 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
     AcceptTransactionDeclinedErrorCode,
     AcceptBlockedCardTypeErrorCode,
     AcceptFailedBluetoothConnectionError,
-    AcceptTerminalNotReady
+    AcceptTerminalNotReady,
+    AcceptTerminalTimeoutApplicationSelection,
+    AcceptTerminalFailedToGetICCApplicationsList
 } ;
 
 /**
@@ -163,7 +165,8 @@ typedef NS_ENUM(NSInteger, AcceptConfigFilesInfoErrorCode) {
     AcceptConfigFilesProductionFirmwareOnDevelopmentTerminal,
     AcceptConfigFilesDevelopmentFirmwareOnProductionTerminal,
     AcceptConfigFilesTerminalUnsupported,
-    AcceptConfigFilesTokenExpiredErrorCode
+    AcceptConfigFilesTokenExpiredErrorCode,
+    AcceptConfigFilesInfoNoDataErrorCode
 };
 
 /**

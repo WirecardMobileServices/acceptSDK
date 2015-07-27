@@ -74,7 +74,8 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
     AcceptFailedBluetoothConnectionError,
     AcceptTerminalNotReady,
     AcceptTerminalTimeoutApplicationSelection,
-    AcceptTerminalFailedToGetICCApplicationsList
+    AcceptTerminalFailedToGetICCApplicationsList,
+    AcceptTerminalFailedToTerminateCurrentTerminalPaymentFlow
 } ;
 
 /**

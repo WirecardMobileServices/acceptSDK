@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.140"
+#define SDK_VERSION @"1.6.145"
 
 /**
  */

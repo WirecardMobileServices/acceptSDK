@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.145"
+#define SDK_VERSION @"1.6.150"
 
 /**
  */
@@ -177,7 +177,7 @@ extern NSString * const AcceptErrorDomain;
 
 /**
  *  @class AcceptPrinterConfig
- *  @discussion Printer configuration class. Content required to execute the printing flow
+ *  @discussion Printer configuration class. Receipt Content or Receipt Image required to execute the printing flow
  **/
 @interface AcceptPrinterConfig : NSObject
 /**
@@ -189,6 +189,9 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic, strong) AcceptReceipt *receipt;
+/**
+ */
+@property (nonatomic, strong) UIImage *receiptImage;
 @end
 
 /**

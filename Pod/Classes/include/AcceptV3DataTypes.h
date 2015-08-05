@@ -75,7 +75,11 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
     AcceptTerminalNotReady,
     AcceptTerminalTimeoutApplicationSelection,
     AcceptTerminalFailedToGetICCApplicationsList,
-    AcceptTerminalFailedToTerminateCurrentTerminalPaymentFlow
+    AcceptTerminalFailedToTerminateCurrentTerminalPaymentFlow,
+    AcceptLowPowerInAudioJackErrorCode,
+    AcceptMonoAudioEnabledErrorCode,
+    AcceptTerminalCommandTimeOutErrorCode,
+    AcceptTerminalTimeOutErrorCode
 } ;
 
 /**
@@ -167,7 +171,8 @@ typedef NS_ENUM(NSInteger, AcceptConfigFilesInfoErrorCode) {
     AcceptConfigFilesDevelopmentFirmwareOnProductionTerminal,
     AcceptConfigFilesTerminalUnsupported,
     AcceptConfigFilesTokenExpiredErrorCode,
-    AcceptConfigFilesInfoNoDataErrorCode
+    AcceptConfigFilesInfoNoDataErrorCode,
+    AcceptConfigFilesTerminalFirmwareDoesNotExist
 };
 
 /**

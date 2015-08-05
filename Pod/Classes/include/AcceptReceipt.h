@@ -132,6 +132,12 @@
 @property (nonatomic,strong) NSString *taxSummary;
 /**
  */
+@property (nonatomic,strong) NSString *tipSummary;
+/**
+ */
+@property (nonatomic,strong) NSString *serviceChargeSummary;
+/**
+ */
 @property (nonatomic,strong) NSString *localisedPaymentDetailsHeader;
 /**
  */

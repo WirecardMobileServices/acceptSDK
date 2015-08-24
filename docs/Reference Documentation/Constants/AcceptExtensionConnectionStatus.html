@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AcceptDevicesDiscoveryErrorCode Constants Reference</title>
+		<title>AcceptExtensionConnectionStatus Constants Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AcceptDevicesDiscoveryErrorCode Constants Reference</h1>
+				<h1 class="hideInXcode">AcceptExtensionConnectionStatus Constants Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -45,7 +45,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AcceptDevicesDiscoveryErrorCode Constants Reference" name="top"></a>
+				<a title="AcceptExtensionConnectionStatus Constants Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -54,7 +54,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AcceptDevicesDiscoveryErrorCode Constants Reference</h1>
+						<h1 class="title title-header">AcceptExtensionConnectionStatus Constants Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -62,7 +62,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AcceptV3DataTypes.h</td>
+	<td class="specification-value">Accept.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -74,11 +74,11 @@
 					
                     
                     
-                    <h3 class="subsubtitle method-title">AcceptDevicesDiscoveryErrorCode</h3>
+                    <h3 class="subsubtitle method-title">AcceptExtensionConnectionStatus</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>@class <a href="AcceptDevicesDiscoveryErrorCode.html">AcceptDevicesDiscoveryErrorCode</a></p><p>Enumerator of errors when trying to discover devices or printers using discoverTerminalsForVendor or discoverPrintersForVendor.</p>
+                        <p>@class <a href="AcceptExtensionConnectionStatus.html">AcceptExtensionConnectionStatus</a></p><p>The terminal connection status enumerator</p>
 					</div>
 					
 					
@@ -86,11 +86,13 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, AcceptDevicesDiscoveryErrorCode ) {<br/>
+                        <code>typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus ) {<br/>
                             
-                            &nbsp;&nbsp; <a href="">AcceptVendorNotFoundError</a> = 0,<br/>
+                            &nbsp;&nbsp; <a href="">AcceptExtensionConnectionStatusConnected</a>,<br/>
                             
-                            &nbsp;&nbsp; <a href="">AcceptApplicationConfigurationInvalid</a>,<br/>
+                            &nbsp;&nbsp; <a href="">AcceptExtensionConnectionStatusDisconnected</a>,<br/>
+                            
+                            &nbsp;&nbsp; <a href="">AcceptExtensionConnectionStatusUnknown</a>,<br/>
                             
                             };</code>
                     
@@ -100,11 +102,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="AcceptVendorNotFoundError"></a><code>AcceptVendorNotFoundError</code></dt>
+                            <dt><a name="" title="AcceptExtensionConnectionStatusConnected"></a><code>AcceptExtensionConnectionStatusConnected</code></dt>
 <dd>
 
 
-<p>@class <a href="AcceptDevicesDiscoveryErrorCode.html">AcceptDevicesDiscoveryErrorCode</a></p>
+<p>@class <a href="AcceptExtensionConnectionStatus.html">AcceptExtensionConnectionStatus</a></p>
 
     
 
@@ -112,16 +114,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">AcceptV3DataTypes.h</code>.
+		Declared In <code class="declared-in-ref">Accept.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="AcceptApplicationConfigurationInvalid"></a><code>AcceptApplicationConfigurationInvalid</code></dt>
+                            <dt><a name="" title="AcceptExtensionConnectionStatusDisconnected"></a><code>AcceptExtensionConnectionStatusDisconnected</code></dt>
 <dd>
 
 
-<p>@class <a href="AcceptDevicesDiscoveryErrorCode.html">AcceptDevicesDiscoveryErrorCode</a></p>
+<p>@class <a href="AcceptExtensionConnectionStatus.html">AcceptExtensionConnectionStatus</a></p>
 
     
 
@@ -129,7 +131,24 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">AcceptV3DataTypes.h</code>.
+		Declared In <code class="declared-in-ref">Accept.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="AcceptExtensionConnectionStatusUnknown"></a><code>AcceptExtensionConnectionStatusUnknown</code></dt>
+<dd>
+
+
+<p>@class <a href="AcceptExtensionConnectionStatus.html">AcceptExtensionConnectionStatus</a></p>
+
+    
+
+    
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">Accept.h</code>.
 	</p>
 	
 </dd>
@@ -146,7 +165,7 @@
                     
                     <div class="method-subsection declared-in-section">
                         <h4 class="method-subtitle">Declared In</h4>
-                        <code class="declared-in-ref">AcceptV3DataTypes.h</code><br />
+                        <code class="declared-in-ref">Accept.h</code><br />
                     </div>				
                     
                     

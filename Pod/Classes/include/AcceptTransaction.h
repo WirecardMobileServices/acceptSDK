@@ -26,6 +26,14 @@
 #define kTransactionUpdateFailed @"Transaction update failed"
 #define kValidAppDataFailed @"Can't find valid Transaction And Application data"
 
+typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
+    AcceptTransactionStateApproved,
+    AcceptTransactionStateDeclined,
+    AcceptTransactionStateReversed,
+    AcceptTransactionStateRefunded,
+    AcceptTransactionStatePending
+};
+
 /**
  *  @class AcceptTransactionPaymentItem
  *  @discussion Basic Payment item info
@@ -99,6 +107,145 @@
  */
 @property (nonatomic, strong) NSString* createdAtUTC;
 
+@end
+
+/**
+ *  @class AcceptReceiptTaxSummaryItem
+ *  @discussion Receipt Item data
+ **/
+@interface AcceptReceiptItem : NSObject
+
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *itemQuantity;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *itemGrossPrice;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *itemTaxRate;
+/**
+ */
+@property (nonatomic, strong) NSString  *itemDescription;
+/**
+ */
+@property (nonatomic, strong) NSString  *currency;
+/**
+ */
+@property (nonatomic ) BOOL inclusiveTax;
+/**
+ * @discussion Calculated Item Netto price
+ */
+-(NSDecimalNumber  *)itemNettoPrice;
+/**
+ * @discussion Calculated Item Tax Amount
+ */
+-(NSDecimalNumber  *)itemTaxAmount;
+/**
+ * @discussion Calculated Netto price
+ */
+-(NSDecimalNumber *)totalNetto;
+/**
+ * @discussion Calculated Gross price
+ */
+-(NSDecimalNumber *)totalGross;
+/**
+ * @discussion Calculated Tax Amount
+ */
+-(NSDecimalNumber *)totalTaxAmount;
+@end
+
+/**
+ *  @class AcceptReceiptTaxSummaryItem
+ *  @discussion Receipt Item Tax Summary data
+ **/
+@interface AcceptReceiptTaxSummary : NSObject
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *totalNetto;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *totalQuantity;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *totalGross;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *taxRate;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber  *totalTaxAmount;
+/**
+ */
+@property (nonatomic, strong) NSString  *itemDescription;
+@end
+
+/**
+ *  @class AcceptReceiptData
+ *  @discussion Complete Receipt Data
+ **/
+@interface AcceptReceiptData : NSObject
+/**
+ */
+@property (nonatomic, strong) NSArray  *receiptItems;
+/**
+ */
+@property (nonatomic, strong) NSArray  *taxSummaryItems;
+/**
+ */
+@property (nonatomic) BOOL  inclusiveTax;
+/**
+ */
+@property (nonatomic, strong) AcceptReceiptItem  *serviceChargeItem;
+/**
+ */
+@property (nonatomic, strong) AcceptReceiptItem  *tipItem;
+/**
+ */
+@property (nonatomic, strong) NSDate  *utcPaymentDate;
+/**
+ */
+@property (nonatomic) NSDecimalNumber *totalAmount;
+/**
+ */
+@property (nonatomic) AcceptTransactionState transactionState;
+/**
+ */
+@property (nonatomic) NSString * maskedCardNumber;
+/**
+ */
+@property (nonatomic) NSString * cardholderName;
+/**
+ */
+@property (nonatomic) NSString * cardType;
+/**
+ */
+@property (nonatomic) NSString * emvAID;
+/**
+ */
+@property (nonatomic) NSString * emvTID;
+/**
+ */
+@property (nonatomic) NSString * emvMID;
+/**
+ */
+@property (nonatomic) NSString * emvTransactionType;
+/**
+ */
+@property (nonatomic) NSInteger receiptID;
+/**
+ */
+@property (nonatomic) NSString * currencyCode;
+/**
+ */
+@property (nonatomic) NSInteger currencyMinorUnits;
+/**
+ */
+@property (nonatomic) NSString * approvalCode;
+/**
+ * @discussion Receipt data stringified to print out in the console
+ */
+-(NSString *)receiptDescription;
 @end
 
 /**
@@ -283,10 +430,20 @@
 @property (nonatomic) NSInteger serviceChargeAmount;
 /**
  */
+@property (nonatomic) NSDecimalNumber *serviceChargeTaxRate;
+/**
+ */
 @property (nonatomic, strong) NSString* cnpTerminalId;
 /**
  */
 @property (nonatomic, strong) NSString* issuerScript;
+/**
+ */
+@property (nonatomic) BOOL netTaxation;
+/**
+ * @discussion Get the receipt data from this transaction
+ */
+-(AcceptReceiptData *)getAcceptReceiptData;
 
 @end
 

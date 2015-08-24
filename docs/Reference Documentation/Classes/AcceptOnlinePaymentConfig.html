@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>AcceptPaymentParameters Class Reference</title>
+		<title>AcceptOnlinePaymentConfig Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">AcceptPaymentParameters Class Reference</h1>
+				<h1 class="hideInXcode">AcceptOnlinePaymentConfig Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,15 +39,19 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/applicationCryptogram">&nbsp;&nbsp;&nbsp;&nbsp;applicationCryptogram</option>
+	<option value="//api/name/failureUrl">&nbsp;&nbsp;&nbsp;&nbsp;failureUrl</option>
 	
-	<option value="//api/name/customerEmail">&nbsp;&nbsp;&nbsp;&nbsp;customerEmail</option>
+	<option value="//api/name/locale">&nbsp;&nbsp;&nbsp;&nbsp;locale</option>
 	
-	<option value="//api/name/customerPhone">&nbsp;&nbsp;&nbsp;&nbsp;customerPhone</option>
+	<option value="//api/name/merchantAccountId">&nbsp;&nbsp;&nbsp;&nbsp;merchantAccountId</option>
 	
-	<option value="//api/name/note">&nbsp;&nbsp;&nbsp;&nbsp;note</option>
+	<option value="//api/name/paymentUrl">&nbsp;&nbsp;&nbsp;&nbsp;paymentUrl</option>
 	
-	<option value="//api/name/receiptRequested">&nbsp;&nbsp;&nbsp;&nbsp;receiptRequested</option>
+	<option value="//api/name/pspName">&nbsp;&nbsp;&nbsp;&nbsp;pspName</option>
+	
+	<option value="//api/name/secretKey">&nbsp;&nbsp;&nbsp;&nbsp;secretKey</option>
+	
+	<option value="//api/name/successUrl">&nbsp;&nbsp;&nbsp;&nbsp;successUrl</option>
 	
 	
 	
@@ -77,15 +81,19 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applicationCryptogram">applicationCryptogram</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/failureUrl">failureUrl</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerEmail">customerEmail</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/locale">locale</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/customerPhone">customerPhone</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/merchantAccountId">merchantAccountId</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/note">note</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/paymentUrl">paymentUrl</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/receiptRequested">receiptRequested</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pspName">pspName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/secretKey">secretKey</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/successUrl">successUrl</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +106,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="AcceptPaymentParameters Class Reference" name="top"></a>
+				<a title="AcceptOnlinePaymentConfig Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +115,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">AcceptPaymentParameters Class Reference</h1>
+						<h1 class="title title-header">AcceptOnlinePaymentConfig Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -118,7 +126,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">AcceptPaymentParameters.h</td>
+	<td class="specification-value">Accept.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -128,7 +136,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>@class AcceptPaymentParameters</p><p>User payment parameters</p>
+						<p>@class AcceptOnlinePaymentConfig</p><p>Online Payment configuration class. Content required to execute the online payment flow</p>
 					</div>
 					
 					
@@ -146,31 +154,43 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/customerEmail">&nbsp;&nbsp;customerEmail</a></code>
+		<code><a href="#//api/name/paymentUrl">&nbsp;&nbsp;paymentUrl</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/customerPhone">&nbsp;&nbsp;customerPhone</a></code>
+		<code><a href="#//api/name/merchantAccountId">&nbsp;&nbsp;merchantAccountId</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/receiptRequested">&nbsp;&nbsp;receiptRequested</a></code>
+		<code><a href="#//api/name/successUrl">&nbsp;&nbsp;successUrl</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/note">&nbsp;&nbsp;note</a></code>
+		<code><a href="#//api/name/failureUrl">&nbsp;&nbsp;failureUrl</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/applicationCryptogram">&nbsp;&nbsp;applicationCryptogram</a></code>
+		<code><a href="#//api/name/secretKey">&nbsp;&nbsp;secretKey</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pspName">&nbsp;&nbsp;pspName</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/locale">&nbsp;&nbsp;locale</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -188,14 +208,14 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/applicationCryptogram" title="applicationCryptogram"></a>
-	<h3 class="subsubtitle method-title">applicationCryptogram</h3>
+	<a name="//api/name/failureUrl" title="failureUrl"></a>
+	<h3 class="subsubtitle method-title">failureUrl</h3>
 	
 	
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *applicationCryptogram</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *failureUrl</code></div>
 
     
 	
@@ -213,21 +233,21 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AcceptPaymentParameters.h</code><br />
+		<code class="declared-in-ref">Accept.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/customerEmail" title="customerEmail"></a>
-	<h3 class="subsubtitle method-title">customerEmail</h3>
+	<a name="//api/name/locale" title="locale"></a>
+	<h3 class="subsubtitle method-title">locale</h3>
 	
 	
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *customerEmail</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *locale</code></div>
 
     
 	
@@ -245,21 +265,21 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AcceptPaymentParameters.h</code><br />
+		<code class="declared-in-ref">Accept.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/customerPhone" title="customerPhone"></a>
-	<h3 class="subsubtitle method-title">customerPhone</h3>
+	<a name="//api/name/merchantAccountId" title="merchantAccountId"></a>
+	<h3 class="subsubtitle method-title">merchantAccountId</h3>
 	
 	
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *customerPhone</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *merchantAccountId</code></div>
 
     
 	
@@ -277,21 +297,21 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AcceptPaymentParameters.h</code><br />
+		<code class="declared-in-ref">Accept.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/note" title="note"></a>
-	<h3 class="subsubtitle method-title">note</h3>
+	<a name="//api/name/paymentUrl" title="paymentUrl"></a>
+	<h3 class="subsubtitle method-title">paymentUrl</h3>
 	
 	
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *note</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *paymentUrl</code></div>
 
     
 	
@@ -309,21 +329,21 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AcceptPaymentParameters.h</code><br />
+		<code class="declared-in-ref">Accept.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/receiptRequested" title="receiptRequested"></a>
-	<h3 class="subsubtitle method-title">receiptRequested</h3>
+	<a name="//api/name/pspName" title="pspName"></a>
+	<h3 class="subsubtitle method-title">pspName</h3>
 	
 	
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) bool receiptRequested</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *pspName</code></div>
 
     
 	
@@ -341,7 +361,71 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">AcceptPaymentParameters.h</code><br />
+		<code class="declared-in-ref">Accept.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/secretKey" title="secretKey"></a>
+	<h3 class="subsubtitle method-title">secretKey</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *secretKey</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Accept.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/successUrl" title="successUrl"></a>
+	<h3 class="subsubtitle method-title">successUrl</h3>
+	
+	
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *successUrl</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Accept.h</code><br />
 	</div>				
 	
 	
@@ -366,7 +450,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-07-28)</span><br />
+						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-06-04)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

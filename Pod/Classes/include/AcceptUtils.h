@@ -40,6 +40,9 @@
 
 +(NSString*)getCurrencyStringCodeForLine:(NSString*)line;
 +(NSString*)getCountryStringCodeForLine:(NSString*)line;
++(int)getCurrencyDecimalPlaces:(NSString *)currency;
+
++(NSDecimalNumber *)getDecimalNumberDividerForCurrency:(NSString *)currency;
 
 + (NSData *)encodeEMVIccBlob:(NSArray *)iccData;
 

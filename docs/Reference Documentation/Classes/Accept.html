@@ -84,9 +84,13 @@
 	
 	<option value="//api/name/resetPassword:config:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- resetPassword:config:completion:</option>
 	
+	<option value="//api/name/startCashPayment:completion:progress:">&nbsp;&nbsp;&nbsp;&nbsp;- startCashPayment:completion:progress:</option>
+	
 	<option value="//api/name/startPay:completion:progress:signature:signatureVerification:appSelection:">&nbsp;&nbsp;&nbsp;&nbsp;- startPay:completion:progress:signature:signatureVerification:appSelection:</option>
 	
 	<option value="//api/name/startPrint:completion:progress:">&nbsp;&nbsp;&nbsp;&nbsp;- startPrint:completion:progress:</option>
+	
+	<option value="//api/name/terminalConnectionStatus:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- terminalConnectionStatus:completion:</option>
 	
 	<option value="//api/name/updateTerminalFirmwareForVendor:andToken:andConfig:andFirmware:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- updateTerminalFirmwareForVendor:andToken:andConfig:andFirmware:completion:</option>
 	
@@ -162,9 +166,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetPassword:config:completion:">resetPassword:config:completion:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startCashPayment:completion:progress:">startCashPayment:completion:progress:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startPay:completion:progress:signature:signatureVerification:appSelection:">startPay:completion:progress:signature:signatureVerification:appSelection:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startPrint:completion:progress:">startPrint:completion:progress:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/terminalConnectionStatus:completion:">terminalConnectionStatus:completion:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateTerminalFirmwareForVendor:andToken:andConfig:andFirmware:completion:">updateTerminalFirmwareForVendor:andToken:andConfig:andFirmware:completion:</a></span></li>
 	
@@ -309,6 +317,12 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/startCashPayment:completion:progress:">&ndash;&nbsp;startCashPayment:completion:progress:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/cancelPay">&ndash;&nbsp;cancelPay</a></code>
 	</span>
 	
@@ -358,6 +372,12 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/percentageBatteryRemainingForTerminal:completion:">&ndash;&nbsp;percentageBatteryRemainingForTerminal:completion:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/terminalConnectionStatus:completion:">&ndash;&nbsp;terminalConnectionStatus:completion:</a></code>
 	</span>
 	
 	
@@ -1434,6 +1454,62 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/startCashPayment:completion:progress:" title="startCashPayment:completion:progress:"></a>
+	<h3 class="subsubtitle method-title">startCashPayment:completion:progress:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Start the Cash payment process</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)startCashPayment:(AcceptPaymentConfig *)<em>config</em> completion:(void ( ^ ) ( AcceptTransaction *, NSError *))<em>completion</em> progress:(void ( ^ ) ( AcceptStateUpdate ))<em>progress</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>config</em></dt>
+			<dd><p>Instance needed to use backend services</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>Block that will be called at the very end of payment flow. It provides an <a href="../Classes/AcceptTransaction.html">AcceptTransaction</a> object (that may be nil if unauthorised) or a descriptive error</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>progress</em></dt>
+			<dd><p>Block with info to update the UI in base of alerts, errors or general info messages. Pure feedback for the user</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Accept.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/startPay:completion:progress:signature:signatureVerification:appSelection:" title="startPay:completion:progress:signature:signatureVerification:appSelection:"></a>
 	<h3 class="subsubtitle method-title">startPay:completion:progress:signature:signatureVerification:appSelection:</h3>
 	
@@ -1537,6 +1613,57 @@
 			<dt><em>progress</em></dt>
 			<dd><p>Block with the progress status
 @return</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Accept.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/terminalConnectionStatus:completion:" title="terminalConnectionStatus:completion:"></a>
+	<h3 class="subsubtitle method-title">terminalConnectionStatus:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Request the terminal connection status. NOTE: this function should NOT be called if an operation in the terminal is ongoing (ie startPay has not finished)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)terminalConnectionStatus:(NSString *)<em>vendorID</em> completion:(void ( ^ ) ( AcceptExtensionConnectionStatus ))<em>completionBlock</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>vendorID</em></dt>
+			<dd><p>Unique id of the terminal&rsquo;s vendor we are requesting the info</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionBlock</em></dt>
+			<dd><p>Block that will receive the terminal connection status.</p></dd>
 		</dl>
 		
 	</div>
@@ -1703,7 +1830,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-04-22)</span><br />
+						<p><span class="copyright">&copy; 2015 Wirecard. All rights reserved. (Last updated: 2015-07-28)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

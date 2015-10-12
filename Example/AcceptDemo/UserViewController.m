@@ -8,6 +8,8 @@
 
 #import "UserViewController.h"
 #import "Utils.h"
+#import "AcceptV3DataTypes.h"
+#import "ZipArchive.h"
 
 @interface UserViewController ()
 {
@@ -54,7 +56,9 @@ typedef enum {
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setDefaultValues];
+    
 }
 
 
@@ -193,8 +197,8 @@ typedef enum {
         
         if (error)
         {
-            AcceptRequestTokenErrorCode errCode = ((AcceptRequestTokenErrorCode)self.error.code);
-            self.errorObject = [NSValue value:&errCode withObjCType:@encode(AcceptRequestTokenErrorCode)];
+            AcceptCommonErrorCode errCode = ((AcceptCommonErrorCode)self.error.code);
+            self.errorObject = [NSValue value:&errCode withObjCType:@encode(NSUInteger)];
             completionBlock(accessToken.accessToken, error);
         }
         else
@@ -385,8 +389,8 @@ typedef enum {
             
             if (error)
             {
-                AcceptRequestTokenErrorCode errCode = ((AcceptRequestTokenErrorCode)self.error.code);
-                self.errorObject = [NSValue value:&errCode withObjCType:@encode(AcceptRequestTokenErrorCode)];
+                AcceptCommonErrorCode errCode = ((AcceptCommonErrorCode)self.error.code);
+                self.errorObject = [NSValue value:&errCode withObjCType:@encode(NSUInteger)];
                 completionBlock(accessToken.accessToken, error);
             }
             else

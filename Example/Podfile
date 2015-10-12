@@ -1,12 +1,14 @@
 platform :ios, :deployment_target => "7.0"
 pod "acceptSDK", :path => "../"
 
-
 post_install do |installer_representation|
-  installer_representation.project.targets.each do |target|
+  installer_representation.pods_project.targets.each do |target|
    target.build_configurations.each do |config|
 	   config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
        config.build_settings['ENABLE_STRICT_OBJC_MSGSEND'] = 'NO'
+       config.build_settings['ENABLE_BITCODE'] = 'NO'
    end
   end
 end
+
+link_with ‘AcceptDemo’, ‘Tests’

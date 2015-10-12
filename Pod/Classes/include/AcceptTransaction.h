@@ -25,6 +25,7 @@
 #define kSignatureRejectedByTerminal @"Signature was rejected by terminal"
 #define kTransactionUpdateFailed @"Transaction update failed"
 #define kValidAppDataFailed @"Can't find valid Transaction And Application data"
+#define kTransactionRejected @"Transaction declined"
 
 typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
     AcceptTransactionStateApproved,

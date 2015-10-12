@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.6.151"
+  s.version          = "1.6.167"
   s.summary          = "Accept Payment Platform SDK - credit card payments, Chip and PIN, magstripe"
   s.description      = <<-DESC
                        The library extends the point of sale to modern mobile environment. 
@@ -24,12 +24,34 @@ Pod::Spec.new do |s|
   s.xcconfig     = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
   s.libraries = 'stdc++.6', 'z.1', 'xml2'
   s.frameworks    = 'Foundation', 'SystemConfiguration', 'MediaPlayer', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'ExternalAccessory'
-  s.source_files = 'Pod/Classes/include/*.{h}'
-  s.public_header_files = '**/*.{h}'
-  s.vendored_libraries  = 'Pod/Classes/lib/*.{a}'
-  s.resource = ['Pod/Assets/*.xml', 'Pod/Classes/lib/acceptResources.bundle']
-  s.dependency 'ZipArchive', '~> 1.4'
-  s.dependency 'KissXML', '~> 5.0'
 
+  s.subspec 'Core' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libPodsSDK.a'
+    ss.source_files = 'Pod/Classes/include/*.{h}'
+    ss.public_header_files = '**/*.{h}'    
+    ss.resource = ['Pod/Assets/*.xml', 'Pod/Classes/lib/acceptResources.bundle']
+    ss.dependency 'ZipArchive', '~> 1.4'
+    ss.dependency 'KissXML', '~> 5.0'    
+  end  
+   
+  s.subspec 'IDTech' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libUnimagSDK.a'
+    ss.dependency     'acceptSDK/Core'
+  end  
+
+  s.subspec 'BBPOS' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libEmvSwipeBBPOSSDK.a'
+    ss.dependency     'acceptSDK/Core'    
+  end  
+
+  s.subspec 'Spire' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libPosmateSDK.a'
+    ss.dependency     'acceptSDK/Core'    
+  end  
+
+  s.subspec 'Datecs' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libDatecsPrinterSDK.a'
+   ss.dependency     'acceptSDK/Core' 
+  end  
 
 end

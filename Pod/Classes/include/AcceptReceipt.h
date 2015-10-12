@@ -148,5 +148,7 @@
 /**
  */
 @property (nonatomic,strong) NSString *footerCopyright;
-
+/**
+ */
+@property (nonatomic,strong) NSString *receiptQRCodeString;
 @end

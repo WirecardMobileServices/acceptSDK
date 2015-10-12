@@ -23,7 +23,14 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.151"
+#define SDK_VERSION @"1.6.166"
+
+#define ENABLE_IDTECH   1
+#define ENABLE_BBPOS    1
+#define ENABLE_DATECS   0
+#define ENABLE_SPIRE    1
+#define ENABLE_VERIFONE 0
+#define ENABLE_PRT_DATECS 1
 
 /**
  */
@@ -242,6 +249,13 @@ typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus){
 };
 
 /**
+ *  @class SignatureVerificationResultCallback
+ *  @discussion The callback to pass to startPay function with the result of Customer signature verification
+ *  @param AcceptSignatureVerificationResult the result of the Merchant veryfying the customer signature
+ **/
+typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerificationResult);
+
+/**
 *  @class Accept
 *  @discussion Main SDK class. It contains all public properties and functions
 **/
@@ -250,6 +264,8 @@ typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus){
  */
 ///version Current SDK version
 @property (nonatomic, readonly) NSString * version;
+
+
 
 /**
  *  @brief Adquire an array of available terminal vendors
@@ -382,7 +398,7 @@ typedef NS_ENUM(NSInteger, AcceptExtensionConnectionStatus){
        completion:(void (^)(AcceptTransaction*, NSError*))completion
          progress:(void (^)(AcceptStateUpdate))progress
         signature:(void (^)(AcceptSignatureRequest*))signatureRequest
-signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerification
+signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback , NSError*))signatureVerification
      appSelection:(void (^)(AcceptAppSelectionRequest *))appSelection;
 
 /**
@@ -506,4 +522,10 @@ signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerificat
  *  @param completionBlock Block that will receive the terminal connection status.
  **/
 - (void)terminalConnectionStatus:(NSString*)vendorID completion:(void (^)(AcceptExtensionConnectionStatus))completionBlock;
+
+/**
+ *  @brief List the backends from the Accept configuration file
+ **/
+-(NSArray *)getSupportedBackends;
+
 @end

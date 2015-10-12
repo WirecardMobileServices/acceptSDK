@@ -467,5 +467,8 @@
 /**
  */
 @property (nonatomic) BOOL needsPasswordUpdate;
+/**
+ */
+@property (nonatomic) NSInteger tc_expires_in;
 @end
 

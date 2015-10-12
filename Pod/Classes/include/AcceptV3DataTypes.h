@@ -86,74 +86,25 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
  *  @class AcceptTransactionsQueryErrorCode
  *  @discussion Enumerator of errors when trying to do a transaction request, this is, using the function queryTransactions.
  **/
-typedef NS_ENUM(NSInteger, AcceptTransactionsQueryErrorCode) {
+typedef NS_ENUM(NSInteger, AcceptCommonErrorCode) {
     AcceptTransactionsQueryTokenExpiredErrorCode = 0,
-    AcceptTransactionsQueryNoConnectionErrorCode
-};
-
-/**
- *  @class AcceptRequestTokenErrorCode
- *  @discussion Enumerator of errors when trying to request an user token using the function requestAccessToken.
- **/
-typedef NS_ENUM(NSInteger, AcceptRequestTokenErrorCode) {
-    AcceptWrongUserNameOrPasswordErrorCode = 0,
+    AcceptTransactionsQueryNoConnectionErrorCode,
+    AcceptWrongUserNameOrPasswordErrorCode,
     AcceptRequestTokenConnectionErrorCode,
-};
-
-/**
- *  @class AcceptRequestMerchantInfoErrorCode
- *  @discussion Enumerator of errors when trying to request merchant info using the function requestMerchantInfo.
- **/
-typedef NS_ENUM(NSInteger, AcceptRequestMerchantInfoErrorCode) {
-    AcceptRequestMerchantInfoTokenExpiredErrorCode = 0,
-    AcceptRequestMerchantInfoNoConnectionErrorCode
-};
-
-/**
- *  @class AcceptDevicesDiscoveryErrorCode
- *  @discussion Enumerator of errors when trying to discover devices or printers using discoverTerminalsForVendor or discoverPrintersForVendor.
- **/
-typedef NS_ENUM(NSInteger, AcceptDevicesDiscoveryErrorCode) {
-    AcceptVendorNotFoundError = 0,
-    AcceptApplicationConfigurationInvalid               // some extensions requires additional configuration changes in host application .plist file.
-} ;
-
-/**
- *  @class AcceptResetPasswordErrorCode
- *  @discussion Enumerator of errors when trying to request a password reset using resetPassword.
- **/
-typedef NS_ENUM(NSInteger, AcceptResetPasswordErrorCode) {
-    AcceptResetPasswordConnectionErrorCode = 0,         // no internet connection
+    AcceptRequestMerchantInfoTokenExpiredErrorCode,
+    AcceptRequestMerchantInfoNoConnectionErrorCode,
+    AcceptVendorNotFoundError,
+    AcceptApplicationConfigurationInvalid,               // some extensions requires additional configuration changes in host application .plist file.
+    AcceptResetPasswordConnectionErrorCode,         // no internet connection
     AcceptExternalIdNotFoundErrorCode,                   // there is no user/merchant with given external id. ( HTTP 422 )
-    AcceptChangePasswordCriteriaNotMet                  //password change criteria not met
-    
-};
-
-/**
- *  @class AcceptQueryStatsErrorCode
- *  @discussion Enumerator of errors when trying to request statistics data using queryStatistics.
- **/
-typedef NS_ENUM(NSInteger, AcceptQueryStatsErrorCode) {
-    AcceptQueryStatsTokenExpiredErrorCode = 0,
-    AcceptQueryStatsConnectionErrorCode = 1
-};
-
-/**
- *  @class AcceptForgotExternalIdErrorCode
- *  @discussion Enumerator of errors when trying to request email with userId using forgotUserId.
- **/
-typedef NS_ENUM(NSInteger, AcceptForgotExternalIdErrorCode) {
-    AcceptForgotExternalIdConnectionErrorCode = 0,      // no internet connection
-    AcceptForgotExternalIdNotFoundErrorCode             // there is no user/merchant with given email address. ( HTTP 422 )
-};
-
-/**
- *  @class AcceptGenericErrorCode
- *  @discussion Enumerator of errors when obtaining a timeout in any function that requires online communication and is not included in any other error enumerator.
- **/
-typedef NS_ENUM(NSInteger, AcceptGenericErrorCode) {
+    AcceptChangePasswordCriteriaNotMet,                  //password change criteria not met
+    AcceptQueryStatsTokenExpiredErrorCode,
+    AcceptQueryStatsConnectionErrorCode,
+    AcceptForgotExternalIdConnectionErrorCode,      // no internet connection
+    AcceptForgotExternalIdNotFoundErrorCode = 14,             // there is no user/merchant with given email address. ( HTTP 422 )
     AcceptGenericRequestTimeoutErrorCode = 1001         // connection timeout
 };
+
 
 /**
  *  @class AcceptConfigFilesInfoErrorCode
@@ -298,6 +249,17 @@ typedef NS_ENUM(NSInteger, AcceptReversalReason)
     AcceptReversalReasonNoEFTResponse = 6,
     AcceptReversalReasonTerminalTerminated=7,
     AcceptReversalReasonSignatureVerificationTimeout = 10
+};
+
+/**
+ *  @class AcceptSignatureVerificationResult
+ *  @discussion Enumerator with the result of the merchant verification
+ **/
+typedef NS_ENUM(NSInteger, AcceptSignatureVerificationResult)
+{
+    AcceptSignatureVerificationResultNotDefined = 0,
+    AcceptSignatureVerificationResultApproved = 1,
+    AcceptSignatureVerificationResultRejected = 2
 };
 
 /**

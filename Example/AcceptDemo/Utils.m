@@ -48,9 +48,9 @@ static Utils *sharedInstance = nil;
 
     //EncryptedResources/accept.conf contains default DEV backend config
     //If you use default EncryptedResources/accept.conf there is no need to supply custom backendConfig
-    self.backendConfig.url = nil;//@"https://yourBackendURL.com/"; //Note the slash for closing "/"
-    self.backendConfig.clientId = nil;// @"yourCliendID";
-    self.backendConfig.clientSecret = nil; // @"yourSecretID";
+    self.backendConfig.url = @"https://test-mpos.wirecard.com/";//@"https://yourBackendURL.com/"; //Note the slash for closing "/"
+    self.backendConfig.clientId = @"716220948d75bcec137f2ccaa311f2b83914bfc783ed19ef7253ecc93d2e93fe";// @"yourCliendID";
+    self.backendConfig.clientSecret = @"f12dbd75bf12376da8757e00aae877d86df5cb3734fba24d9e49a3f1190bedf7"; // @"yourSecretID";
     self.accept = [[Accept alloc] init];
     
     return self;

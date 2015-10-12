@@ -10,6 +10,7 @@
 #import "Accept.h"
 #import "Utils.h"
 
+
 @interface PaymentViewController ()
 
 @property(nonatomic, weak) IBOutlet UITextField *amountTf;
@@ -727,20 +728,29 @@
         [weakSelf paymentProgress:update];
     };
     
+    
     void(^signature)(AcceptSignatureRequest * ) = ^(AcceptSignatureRequest *  signatureRequest)
     {        
         [weakSelf requestSignature:signatureRequest];
     };
     
-    void (^signatureVerification)(AcceptTransaction*, NSError*) = ^(AcceptTransaction *transaction, NSError *error)
+    void (^signatureVerification)(AcceptTransaction*, AcceptSignatureVerificationResultCallback,NSError*) = ^(AcceptTransaction *transaction,AcceptSignatureVerificationResultCallback signatureVerificationCallbackMerchantResponse, NSError *error)
     {
-        if (error || !transaction) {
-            
-            [weakSelf paymentFailure:error transaction:transaction];
+        
+        if (signatureVerificationCallbackMerchantResponse) {
+            //implement the confirmation for the signature Approval/Rejection and call signatureVerificationCallbackMerchantResponse with Approved or Rejected accordingly
+            signatureVerificationCallbackMerchantResponse(AcceptSignatureVerificationResultApproved);
         }
         else{
-            [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
-            //            [weakSelf paymentSuccess:transaction];
+            if (error || !transaction) {
+                
+                [weakSelf paymentFailure:error transaction:transaction];
+            }
+            else{
+                
+                [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
+                //            [weakSelf paymentSuccess:transaction];
+            }
         }
         
     };
@@ -753,6 +763,7 @@
     [self.accept discoverTerminalsForVendor:iSelectedVendorUUID completion:^(NSArray *discoveredTerminals, NSError *error)
     {
         AcceptTerminal *terminal = nil;
+        
         
         for (AcceptTerminal *term in discoveredTerminals) {
             if ([term.displayName isEqualToString: iSelectedVendorTerminalDisplayName]) {
@@ -785,7 +796,7 @@
     completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
     progress:(void (^)(AcceptStateUpdate))progress
     signature:(void (^)(AcceptSignatureRequest * ))signature
-    signatureVerification:(void (^)(AcceptTransaction*, NSError*))signatureVerification
+    signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback, NSError*))signatureVerification
     appSelection:(void (^)(AcceptAppSelectionRequest * ))appSelection
 {
     NSLog(@">>> PaymentViewController - doPaymentThroughVendor");

@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  *  @class AcceptPaymentParameters
@@ -27,4 +28,7 @@
 /**
  */
 @property (nonatomic, strong) NSString * applicationCryptogram;
+/**
+ */
+@property (nonatomic, strong) UIImage * signatureImage;
 @end

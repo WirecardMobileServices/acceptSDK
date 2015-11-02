@@ -23,7 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define SDK_VERSION @"1.6.166"
+#define ACCEPT_SDK_VERSION @"1.6.170"
 
 #define ENABLE_IDTECH   1
 #define ENABLE_BBPOS    1

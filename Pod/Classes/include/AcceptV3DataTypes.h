@@ -180,7 +180,8 @@ typedef NS_ENUM(NSInteger, AcceptOperationOnPayment)
     AcceptOperationOnPaymentRefund = 0,
     AcceptOperationOnPaymentReverse = 1,
     AcceptOperationOnPaymentReceipt = 3, //a receipt will be requested; the transaction won't be modified
-    AcceptOperationOnPaymentConfirmResponseReceived = 4
+    AcceptOperationOnPaymentConfirmResponseReceived = 4,
+    AcceptOperationOnPaymentSignatureUpdate = 5 //SPm2 send signature AFTER completion in contactless flow
 };
 
 /**

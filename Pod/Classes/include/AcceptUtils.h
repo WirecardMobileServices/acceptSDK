@@ -60,4 +60,6 @@
 
 +(void)hideActivityIndicator:(UIView *)onView completion:(void (^)(void))moreCompletion;
 
++(UIImage*)generateQRCodeFromString:(NSString *)qrString;
+
 @end

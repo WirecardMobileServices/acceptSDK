@@ -22,7 +22,7 @@
 #define kTransactionReversalRequired @"Transaction reversal required"
 #define kTransactionReversedByTerminal @"Transaction reversed by terminal"
 #define kTransactionReversalFailed @"Transaction reversal failed"
-#define kSignatureRejectedByTerminal @"Signature was rejected by terminal"
+#define kSignatureRejectedByTerminal @"Merchant rejected customer signature"
 #define kTransactionUpdateFailed @"Transaction update failed"
 #define kValidAppDataFailed @"Can't find valid Transaction And Application data"
 #define kTransactionRejected @"Transaction declined"

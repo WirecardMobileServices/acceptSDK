@@ -526,5 +526,72 @@
                 </item>
             </items>
         </item>
+        <item>
+            <id>ENABLE_MPOP</id>
+            <name>STAR mPOP</name>
+            <description>Sets the support for this device and acepted cards.</description>
+            <type>dict</type>
+            <items>
+                <item>
+                    <id>enabled</id>
+                    <type>bool</type>
+                    <value>
+                        <dict>
+                            <key>bool</key>
+                            <true/>
+                        </dict>
+                    </value>
+                </item>
+                <item>
+                    <id>displayName</id>
+                    <type>dict</type>
+                    <items>
+                        <item>
+                            <id>en</id>
+                            <type>text</type>
+                            <value>
+                                <dict>
+                                    <key>text</key>
+                                    <string>STAR</string>
+                                </dict>
+                            </value>
+                        </item>
+                    </items>
+                </item>
+                <item>
+                    <id>mPOP</id>
+                    <name>STAR mPOP</name>
+                    <type>dict</type>
+                    <items>
+                        <item>
+                            <id>enabled</id>
+                            <type>bool</type>
+                            <value>
+                                <dict>
+                                    <key>bool</key>
+                                    <true/>
+                                </dict>
+                            </value>
+                        </item>
+                        <item>
+                            <id>displayName</id>
+                            <type>dict</type>
+                            <items>
+                                <item>
+                                    <id>en</id>
+                                    <type>text</type>
+                                    <value>
+                                        <dict>
+                                            <key>text</key>
+                                            <string>STAR mPOP</string>
+                                        </dict>
+                                    </value>
+                                </item>
+                            </items>
+                        </item>
+                    </items>
+                </item>
+            </items>
+        </item>
     </items>
 </item>

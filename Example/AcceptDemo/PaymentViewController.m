@@ -59,6 +59,8 @@
     self.currencyTf.inputAccessoryView = self.keyboardToolbar;
     self.currencyTf.inputView = self.pickerCurrency;
     self.accept = [[Utils sharedInstance] accept];
+NSLog(@"version:%@",
+      [self.accept version]);
     
     [self populateVendorsList];
     [self populatePrinterVendors];
@@ -88,6 +90,7 @@
     [self.tokenlbl setTextColor:([[Utils sharedInstance] tokenIsValid])? [UIColor greenColor] : [UIColor redColor]];
     [self.tokenlbl setText:([[Utils sharedInstance] tokenIsValid])? @"Valid token" : @"Token expired or empty, please login"];
     [self.revertB setEnabled:(self.transaction != nil)];
+
 }
 
 - (void)applicationEnteredForeground:(NSNotification *)notification

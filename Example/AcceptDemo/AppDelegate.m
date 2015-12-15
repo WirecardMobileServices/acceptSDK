@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Utils.h"
+#define DEV_MODE_ENABLED = 1
 
 @interface AppDelegate ()
 

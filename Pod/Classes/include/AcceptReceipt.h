@@ -117,6 +117,9 @@
 @property (nonatomic,strong) NSString *localisedAmountHeader;
 /**
  */
+@property (nonatomic,strong) NSString *localisedAOSAHeader;
+/**
+ */
 @property (nonatomic,strong) NSString *amount;
 /**
  */
@@ -151,4 +154,10 @@
 /**
  */
 @property (nonatomic,strong) NSString *receiptQRCodeString;
+/**
+ */
+@property (nonatomic,strong) NSString *availableOfflineSpendingAmount;
+/**
+ */
+@property (nonatomic) BOOL verifiedOnDeviceCVM;
 @end

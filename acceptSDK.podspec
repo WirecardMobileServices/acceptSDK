@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.6.176"
+  s.version          = "1.6.177"
   s.summary          = "Accept Payment Platform SDK - credit card payments, Chip and PIN, magstripe"
   s.description      = <<-DESC
                        The library extends the point of sale to modern mobile environment. 
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.xcconfig     = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
   s.libraries = 'stdc++.6', 'z.1', 'xml2'
-  s.frameworks    = 'Foundation', 'SystemConfiguration', 'MediaPlayer', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'ExternalAccessory'
+  s.frameworks    = 'Foundation', 'SystemConfiguration', 'MediaPlayer', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'ExternalAccessory', 'CoreBluetooth'
 
   s.subspec 'Core' do |ss|
     ss.vendored_libraries  = 'Pod/Classes/lib/libPodsSDK.a'

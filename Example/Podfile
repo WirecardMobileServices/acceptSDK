@@ -1,6 +1,6 @@
 platform :ios, :deployment_target => "7.0"
-pod "acceptSDK/Core"
-pod "acceptSDK/Spire"
+pod "acceptSDK/Core", :path => '../'
+pod "acceptSDK/Spire", :path => '../'
 
 post_install do |installer_representation|
   installer_representation.pods_project.targets.each do |target|
@@ -12,4 +12,4 @@ post_install do |installer_representation|
   end
 end
 
-link_with ‘AcceptDemo’, ‘Tests’
+link_with 'AcceptDemo', 'Tests'

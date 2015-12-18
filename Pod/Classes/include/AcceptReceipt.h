@@ -160,4 +160,22 @@
 /**
  */
 @property (nonatomic) BOOL verifiedOnDeviceCVM;
+/**
+ */
+@property (nonatomic,strong) NSString *appCrypt;
+/**
+ */
+@property (nonatomic,strong) NSString *cryptID;
+/**
+ */
+@property (nonatomic,strong) NSString *appTransCounter;
+/**
+ */
+@property (nonatomic,strong) NSString *declinedReason;
+/**
+ */
+@property (nonatomic) BOOL PINVerified;
+/**
+ */
+@property (nonatomic,strong) NSString *transactionTypeAsText;
 @end

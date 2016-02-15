@@ -66,7 +66,7 @@ API reference documentation is available in ./docs/Reference Documentation subfo
 ## Requirements
 
 * Computer running OSX
-* XCode > 6.0
+* Xcode > 6.0
 * Device running iOS > 7.1
 * One of Wirecard approved terminals and handheld printers
 	* IDTech [Unimag Pro](http://www.idtechproducts.com/products/mobile-readers/126.html "Unimag Pro")

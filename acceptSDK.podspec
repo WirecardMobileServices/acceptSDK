@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
    ss.dependency     'acceptSDK/Core' 
   end  
 
- s.subspec 'mPOP ' do |ss|
+ s.subspec 'mPOP' do |ss|
     ss.vendored_libraries  = 'Pod/Classes/lib/libStarioSDK.a'
    ss.dependency     'acceptSDK/Core' 
   end  

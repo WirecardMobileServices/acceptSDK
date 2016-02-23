@@ -44,11 +44,10 @@ static Utils *sharedInstance = nil;
     [self.dateFormatter setDateFormat:kDateFormatType3];
     NSTimeZone *zone=[NSTimeZone defaultTimeZone];
     [self.dateFormatter setTimeZone:zone];
-//    self.backendConfig = [AcceptDataServiceConfig new];
-
-    //EncryptedResources/accept.conf contains default DEV backend config
     //If you use default EncryptedResources/accept.conf there is no need to supply custom backendConfig
-//    self.backendConfig.url = @"https://test-mpos.wirecard.com/";//@"https://yourBackendURL.com/"; //Note the slash for closing "/"
+//    self.backendConfig = [AcceptDataServiceConfig new];
+    //EncryptedResources/accept.conf contains default DEV backend config
+//    self.backendConfig.url = @"https://yourBackendURL.com/"; //Note the slash for closing "/"
 //    self.backendConfig.clientId =  @"yourCliendID";
 //    self.backendConfig.clientSecret =  @"yourSecretID";
     self.accept = [[Accept alloc] init];

@@ -19,6 +19,9 @@
 
 - (void) cancelPrint;
 
+- (void) openDrawer:(void (^)(BOOL, NSError*))completion;
+- (void) connectBarScanner:(void (^)(BOOL, NSError*))completion andDataReceived:(void (^)(NSData*))barcodeDataReceived;
+
 + (NSError*) discoveryError:(AcceptCommonErrorCode)errorCode description:(NSString*)description;
 + (NSError*) discoveryError:(AcceptCommonErrorCode)errorCode underlyingError:(NSError*)error;
 

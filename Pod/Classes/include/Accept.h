@@ -23,7 +23,10 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
-#define ACCEPT_SDK_VERSION @"1.6.177"
+/**
+ *Current version of Accept SDK
+ */
+extern NSString * const ACCEPT_SDK_VERSION;
 
 #define ENABLE_IDTECH   1
 #define ENABLE_BBPOS    1
@@ -31,9 +34,34 @@
 #define ENABLE_SPIRE    1
 #define ENABLE_VERIFONE 0
 #define ENABLE_PRT_DATECS 1
-#define ENABLE_MPOP 0
+#define ENABLE_MPOP 1
 
 /**
+ * Possible note texts (reasons) in transaction reversals
+ */
+extern NSString * const  SignatureVerificationTimeout;
+/**
+ */
+extern NSString * const  MerchantRejectedCustomerSignature;
+/**
+ */
+extern NSString * const  TransactionDeclinedByCard;
+/**
+ */
+extern NSString * const  AdviceNotSupported;
+/**
+ */
+extern NSString * const  CaptureNotSupported;
+/**
+ */
+extern NSString * const  NoEFTResponse;
+/**
+ */
+extern NSString * const  TransactionTerminatedByTerminal;
+
+
+/**
+ *Current Vendors IDs supported by the SDK
  */
 extern NSString * const AcceptSpireVendorUUID;
 /**
@@ -83,6 +111,9 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic, strong) NSString * alternativeDisplayName;
+/**
+ */
+@property (nonatomic, strong) NSString *  eaaSerialNumber;
 @end
 
 /**
@@ -115,6 +146,9 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic, strong) NSString * alternativeDisplayName;
+/**
+ */
+@property (nonatomic, strong) NSString * eaaSerialNumber;
 @end
 
 /**
@@ -127,7 +161,7 @@ extern NSString * const AcceptErrorDomain;
 @property (nonatomic, strong) NSString * vendorUUID;
 /**
  */
-@property (nonatomic, strong) NSString * terminalUUID;
+@property (nonatomic, strong) NSString * _Nonnull eaaSerialNumber;
 /**
  */
 @property (nonatomic, strong) AcceptDataServiceConfig * backendConfig;
@@ -528,5 +562,23 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
  *  @brief List the backends from the Accept configuration file
  **/
 -(NSArray *)getSupportedBackends;
+
+/**
+ * @brief Opens cash drawer for supported printers (ie StarIO mPOP)
+ * @param config Instance needed to use the device
+ * @param completion block with the result as BOOL (YES for success) and an error if exists
+ **/
+- (void) openCashDrawer:(AcceptPrinterConfig*)config
+             completion:(void (^)(BOOL, NSError*))completion;
+
+/**
+ * @brief Connects bascode scanner for supported printers (ie StarIO mPOP)
+ * @param config Instance needed to use the device
+ * @param completion block with the result as BOOL (YES for success when connecting) and an error if exists
+* @param block that will be called each time the barcode reader gets some data, returning it
+ **/
+- (void) connectBarcodeScanner:(AcceptPrinterConfig*)config
+                    completion:(void (^)(BOOL, NSError*))completion
+               andDataReceived:(void (^)(NSData*))barcodeDataReceived;
 
 @end

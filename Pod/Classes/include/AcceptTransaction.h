@@ -24,8 +24,11 @@
 #define kTransactionReversalFailed @"Transaction reversal failed"
 #define kSignatureRejectedByTerminal @"Merchant rejected customer signature"
 #define kTransactionUpdateFailed @"Transaction update failed"
+#define kTransactionUpdateFailedPrevApproved @"Transaction update failed, prev approved"
+#define kTransactionUpdateFailedPrevFailed @"Transaction update failed, prev failed"
 #define kValidAppDataFailed @"Can't find valid Transaction And Application data"
 #define kTransactionRejected @"Transaction declined"
+#define kDeviceRootedError @"Transactions cannot be run on rooted device"
 
 typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
     AcceptTransactionStateApproved,
@@ -244,6 +247,21 @@ typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
  */
 @property (nonatomic) NSString * approvalCode;
 /**
+ */
+@property (nonatomic) NSString * transactionCertificate; //all emv tags
+/**
+ */
+@property (nonatomic) NSString * technicalMessage;
+/**
+ */
+@property (nonatomic) NSString * posEntryMode;
+/**
+ */
+@property (nonatomic) NSString * issuerScript;
+/**
+ */
+@property (nonatomic) NSString * emvTVR;
+/**
  * @discussion Receipt data stringified to print out in the console
  */
 -(NSString *)receiptDescription;
@@ -441,6 +459,9 @@ typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
 /**
  */
 @property (nonatomic) BOOL netTaxation;
+/**
+ */
+@property (nonatomic, strong) NSString* posEntryMode;
 /**
  * @discussion Get the receipt data from this transaction
  */

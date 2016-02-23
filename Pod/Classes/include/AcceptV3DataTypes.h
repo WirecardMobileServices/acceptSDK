@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, AcceptStateUpdate ) {
     AcceptStateInitialize,
     AcceptStateTerminalConfigOngoing,
     AcceptStateInsertOrSwipeCard,
+    AcceptStateTapOrInsertOrSwipeCard,
     AcceptStateWaitingForInsertCard,
     AcceptStateCheckingCard,
     AcceptStateRemoveCard,
@@ -37,7 +38,11 @@ typedef NS_ENUM(NSInteger, AcceptStateUpdate ) {
     AcceptStateAskingForPIN,
     AcceptStatePinEntryWrong, //deprecated
     AcceptStateCardholderSignatureCheck,
-    AcceptStateTerminalRestarting
+    AcceptStateTerminalRestarting,
+    AcceptStateGratuityEntryStarted,
+    AcceptStateApplicationSelectionStarted,
+    AcceptStateApplicationSelectionFinished,
+    AcceptStateFollowInstructionsOnConsumerDevice //on device CVM for contactless
 };
 
 /**
@@ -79,7 +84,8 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
     AcceptLowPowerInAudioJackErrorCode,
     AcceptMonoAudioEnabledErrorCode,
     AcceptTerminalCommandTimeOutErrorCode,
-    AcceptTerminalTimeOutErrorCode
+    AcceptTerminalTimeOutErrorCode,
+    AcceptDeviceRootedErrorCode
 } ;
 
 /**

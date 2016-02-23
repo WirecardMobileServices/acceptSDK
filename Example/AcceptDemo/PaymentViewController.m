@@ -10,6 +10,16 @@
 #import "Accept.h"
 #import "Utils.h"
 
+typedef NS_ENUM(NSInteger, ActionSheetType) {
+    ACTION_SHEET_TRANSACTION     =0,
+    ACTION_SHEET_FIRMWARE     =1,
+    ACTION_SHEET_ERROR = 2
+};
+
+typedef NS_ENUM(NSInteger, TransactionMode) {
+    TRANSACTION_MODE_CARD     =0,
+    TRANSACTION_MODE_CASH     =1
+};
 
 @interface PaymentViewController ()
 
@@ -299,7 +309,7 @@ NSLog(@"version:%@",
                  {
                      if (error)
                      {
-                         //do nothing
+                         [Utils showAlertWithTitle:@"Error" andMessage:[NSString stringWithFormat: @"Error discovering terminals %@", error.description]];
                      }
                      else if (discoveredTerminals.count > 0 && ([iSelectedVendor rangeOfString:AcceptSpireVendorUUID].location != NSNotFound || [iSelectedVendor rangeOfString:AcceptVeriFoneVendorUUID].location != NSNotFound) )
                      {
@@ -307,9 +317,10 @@ NSLog(@"version:%@",
                          {
                              if (alertCode > 0)
                              {
-                                 if (alertCode == AcceptConfigFilesSuccess || (!version && alertCode == AcceptConfigFilesUnnecessary)) {
+                                 if (alertCode == AcceptConfigFilesSuccess || (!version && alertCode == AcceptConfigFilesUnnecessary))
+                                 {
+                                     //For keeping track of what version of config files was installed on what device, we set it up on user preferences with the function below. You are free to do it differently, but consider that regular checkings for config files are mandatory to avoid issues with your payments.
                                      [[Utils sharedInstance] setTerminalConfigurationUploads:dictTerminal];
-                                     
                                  }
                              }
                              
@@ -321,7 +332,7 @@ NSLog(@"version:%@",
             }
             else
             {
-                
+                [Utils showAlertWithTitle:@"Error" andMessage:[NSString stringWithFormat: @"Requesting config files there was an error %@", error.description]];
             }
         }
     };
@@ -682,10 +693,34 @@ NSLog(@"version:%@",
         return;
     }
     
-    [self startPayment];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"What type of payment you want?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Card - Using reader", @"Cash Only", nil];
+    actionSheet.tag = ACTION_SHEET_TRANSACTION;
+    [actionSheet showInView:self.view];
 }
 
--(void)startPayment
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == ACTION_SHEET_TRANSACTION) //Payment
+    {
+        if (buttonIndex < 2)
+        {
+            [self startPaymentMode:buttonIndex];
+        }
+    }
+    else if (actionSheet.tag == ACTION_SHEET_FIRMWARE) //firmware update
+    {
+        if (buttonIndex == 0)
+        {
+            [self updateTerminalFirmware];
+        }
+    }
+}
+
+-(void)payWithCard
 {
     NSLog(@">>> PaymentViewController - startPayment");
     if ([[Utils sharedInstance] isPaymentTimerOngoing]) //There was a swipe timeout, device will need some time before being able to retry the payment.
@@ -733,7 +768,7 @@ NSLog(@"version:%@",
     
     
     void(^signature)(AcceptSignatureRequest * ) = ^(AcceptSignatureRequest *  signatureRequest)
-    {        
+    {
         [weakSelf requestSignature:signatureRequest];
     };
     
@@ -764,33 +799,118 @@ NSLog(@"version:%@",
     };
     
     [self.accept discoverTerminalsForVendor:iSelectedVendorUUID completion:^(NSArray *discoveredTerminals, NSError *error)
+     {
+         AcceptTerminal *terminal = nil;
+         
+         
+         for (AcceptTerminal *term in discoveredTerminals) {
+             if ([term.displayName isEqualToString: iSelectedVendorTerminalDisplayName]) {
+                 terminal = term;
+                 break;
+             }
+         }
+         
+         if ([discoveredTerminals count] == 0 || !terminal)
+         {
+             [Utils showAlertWithTitle:@"Error" andMessage:@"No terminal was found"];
+         }
+         else if (terminal)
+         {
+             [self doPaymentThroughVendor:iSelectedVendorUUID
+                         vendorTerminalId:terminal.uuid
+                                 currency:iSelectedCurrency
+                               completion:completion
+                                 progress:progress
+                                signature:signature
+                    signatureVerification:signatureVerification
+                             appSelection:appSelection];
+         }
+     }];
+
+}
+
+-(void)payWithCash
+{
+    __weak PaymentViewController *weakSelf = self;
+    
+    void(^progress)(AcceptStateUpdate) = ^(AcceptStateUpdate update)
     {
-        AcceptTerminal *terminal = nil;
-        
-        
-        for (AcceptTerminal *term in discoveredTerminals) {
-            if ([term.displayName isEqualToString: iSelectedVendorTerminalDisplayName]) {
-                terminal = term;
-                break;
-            }
-        }
-        
-        if ([discoveredTerminals count] == 0 || !terminal)
+        [weakSelf paymentProgress:update];
+    };
+    
+    void (^completion)(AcceptTransaction*, NSError*) = ^(AcceptTransaction *transaction, NSError *error)
+    {
+        if (error || !transaction)
         {
-            [Utils showAlertWithTitle:@"Error" andMessage:@"No terminal was found"];
+            [weakSelf paymentFailure:error transaction:transaction];
         }
-        else if (terminal)
+        else
         {
-            [self doPaymentThroughVendor:iSelectedVendorUUID
-                                 vendorTerminalId:terminal.uuid
-                                         currency:iSelectedCurrency
-                                       completion:completion
-                                         progress:progress
-                                        signature:signature
-                            signatureVerification:signatureVerification
-                                     appSelection:appSelection];
+            [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
         }
-    }];
+    };
+    
+    //Preparing payment configuration
+    AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
+    paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
+    paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+    paymentConfig.vendorUUID = [NSString string];
+    paymentConfig.eaaSerialNumber = [NSString string];
+    paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
+    
+    //Initializing the basket
+    AcceptBasket *basket = [[AcceptBasket alloc] init];
+    basket.currencyAsISO4217Code = @"EUR";
+    basket.netTaxation = [NSNumber numberWithInt:1] ; //Set to 0 for tax inclusive
+    //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
+    //basket.lat, basket.lng
+    
+    //Adding the payment item to the basket
+    AcceptBasketItem *basketItem =
+    [self addBasketItem:1 //This is the number of items. We could have more than one with the same price
+                 amount:[NSDecimalNumber decimalNumberWithString:self.amountTf.text]
+                   note:@"Here we can add some description of the payment"
+                    tax:0 //value indicating the tax % (note: 7% is indicated by 700; 7 would be 0.07%)
+             chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
+    
+    [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+    paymentConfig.basket = basket;
+    
+    [self.accept startCashPayment:paymentConfig completion:completion progress:progress];
+
+}
+
+-(void)startPaymentMode:(TransactionMode)aMode
+{
+    if (self.amountTf.text.length == 0)
+    {
+        //Note that depending on your backend and merchant configuration there will be a smallest and bigger amount possible, and you should validate the amount before submitting. You can ask for defining those limits during merchant set up.
+        double delayInSeconds = 0.1; //We delay a little bit so previous action dismisses
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Error, amount field is empty"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:nil];
+            actionSheet.tag = ACTION_SHEET_ERROR;
+            [actionSheet showInView:self.view];
+        });
+        return;
+    }
+    
+    switch (aMode)
+    {
+        case TRANSACTION_MODE_CARD://A card payment uses EMV standars and requires a card, payment engine, etc
+            [self payWithCard];
+            break;
+        case TRANSACTION_MODE_CASH: //A cash payment just generates a log of a payment in backend
+            [self payWithCash];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 -(void)doPaymentThroughVendor:(NSString *)vendorUUID
@@ -809,7 +929,7 @@ NSLog(@"version:%@",
     paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
     paymentConfig.accessToken = [Utils sharedInstance].accessToken;
     paymentConfig.vendorUUID = vendorUUID;
-    paymentConfig.terminalUUID = terminalUUID;
+    paymentConfig.eaaSerialNumber = terminalUUID;
     paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
     
     //Initializing the basket
@@ -1206,10 +1326,20 @@ NSLog(@"version:%@",
     AcceptPrinterConfig *printerConfig = [[AcceptPrinterConfig alloc] init];
     printerConfig.vendorUUID = [[Utils sharedInstance] getSelectedPrinterVendor];
     printerConfig.printerUUID = [[Utils sharedInstance] getSelectedPrinter];
-    printerConfig.receipt = [self getAcceptReceipt];
     [self.infolbl setText:@"Printing started"];
     
+    if ([[[Utils sharedInstance] getSelectedPrinterVendor] isEqualToString: @"MPOPAcceptExtension"])
+    {
+        UIImage *imgReceipt = [UIImage imageNamed:@"printfakereceipt.png"];
+        printerConfig.receiptImage = imgReceipt;
+    }
+    else
+    {
+        printerConfig.receipt = [self getAcceptReceipt];
+    }
+
     [self.accept startPrint:printerConfig completion:completion progress:progress];
+    
 }
 
 -(void)printProgress:(AcceptPrinterStateUpdate)update
@@ -1388,6 +1518,156 @@ NSLog(@"version:%@",
     {
         [Utils showAlertWithTitle:@"Error" andMessage:@"No transaction to reverse"];
     }
+}
+
+-(void)updateTerminalFirmware
+{
+    __weak PaymentViewController *weakSelf = self;
+    NSString *iSelectedVendor = [[Utils sharedInstance] getSelectedVendor];
+    if ([iSelectedVendor rangeOfString:AcceptSpireVendorUUID].location == NSNotFound)
+    {
+        [Utils showAlertWithTitle:@"Error" andMessage:@"Selected terminal does not support firmware updates."];
+        return ;
+    }
+    
+    NSString *iSelectedVendorTerminalDisplayName = [[Utils sharedInstance] getSelectedTerminal];
+    __block id iSelectedVendorUUID = [[AcceptUtils sharedInstance] vendorIDForName:iSelectedVendorTerminalDisplayName andUUID:[[Utils sharedInstance] getSelectedVendor]];
+    
+    [self.accept discoverTerminalsForVendor:iSelectedVendorUUID completion:^(NSArray *discoveredTerminals, NSError *error) {
+        
+        __block AcceptTerminal *terminal = nil;
+        
+        for (AcceptTerminal *term in discoveredTerminals) {
+            if ([term.displayName isEqualToString: iSelectedVendorTerminalDisplayName]) {
+                terminal = term;
+                break;
+            }
+        }
+        
+        AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
+        paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
+        paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+        paymentConfig.vendorUUID = iSelectedVendorUUID;
+        paymentConfig.eaaSerialNumber = iSelectedVendorTerminalDisplayName;
+        paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
+        
+        
+        [weakSelf.accept queryFirmware:paymentConfig completion:^(BOOL updateRequired, AcceptTerminalFirmware *firmware, NSError *error) {
+            
+            void (^completionAlertUI)(NSInteger, NSError*) = ^(NSInteger alertCode, NSError *error)
+            {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^
+                 {
+                     //An error of kind "Terminal cancelled file download" could happen because your terminal has a wrong image, or the firmware is badly named in backend (i.e. a production labelled as test firmware or viceversa). If problem persist and is reproducible in other devices, please ask terminal support for help.
+                     [Utils showAlertWithTitle:@"Operation" andMessage:[NSString stringWithFormat: @"Alert code: %ld and error %@", alertCode, error.description]];
+                 }];
+            };
+            
+            if (error)
+            {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^
+                 {
+                     [Utils showAlertWithTitle:@"Error" andMessage:[NSString stringWithFormat: @"Error %@", error.description]];
+                 }];
+            }
+            else if(!updateRequired)
+            {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^
+                 {
+                      [Utils showAlertWithTitle:@"Info" andMessage:@"No firmware update required"];
+                 }];
+                
+            }
+            else //update requires means the newest version on backend is different from your current.
+            {
+                [weakSelf.accept updateTerminalFirmwareForVendor:iSelectedVendor
+                                                        andToken:[[Utils sharedInstance] accessToken]
+                                                       andConfig:[[Utils sharedInstance] backendConfig]
+                                                     andFirmware:firmware
+                                                      completion:completionAlertUI];
+                
+                //We reset the config files log in the iOS device as firmware update cleans it up on the terminal as well
+                NSMutableDictionary *terminalVersionDict = [[NSMutableDictionary alloc] init];
+                [terminalVersionDict setObject:@"0" forKey:terminal.displayName];
+                NSDictionary *dictTerminal = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObject:terminalVersionDict] forKeys:[NSArray arrayWithObject:iSelectedVendorUUID]];
+                [[Utils sharedInstance] setTerminalConfigurationUploads:dictTerminal];
+            }
+        }];
+    }];
+}
+
+-(IBAction)updateFirmwareButtonPressed:(id)sender
+{
+    //WARNING
+    //Note that updating your terminal's firmware is a critical action. Do not switch off your terminal during this action and try to keep the app in foreground (screensaver off, etc)
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Do you want to update firmware of the terminal?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"NO"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"YES", nil];
+    actionSheet.tag = ACTION_SHEET_FIRMWARE;
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark mPOP Methods
+
+-(IBAction)onOpenDrawer:(id)sender
+{
+    NSLog(@">>> PaymentViewController - onOpenDrawer");
+    __weak PaymentViewController *weakSelf = self;
+    
+    if (![[[Utils sharedInstance] getSelectedPrinterVendor] isEqualToString: @"MPOPAcceptExtension"])
+    {
+        [weakSelf.infolbl setText:@"Current printer disconnected or does not have cash drawer"];
+        return;
+    }
+    
+    void (^completion)(BOOL, NSError*) = ^(BOOL success, NSError *error)
+    {
+        if (error || !success) {
+            [weakSelf printFailure:error];
+            [weakSelf.infolbl setText:@"Opening drawer failed, please check the drawer"];
+        }
+        else
+        {
+            [weakSelf printSuccess];
+            [weakSelf.infolbl setText:@"Drawer was opened"];
+        }
+        
+    };
+    
+    AcceptPrinterConfig *printerConfig = [[AcceptPrinterConfig alloc] init];
+    printerConfig.vendorUUID = [[Utils sharedInstance] getSelectedPrinterVendor];
+    printerConfig.printerUUID = [[Utils sharedInstance] getSelectedPrinter];
+    printerConfig.receipt = nil;//
+    [self.infolbl setText:@"Trying to open the drawer"];
+    
+    [self.accept openCashDrawer:printerConfig completion:completion];
+}
+
+#pragma mark Printing Methods
+
+-(IBAction)onBarcodeReader:(id)sender
+{
+    NSLog(@">>> PaymentViewController - onBarcodeReader");
+    __weak PaymentViewController *weakSelf = self;
+    
+    void (^barcodeDataReceived)(NSData*) = ^(NSData* data)
+    {
+        NSLog(@"Barcode Data received! %@", data);
+        [weakSelf.infolbl setText:@"Barcode data received!"];
+    };
+    
+    void (^completion)(BOOL, NSError*) = ^(BOOL success, NSError *error)
+    {
+
+    };
+    
+    AcceptPrinterConfig *printerConfig = [[AcceptPrinterConfig alloc] init];
+    printerConfig.vendorUUID = [[Utils sharedInstance] getSelectedPrinterVendor];
+    printerConfig.printerUUID = [[Utils sharedInstance] getSelectedPrinter];
+    
+    [self.accept connectBarcodeScanner:printerConfig completion:completion andDataReceived:barcodeDataReceived];
 }
 
 @end

@@ -1,0 +1,161 @@
+ [
+  {
+  "eeCardType": "mastercard",
+  "acceptCardType":"master",
+  "issuer": "MasterCard",
+  "length": [
+             16
+             ],
+  "prefix": "(^(51|52|53|54|55)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "visa",
+  "acceptCardType":"visa",
+  "issuer": "Visa",
+  "length": [
+             13,
+             16
+             ],
+  "prefix": "((^4)(?!(026|17500|405|508|844|913|917))).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "maestro",
+  "acceptCardType":"maestro",
+  "issuer": "Maestro",
+  "length": [
+             12,
+             13,
+             14,
+             15,
+             16,
+             17,
+             18,
+             19
+             ],
+  "prefix": "(^(6729|6725|6726|6722)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "maestro",
+  "acceptCardType":"maestro",
+  "issuer": "Maestro",
+  "length": [
+             12,
+             13,
+             14,
+             15,
+             16,
+             17,
+             18,
+             19
+             ],
+  "prefix": "(^(5018|5020|5033|5038|5612|5868|5893|6304|6759|6761|6762|6763|0604|6390)).*",
+  "type": "debit_card"
+  },
+  {
+  "eeCardType": "visa",
+  "acceptCardType":"visa",
+  "issuer": "Visa Electron",
+  "length": [
+             16
+             ],
+  "prefix": "(^(4026|417500|4405|4508|4844|4913|4917)).*",
+  "type": "debit_card"
+  },
+  {
+  "eeCardType": "amex",
+  "acceptCardType":"american_express",
+  "issuer": "American Express",
+  "length": [
+             15
+             ],
+  "prefix": "(^(34|37)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "cup",
+  "acceptCardType":"china_unionpay",
+  "issuer": "China UnionPay",
+  "length": [
+             16,
+             19
+             ],
+  "prefix": "(^(62|88)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "diners",
+  "acceptCardType":"diners_club",
+  "issuer": "Diners Club",
+  "length": [
+             14
+             ],
+  "prefix": "(^(300|301|302|303|304|305|36|38|39)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "discover",
+  "acceptCardType":"discovery",
+  "issuer": "Discover",
+  "length": [
+             16
+             ],
+  "prefix": "(^(6011|622126|622127|622128|622129|62213|62214|62215|62216|62217|62218|62219|6222|6223|6224|6225|6226|6227|6228|62290|62291|622920|622921|622922|622923|622924|622925|644|645|646|647|648|649|65)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "interpayment",
+  "acceptCardType":"interpayment",
+  "issuer": "InterPayment",
+  "length": [
+             16,
+             17,
+             18,
+             19
+             ],
+  "prefix": "(^(636)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "instapayment",
+  "acceptCardType":"instapayment",
+  "issuer": "InstaPayment",
+  "length": [
+             16
+             ],
+  "prefix": "(^(637|638|639)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "jcb",
+  "acceptCardType":"jcb",
+  "issuer": "JCB",
+  "length": [
+             16
+             ],
+  "prefix": "(^(3528|3529|353|354|355|356|357|358)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "uatp",
+  "acceptCardType":"uatp",
+  "issuer": "UATP",
+  "length": [
+             15
+             ],
+  "prefix": "(^(1)).*",
+  "type": "credit_card"
+  },
+  {
+  "eeCardType": "rupay",
+  "acceptCardType":"rupay",
+  "issuer": "RuPay", 
+  "length": [
+             19
+             ], 
+  "prefix": "(^(6061|6062|6063|6064|6065|6066|6067|6068|6069|607|608)).*", 
+  "type": "credit_card"
+  },  
+  ]

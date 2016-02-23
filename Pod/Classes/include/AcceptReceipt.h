@@ -178,4 +178,10 @@
 /**
  */
 @property (nonatomic,strong) NSString *transactionTypeAsText;
+/**
+ */
+@property (nonatomic) BOOL isContactless;
+/**
+ */
+@property (nonatomic,strong) NSString *posEntryModeInterpreted;
 @end

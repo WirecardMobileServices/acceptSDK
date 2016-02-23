@@ -188,7 +188,9 @@ typedef enum {
 {
     NSLog(@">>> UserViewController - loginWithUsername");
     [Utils checkConnectivity];
-    [self.accept requestAccessToken:username password:password config:[[Utils sharedInstance] backendConfig] completion:^(AcceptAccessToken *accessToken, NSError *error){
+    [self.accept requestAccessToken:username password:password config:[[Utils sharedInstance] backendConfig] completion:^(AcceptAccessToken *accessToken, NSError *error)
+    {
+        NSLog(@"The current token will expire in %d seconds. You can make use of this info in advance or wait for the user to do some online action that will get an expiration response - then the user can be logged out in a fashion manner.", [accessToken.expireInSeconds intValue]);
         [[Utils sharedInstance] setAccessToken:(accessToken.accessToken)? : @""];
         self.error = error;
         self.errorObject = nil;

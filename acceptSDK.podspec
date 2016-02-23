@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "acceptSDK"
-  s.version          = "1.6.177"
+  s.version          = "1.6.182"
   s.summary          = "Accept Payment Platform SDK - credit card payments, Chip and PIN, magstripe"
   s.description      = <<-DESC
                        The library extends the point of sale to modern mobile environment. 
@@ -54,4 +54,9 @@ Pod::Spec.new do |s|
    ss.dependency     'acceptSDK/Core' 
   end  
 
+ s.subspec 'mPOP ' do |ss|
+    ss.vendored_libraries  = 'Pod/Classes/lib/libStarioSDK.a'
+   ss.dependency     'acceptSDK/Core' 
+  end  
+  
 end

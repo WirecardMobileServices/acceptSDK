@@ -817,7 +817,7 @@ NSLog(@"version:%@",
          else if (terminal)
          {
              [self doPaymentThroughVendor:iSelectedVendorUUID
-                         vendorTerminalId:terminal.uuid
+                         vendorTerminalEAASerialNumber:terminal.eaaSerialNumber
                                  currency:iSelectedCurrency
                                completion:completion
                                  progress:progress
@@ -914,7 +914,7 @@ NSLog(@"version:%@",
 }
 
 -(void)doPaymentThroughVendor:(NSString *)vendorUUID
-    vendorTerminalId:(NSString *)terminalUUID
+    vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     currency:(NSString *)currency
     completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
     progress:(void (^)(AcceptStateUpdate))progress
@@ -929,7 +929,7 @@ NSLog(@"version:%@",
     paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
     paymentConfig.accessToken = [Utils sharedInstance].accessToken;
     paymentConfig.vendorUUID = vendorUUID;
-    paymentConfig.eaaSerialNumber = terminalUUID;
+    paymentConfig.eaaSerialNumber = terminalEAASerialNumber;
     paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
     
     //Initializing the basket

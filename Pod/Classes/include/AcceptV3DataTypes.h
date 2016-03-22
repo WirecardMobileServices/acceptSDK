@@ -255,7 +255,8 @@ typedef NS_ENUM(NSInteger, AcceptReversalReason)
     AcceptReversalReasonCaptureUnsupported=4,
     AcceptReversalReasonNoEFTResponse = 6,
     AcceptReversalReasonTerminalTerminated=7,
-    AcceptReversalReasonSignatureVerificationTimeout = 10
+    AcceptReversalReasonSignatureVerificationTimeout = 10,
+    AcceptReversalReasonOfflineDeclined = 11
 };
 
 /**

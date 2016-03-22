@@ -23,6 +23,7 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptReceipt.h"
 
+
 /**
  *Current version of Accept SDK
  */
@@ -174,6 +175,9 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic) BOOL allowGratuity;
+/**
+ */
+@property (nonatomic, strong,nullable) NSString * alipayConsumerId;
 @end
 
 /**
@@ -234,43 +238,6 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic, strong) UIImage *receiptImage;
-@end
-
-/**
- *  @class AcceptExtendedProcessingInfo
- *  @discussion Extented processing info class. Content needed for some Chip transactions with online PIN verification and/or CVM methods
- **/
-@interface AcceptExtendedProcessingInfo : NSObject
-/**
- */
-@property (nonatomic) NSInteger gratuityAmount;
-/**
- */
-@property (nonatomic, strong) NSString * applicationId;
-/**
- */
-@property (nonatomic, strong) NSString * merchantId;
-/**
- */
-@property (nonatomic, strong) NSString * encryptedPIN;
-/**
- */
-@property (nonatomic) BOOL reversalIsRequired;
-/**
- */
-@property (nonatomic) int reversalReason;
-/**
- */
-@property (nonatomic) BOOL signatureCheckIsRequired;
-/**
- */
-@property (nonatomic) NSString *applicationCryptogram;
-/**
- */
-@property (nonatomic) BOOL onlineAuthentication;
-/**
- */
-@property (nonatomic) BOOL isCaptureRequired;
 @end
 
 /**
@@ -445,6 +412,16 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
 - (void) startCashPayment:(AcceptPaymentConfig*)config
                completion:(void (^)(AcceptTransaction*, NSError*))completion
                  progress:(void (^)(AcceptStateUpdate))progress;
+
+/**
+ *  @brief Start the Alipay payment process
+ *  @param config Instance needed to use backend services
+ *  @param completion Block that will be called at the very end of payment flow. It provides an AcceptTransaction object (that may be nil if unauthorised) or a descriptive error
+ *  @param progress Block with info to update the UI in base of alerts, errors or general info messages. Pure feedback for the user
+ **/
+- (void) startAlipayPayment:(AcceptPaymentConfig*)config
+                 completion:(void (^)(AcceptTransaction*, NSError*))completion
+                   progress:(void (^)(AcceptStateUpdate))progress;
 
 /**
  *  @brief Cancel the payment flow. This is usually called from UI (cancel button when available) or some error from signature or completion block. Notice that an improper usage of this function (for example during online communication or level 2 flow in terminal) can produce unexpected errors

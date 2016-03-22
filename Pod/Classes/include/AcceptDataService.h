@@ -24,6 +24,46 @@
 #import "AcceptV3DataTypes.h"
 #import "AcceptStatistics.h"
 
+
+
+/**
+ *  @class AcceptExtendedProcessingInfo
+ *  @discussion Extented processing info class. Content needed for some Chip transactions with online PIN verification and/or CVM methods
+ **/
+@interface AcceptExtendedProcessingInfo : NSObject
+/**
+ */
+@property (nonatomic) NSInteger gratuityAmount;
+/**
+ */
+@property (nonatomic, strong) NSString * applicationId;
+/**
+ */
+@property (nonatomic, strong) NSString * merchantId;
+/**
+ */
+@property (nonatomic, strong) NSString * encryptedPIN;
+/**
+ */
+@property (nonatomic) BOOL reversalIsRequired;
+/**
+ */
+@property (nonatomic) int reversalReason;
+/**
+ */
+@property (nonatomic) BOOL signatureCheckIsRequired;
+/**
+ */
+@property (nonatomic) NSString *applicationCryptogram;
+/**
+ */
+@property (nonatomic) BOOL onlineAuthentication;
+/**
+ */
+@property (nonatomic) BOOL isCaptureRequired;
+@end
+
+
 /**
  *  @class AcceptAccessToken
  *  @discussion Access Token info class. access token and its expiration time
@@ -87,8 +127,13 @@
 - (AcceptUserResponse*) requestUser:(NSString*)accessToken error:(NSError**)error;
 - (AcceptCustomDataResponse*) requestCustomData:(NSString*)accessToken error:(NSError**)error;
 
-- (AcceptTransaction*) requestNewPayment:(NSString*)accessToken signature:(UIImage*)signature terminalInfo:(AcceptExtensionTerminalInfo*)terminalInfo basket:(AcceptBasket*)basket cardInfo:(id)cardInfo onlineAuthentication:(BOOL)onlineAuthentication error:(NSError**)error;
+- (AcceptTransaction*) requestNewPayment:(NSString*)accessToken signature:(UIImage*)signature terminalInfo:(AcceptExtensionTerminalInfo*)terminalInfo basket:(AcceptBasket*)basket cardInfo:(id)cardInfo extendedInfo:(AcceptExtendedProcessingInfo*)extendedInfo error:(NSError**)error;
 - (AcceptTransaction*) requestNewCashPayment:(NSString*)accessToken basket:(AcceptBasket*)basket error:(NSError**)error;
+- (AcceptTransaction*) requestNewAlipayPayment:(NSString*)accessToken
+                                        basket:(AcceptBasket*)basket
+                                    consumerId:(NSString *)consumerId
+                                         error:(NSError**)error;
+
 /**
  * Description: Resets the password for the specified User Id - the reset password instructions are sent by:
  *  - email if the merchant user has email address specified

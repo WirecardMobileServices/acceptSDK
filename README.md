@@ -3,7 +3,7 @@
 
 <img src="https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/logo.png" alt="acceptSDK" width=240 height=95>
 
-[![CI Status](http://img.shields.io/travis/radoslav.danko/acceptSDK.svg?style=flat)](https://travis-ci.org/radoslav.danko/acceptSDK)
+[![CI Status](http://img.shields.io/travis/mposSVK/acceptSDK.svg?style=flat)](https://travis-ci.org/mposSVK/acceptSDK)
 [![Version](https://img.shields.io/cocoapods/v/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
 [![License](https://img.shields.io/cocoapods/l/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
 [![Platform](https://img.shields.io/cocoapods/p/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)

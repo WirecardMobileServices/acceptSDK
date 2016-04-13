@@ -6,12 +6,10 @@
 language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
-env:
-- ruby="/usr/local/bin/ruby"
 before_install:
 - env
 - locale
-- brew install ruby
+- rvm use 2.2.2 --install --binary --fuzzy 
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
 install:

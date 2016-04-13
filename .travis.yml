@@ -6,6 +6,9 @@ language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
+- gem install activesupport        # yeah, it works if you install it beforehand
+- apt-get install -y zlib1g-dev ruby-execjs
+- gem install github-pages
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
 install:

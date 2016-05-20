@@ -184,4 +184,16 @@
 /**
  */
 @property (nonatomic,strong) NSString *posEntryModeInterpreted;
+/**
+ */
+@property (nonatomic,strong) NSString *paymentType;
+/**
+ */
+@property (nonatomic,strong) NSDictionary *customFields;
+/**
+ */
+@property (nonatomic,strong) NSString *localisedDiscountHeader;
+/**
+ */
+@property (nonatomic,strong) NSString *discount;
 @end

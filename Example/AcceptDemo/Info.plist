@@ -57,7 +57,6 @@
 	</dict>
 	<key>UISupportedExternalAccessoryProtocols</key>
 	<array>
-		<string>com.valencetech.iBT-02.ibridge</string>
 		<string>com.thyron</string>
 		<string>com.datecs.printer.escpos</string>
 		<string>jp.star-m.starpro</string>

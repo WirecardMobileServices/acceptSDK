@@ -1,12 +1,10 @@
 //
 //  Accept for iOS
 //
-//  Created by Piotr Sarnowski on 26/04/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
-//  Authors:
-//      francisco.fortes@wirecard.com
-//      piotr.sarnowski@up-next.com
+
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -187,7 +185,8 @@ typedef NS_ENUM(NSInteger, AcceptOperationOnPayment)
     AcceptOperationOnPaymentReverse = 1,
     AcceptOperationOnPaymentReceipt = 3, //a receipt will be requested; the transaction won't be modified
     AcceptOperationOnPaymentConfirmResponseReceived = 4,
-    AcceptOperationOnPaymentSignatureUpdate = 5 //SPm2 send signature AFTER completion in contactless flow
+    AcceptOperationOnPaymentSignatureUpdate = 5, //SPm2 send signature AFTER completion in contactless flow
+    AcceptOperationOnPaymentCapture =6 //For Authorized or Preauthorized transactions
 };
 
 /**

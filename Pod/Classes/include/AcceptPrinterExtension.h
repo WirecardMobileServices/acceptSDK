@@ -2,7 +2,7 @@
 //  Accept for iOS
 //
 //  Created by Radoslav Danko on 05/08/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

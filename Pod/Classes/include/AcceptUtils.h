@@ -1,8 +1,8 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 11/02/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -61,5 +61,6 @@
 +(void)hideActivityIndicator:(UIView *)onView completion:(void (^)(void))moreCompletion;
 
 +(UIImage*)generateQRCodeFromString:(NSString *)qrString;
++(UIImage*)generateBarCode128FromString:(NSString *)stringData;
 
 @end

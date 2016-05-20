@@ -1,8 +1,8 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 11/02/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -30,6 +30,9 @@
 /**
  */
 @property (nonatomic, strong) NSNumber * netTaxation;
+/**
+ */
+@property (nonatomic, strong) NSDecimalNumber * discount;
 
 /**
  *  @brief Calculate the total for the basket

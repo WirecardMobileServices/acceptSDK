@@ -1,13 +1,10 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 11/02/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
-//  Authors:
-//      damian.kolakowski@up-next.com
-//      radoslav.danko@wirecard.com
-//      francisco.fortes@wirecard.com
+
 
 #import <Foundation/Foundation.h>
 #import "AcceptExtensionTerminalInfo.h"
@@ -23,7 +20,6 @@
 #import "AcceptPaymentParameters.h"
 #import "AcceptV3DataTypes.h"
 #import "AcceptStatistics.h"
-
 
 
 /**
@@ -128,6 +124,7 @@
 - (AcceptCustomDataResponse*) requestCustomData:(NSString*)accessToken error:(NSError**)error;
 
 - (AcceptTransaction*) requestNewPayment:(NSString*)accessToken signature:(UIImage*)signature terminalInfo:(AcceptExtensionTerminalInfo*)terminalInfo basket:(AcceptBasket*)basket cardInfo:(id)cardInfo extendedInfo:(AcceptExtendedProcessingInfo*)extendedInfo error:(NSError**)error;
+- (AcceptTransaction*) requestNewPayment:(AcceptTransactionType)transactionType accessToken:(NSString*)accessToken signature:(UIImage*)signature terminalInfo:(AcceptExtensionTerminalInfo*)terminalInfo basket:(AcceptBasket*)basket cardInfo:(id)cardInfo extendedInfo:(AcceptExtendedProcessingInfo*)extendedInfo error:(NSError**)error;
 - (AcceptTransaction*) requestNewCashPayment:(NSString*)accessToken basket:(AcceptBasket*)basket error:(NSError**)error;
 - (AcceptTransaction*) requestNewAlipayPayment:(NSString*)accessToken
                                         basket:(AcceptBasket*)basket

@@ -1,8 +1,8 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 11/02/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,6 +13,7 @@
 #define kAcceptTransactionStatus_Rejected         @"rejected"
 #define kAcceptTransactionStatus_Reversed         @"reversed"
 #define kAcceptTransactionStatus_New              @"new"
+#define kAcceptTransactionStatus_Authorized       @"preauthorized"
 #define kAcceptTransactionStatus_Preauthorized    @"preauthorized"
 #define kAcceptTransactionStatus_Bookbacked       @"bookbacked"
 #define kAcceptTransactionStatus_Chargebacked     @"chargebacked"
@@ -35,7 +36,17 @@ typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
     AcceptTransactionStateDeclined,
     AcceptTransactionStateReversed,
     AcceptTransactionStateRefunded,
-    AcceptTransactionStatePending
+    AcceptTransactionStatePending,
+    AcceptTransactionStateAuthorized,
+    AcceptTransactionStatePreauthorized
+};
+
+typedef NS_ENUM(NSInteger,AcceptTransactionType) {
+    AcceptTransactionTypePurchase = 0,
+    AcceptTransactionTypeAuthorize,
+    AcceptTransactionTypePreauthorize,
+    AcceptTransactionTypeSEPA
+
 };
 
 /**
@@ -462,6 +473,12 @@ typedef NS_ENUM(NSUInteger, AcceptTransactionState) {
 /**
  */
 @property (nonatomic, strong) NSString* posEntryMode;
+/**
+ */
+@property (nonatomic, strong) NSDictionary* customFields;
+/**
+ */
+@property (nonatomic) NSDecimalNumber *discount;
 /**
  * @discussion Get the receipt data from this transaction
  */

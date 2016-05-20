@@ -1,13 +1,10 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 11/02/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
-//  Authors:
-//      damian.kolakowski@up-next.com
-//      francisco.fortes@wirecard.com
-//      radoslav.danko@wirecard.com
+
 
 #import <Foundation/Foundation.h>
 
@@ -29,7 +26,7 @@
  */
 extern NSString * const ACCEPT_SDK_VERSION;
 
-#define ENABLE_IDTECH   1
+#define ENABLE_IDTECH   0
 #define ENABLE_BBPOS    1
 #define ENABLE_DATECS   0
 #define ENABLE_SPIRE    1
@@ -178,6 +175,9 @@ extern NSString * const AcceptErrorDomain;
 /**
  */
 @property (nonatomic, strong,nullable) NSString * alipayConsumerId;
+/**
+ */
+@property (nonatomic) AcceptTransactionType transactionType;
 @end
 
 /**

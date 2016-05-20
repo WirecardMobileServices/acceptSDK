@@ -1,8 +1,8 @@
 //
 //  Accept for iOS
 //
-//  Created by Damian Kolakowski on 31/03/14.
-//  Copyright (c) 2014 Wirecard. All rights reserved.
+//  Created by Radoslav Danko and Francisco Fortes
+//  Copyright (c) 2016 Wirecard. All rights reserved.
 //
 
 #import "AcceptExtension.h"

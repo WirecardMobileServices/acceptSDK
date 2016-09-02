@@ -33,7 +33,7 @@
 @property (nonatomic, strong) NSString* updatedAt;
 /**
  */
-@property (nonatomic) NSInteger amountUpperLimit;
+@property (nonatomic) NSDecimalNumber* amountUpperLimit;
 /**
  */
 @property (nonatomic) NSInteger amountLowerLimit;
@@ -48,7 +48,7 @@
 @property (nonatomic, strong) NSString* identifier;
 /**
  */
-@property (nonatomic) NSInteger amountDailyLimit;
+@property (nonatomic) NSDecimalNumber* amountDailyLimit;
 /**
  */
 @property (nonatomic, strong) NSString* emailFrom;
@@ -242,7 +242,7 @@
 @property (nonatomic, strong) NSArray* taxRates;
 /**
  */
-@property (nonatomic) NSInteger amountUpperLimit;
+@property (nonatomic,strong) NSDecimalNumber  *amountUpperLimit;
 /**
  */
 @property (nonatomic) NSInteger amountLowerLimit;
@@ -260,7 +260,7 @@
 @property (nonatomic, strong) NSString* identifier;
 /**
  */
-@property (nonatomic) NSInteger amountDailyLimit;
+@property (nonatomic, strong) NSDecimalNumber *amountDailyLimit;
 /**
  */
 @property (nonatomic) NSInteger id_;

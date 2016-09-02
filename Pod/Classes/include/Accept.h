@@ -173,6 +173,7 @@ extern NSString * const AcceptErrorDomain;
  */
 @property (nonatomic) BOOL allowGratuity;
 /**
+ * numeric data read from the Alipay barcode
  */
 @property (nonatomic, strong,nullable) NSString * alipayConsumerId;
 /**
@@ -271,7 +272,7 @@ typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerific
 
 /**
  *  @brief Adquire an array of available terminal vendors
- *  @param completion The array of vendors found, returned with objects of class AcceptTerminalVendor
+ *  @param completion The array of vendors found, returned with objects of class AcceptTerminal
  **/
 - (void) discoverSupportedVendors:(void (^)(NSArray *))completion;
 

@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, ActionSheetType) {
 
 typedef NS_ENUM(NSInteger, TransactionMode) {
     TRANSACTION_MODE_CARD     =0,
-    TRANSACTION_MODE_CASH     =1
+    TRANSACTION_MODE_CASH     =1,
+    TRANSACTION_MODE_ALIPAY     =2
 };
 
 @interface PaymentViewController ()
@@ -697,7 +698,7 @@ NSLog(@"version:%@",
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Card - Using reader", @"Cash Only", nil];
+                                                    otherButtonTitles:@"Card - Using reader", @"Cash Only",@"Alipay", nil];
     actionSheet.tag = ACTION_SHEET_TRANSACTION;
     [actionSheet showInView:self.view];
 }
@@ -706,7 +707,7 @@ NSLog(@"version:%@",
 {
     if (actionSheet.tag == ACTION_SHEET_TRANSACTION) //Payment
     {
-        if (buttonIndex < 2)
+        if (buttonIndex < 3)
         {
             [self startPaymentMode:buttonIndex];
         }
@@ -757,7 +758,7 @@ NSLog(@"version:%@",
         }
         else
         {
-            [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
+            [weakSelf performSelectorOnMainThread:@selector(paymentDone:) withObject:transaction waitUntilDone:NO];
         }
     };
     
@@ -786,7 +787,7 @@ NSLog(@"version:%@",
             }
             else{
                 
-                [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
+                [weakSelf performSelectorOnMainThread:@selector(paymentDone:) withObject:transaction waitUntilDone:NO];
                 //            [weakSelf paymentSuccess:transaction];
             }
         }
@@ -846,7 +847,7 @@ NSLog(@"version:%@",
         }
         else
         {
-            [weakSelf performSelectorOnMainThread:@selector(paymentSuccess:) withObject:transaction waitUntilDone:NO];
+            [weakSelf performSelectorOnMainThread:@selector(paymentDone:) withObject:transaction waitUntilDone:NO];
         }
     };
     
@@ -880,6 +881,59 @@ NSLog(@"version:%@",
 
 }
 
+-(void)payWithAlipay
+{
+    __weak PaymentViewController *weakSelf = self;
+    
+    void(^progress)(AcceptStateUpdate) = ^(AcceptStateUpdate update)
+    {
+        [weakSelf paymentProgress:update];
+    };
+    
+    void (^completion)(AcceptTransaction*, NSError*) = ^(AcceptTransaction *transaction, NSError *error)
+    {
+        if (error || !transaction)
+        {
+            [weakSelf paymentFailure:error transaction:transaction];
+        }
+        else
+        {
+            [weakSelf performSelectorOnMainThread:@selector(paymentDone:) withObject:transaction waitUntilDone:NO];
+        }
+    };
+    
+    //Preparing payment configuration
+    AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
+    paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
+    paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+    paymentConfig.vendorUUID = [NSString string];
+    paymentConfig.eaaSerialNumber = [NSString string];
+    paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
+    paymentConfig.alipayConsumerId = @"286006334965846411" ; //numeric data read from the Alipay barcode
+    paymentConfig.transactionType = AcceptTransactionTypePurchase;
+    
+    //Initializing the basket
+    AcceptBasket *basket = [[AcceptBasket alloc] init];
+    basket.currencyAsISO4217Code = @"USD";
+    basket.netTaxation = [NSNumber numberWithInt:1] ; //Set to 0 for tax inclusive
+                                                      //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
+                                                      //basket.lat, basket.lng
+    
+    //Adding the payment item to the basket
+    AcceptBasketItem *basketItem =
+    [self addBasketItem:1 //This is the number of items. We could have more than one with the same price
+                 amount:[NSDecimalNumber decimalNumberWithString:self.amountTf.text]
+                   note:@"Here we can add some description of the payment"
+                    tax:0 //value indicating the tax % (note: 7% is indicated by 700; 7 would be 0.07%)
+             chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
+    
+    [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+    paymentConfig.basket = basket;
+    
+    [self.accept startAlipayPayment:paymentConfig completion:completion progress:progress];
+    
+}
+
 -(void)startPaymentMode:(TransactionMode)aMode
 {
     if (self.amountTf.text.length == 0)
@@ -907,7 +961,9 @@ NSLog(@"version:%@",
         case TRANSACTION_MODE_CASH: //A cash payment just generates a log of a payment in backend
             [self payWithCash];
             break;
-            
+        case TRANSACTION_MODE_ALIPAY: //An Alipay payment just generates a log of a payment in backend
+            [self payWithAlipay];
+            break;
         default:
             break;
     }
@@ -934,7 +990,7 @@ NSLog(@"version:%@",
     
     //Initializing the basket
     AcceptBasket *basket = [[AcceptBasket alloc] init];
-    basket.currencyAsISO4217Code = @"EUR";
+    basket.currencyAsISO4217Code = @"CZK";
     basket.netTaxation = [NSNumber numberWithInt:1] ; //Set to 0 for tax inclusive
     //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
     //basket.lat, basket.lng
@@ -1146,11 +1202,17 @@ NSLog(@"version:%@",
 
 }
 
--(void)paymentSuccess:(AcceptTransaction *)transaction
+-(void)paymentDone:(AcceptTransaction *)transaction
 {
-    NSLog(@">>> PaymentViewController - paymentSuccess");
+    NSLog(@">>> PaymentViewController - paymentDone");
     self.transaction = transaction;
-    [Utils showAlertWithTitle:@"Success" andMessage:@"The payment was send and accepted"];
+    if ([transaction.state isEqualToString:@"approved"]) {
+        [Utils showAlertWithTitle:@"Success" andMessage:@"The payment was accepted"];
+    }
+    else{
+        [Utils showAlertWithTitle:@"Failure" andMessage:[NSString stringWithFormat:@"%@:%@",@"The payment was declined",transaction.technicalMessage]];
+    }
+    
     [self.revertB setEnabled:YES];
 }
 
@@ -1548,7 +1610,7 @@ NSLog(@"version:%@",
         paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
         paymentConfig.accessToken = [Utils sharedInstance].accessToken;
         paymentConfig.vendorUUID = iSelectedVendorUUID;
-        paymentConfig.eaaSerialNumber = iSelectedVendorTerminalDisplayName;
+        paymentConfig.eaaSerialNumber = terminal.eaaSerialNumber;
         paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
         
         

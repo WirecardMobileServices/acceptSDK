@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 @property (nonatomic, strong) NSString* paymentRequestId;
 /**
  */
-@property (nonatomic) NSInteger price;
+@property (nonatomic) NSDecimalNumber* price;
 /**
  */
 @property (nonatomic) NSInteger quantity;
@@ -432,7 +432,7 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 @property (nonatomic, strong) NSString* cardType;
 /**
  */
-@property (nonatomic) NSInteger amount;
+@property (nonatomic) NSDecimalNumber* amount;
 /**
  */
 @property (nonatomic, strong) NSString* cnpTsi;

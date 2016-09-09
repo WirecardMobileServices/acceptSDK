@@ -57,6 +57,9 @@
 /**
  */
 @property (nonatomic) BOOL isCaptureRequired;
+/**
+ */
+@property (nonatomic, strong) NSString *serviceCode;
 @end
 
 
@@ -130,7 +133,9 @@
                                         basket:(AcceptBasket*)basket
                                     consumerId:(NSString *)consumerId
                                          error:(NSError**)error;
-
+- (AcceptTransaction*) requestNewNullPayment:(NSString*)accessToken
+                                    currency:(NSString*)currency
+                                       error:(NSError**)error;
 /**
  * Description: Resets the password for the specified User Id - the reset password instructions are sent by:
  *  - email if the merchant user has email address specified

@@ -211,7 +211,12 @@
 /**
  */
 @property (nonatomic) BOOL net_taxation;
-
+/**
+ */
+@property (nonatomic) BOOL rksv_ready;
+/**
+ */
+@property (nonatomic) BOOL rksv_initiated;
 @end
 
 /**

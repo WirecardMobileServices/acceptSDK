@@ -150,10 +150,22 @@ extern NSString * const AcceptErrorDomain;
 @end
 
 /**
+ *  @class AcceptPaymentConfigCore
+ *  @discussion Payment configuration core class.
+ **/
+@interface AcceptPaymentConfigCore : NSObject
+/**
+ */
+@property (nonatomic, strong) AcceptDataServiceConfig * backendConfig;
+/**
+ */
+@property (nonatomic, strong) NSString * accessToken;
+@end
+/**
  *  @class AcceptPaymentConfig
  *  @discussion Payment configuration class. Content required to execute the payment flow
  **/
-@interface AcceptPaymentConfig : NSObject
+@interface AcceptPaymentConfig : AcceptPaymentConfigCore
 /**
  */
 @property (nonatomic, strong) NSString * vendorUUID;
@@ -162,13 +174,7 @@ extern NSString * const AcceptErrorDomain;
 @property (nonatomic, strong) NSString * _Nonnull eaaSerialNumber;
 /**
  */
-@property (nonatomic, strong) AcceptDataServiceConfig * backendConfig;
-/**
- */
 @property (nonatomic, strong) AcceptBasket * basket;
-/**
- */
-@property (nonatomic, strong) NSString * accessToken;
 /**
  */
 @property (nonatomic) BOOL allowGratuity;
@@ -423,6 +429,19 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
 - (void) startAlipayPayment:(AcceptPaymentConfig*)config
                  completion:(void (^)(AcceptTransaction*, NSError*))completion
                    progress:(void (^)(AcceptStateUpdate))progress;
+
+/**
+ *  @brief Used in Austria - Ministry of Finance requirement to record  all transactions of the merchant if merchant is registered with A-Trust
+ *  to be called if merchant agrees to MOF T&Cs and merchantUser.rksvReady = true and merchantUser.rksvInitiated=false
+ *  @param config Instance needed to use backend services - it is only necessary to set the backendConfig, access token and
+ *   currency as ISO4217 Code set
+ *  @param completion Block that will be called at the very end of payment flow. It provides an AcceptTransaction object (that may be nil if unauthorised) or a descriptive error
+ *  @param progress Block with info to update the UI in base of alerts, errors or general info messages. Pure feedback for the user
+ *
+ **/
+- (void) startTransactionsRecording:(AcceptPaymentConfigCore*)config
+                     currency:(NSString*)currency
+               completion:(void (^)(AcceptTransaction*, NSError*))completion;
 
 /**
  *  @brief Cancel the payment flow. This is usually called from UI (cancel button when available) or some error from signature or completion block. Notice that an improper usage of this function (for example during online communication or level 2 flow in terminal) can produce unexpected errors

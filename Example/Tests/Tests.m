@@ -8,7 +8,16 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "ZipArchive.h"
-#import <acceptSDK/Accept.h>
+#ifdef ACCEPT_SDK_SOURCE_AVAILABLE
+    #import <Accept/Accept.h>
+#else
+    #import <acceptSDK/Accept.h>
+#endif
+
+#define testUsername @"YOUR_USERNAME"
+#define testPassword @"YOUR_PASSWORD"
+
+#define MANUAL_TESTS NO
 
 @interface Accept_DemoTests : XCTestCase
 @property (nonatomic, strong) Accept *accept;
@@ -83,6 +92,204 @@
                   @"should return an array of AcceptPrinterVendor classes");
     
 }
+
+//- (void)testMultipleLogin {
+//    
+//    //Check Vendors
+//    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Login"];
+//    __block AcceptAccessToken* retToken;
+//    __block NSError* retErr;
+//    
+//    int i = 0;
+//    
+//    void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* token, NSError* error) {
+//        retToken = token;
+//        retErr = error;
+//        if (i == 9) {
+//            [expectation fulfill];
+//        }
+//        
+//    };
+//    
+//    for (i = 0; i< 10; i++) {
+//        [self.accept requestAccessToken:@"" password:@"" config:nil completion:completion];
+//    }
+//    
+//    
+//    
+//    
+//    [self waitForExpectationsWithTimeout:55 handler:nil];
+//    
+//    
+//    BOOL returnedTokenIsValid = retToken.accessToken.length > 0;
+//    
+//    XCTAssertTrue(returnedTokenIsValid,
+//                  @"should return access token");
+//    
+//    
+//}
+
+- (void)testSpireTerminalUpdate {
+
+    if (MANUAL_TESTS == NO) {
+        NSLog(@"Test to be run only in manual mode - with device attached and terminal paired");
+        XCTAssertTrue(YES,
+                      @"run only in manual mode");
+        return ;
+    }
+    //Check Vendors
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Update Terminal"];
+    __block AcceptAccessToken* retToken;
+    __block NSError* retErr;
+    __block AcceptConfigFilesStatus updateStatus = AcceptConfigFilesStatusTerminalNotReady;
+
+    AcceptTerminalVendor *vendor = [AcceptTerminalVendor new];
+    vendor.displayName = @"Spire";
+    vendor.uuid = @"PosMateExtension";
+    
+    void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
+        retToken = tokenObj;
+        retErr = error;
+        
+        [self.accept discoverTerminalsForVendor:vendor.uuid completion:^(NSArray *discoveredTerminals, NSError *error)
+         {
+             if (error)
+             {
+                 [expectation fulfill];
+                 NSLog(@"Error discovering terminals %@", error.description);
+             }
+             else if (discoveredTerminals.count > 0  )
+             {
+                 void (^completion)(AcceptConfigFilesStatus , NSError* ) = ^(AcceptConfigFilesStatus status, NSError* error)
+                 {
+                     updateStatus = status;
+                         if (status == AcceptConfigFilesStatusSuccess)
+                         {
+                             NSLog(@"Terminal configuration updated sucessfully");
+                         }
+                         else if(status == AcceptConfigFilesStatusUnnecessary){
+                             NSLog(@"Terminal configuration update not needed");
+                         }
+                         else{
+                             NSLog(@"Terminal configuration update status:%ld",(long)status);
+                         }
+                     
+                     [expectation fulfill];
+                     
+                 };
+                 
+                 void(^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress){
+                     NSLog(@"Terminal configuration update progress:%ld",(long)progress);
+                 };
+                 
+                 [self.accept  updateTerminal:[discoveredTerminals firstObject] vendor:vendor token:tokenObj.accessToken  config:nil progress:progress completion:completion];
+             }
+             else{
+                 updateStatus = AcceptConfigFilesStatusTerminalNotReady;
+                 NSLog(@"No terminals found");
+                 [expectation fulfill];
+                 
+             }
+         }];
+        
+    
+    };
+    
+
+    [self.accept requestAccessToken:testUsername  password:testPassword config:nil completion:completion];
+    
+    [self waitForExpectationsWithTimeout:180 handler:nil];
+    
+    BOOL updateRunOK = updateStatus == AcceptConfigFilesStatusSuccess || updateStatus ==AcceptConfigFilesStatusUnnecessary;
+
+    
+
+    XCTAssertTrue(updateRunOK,
+                  @"should return access token");
+
+
+}
+
+- (void)testSpireTerminalFirmwareUpdate {
+    
+    if (MANUAL_TESTS == NO) {
+        NSLog(@"Test to be run only in manual mode - with device attached and terminal paired");
+        XCTAssertTrue(YES,
+                      @"run only in manual mode");
+        return ;
+    }
+    //Check Vendors
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Update Terminal Firmware"];
+    __block AcceptAccessToken* retToken;
+    __block NSError* retErr;
+    __block AcceptConfigFilesStatus updateStatus;
+    
+    AcceptTerminalVendor *vendor = [AcceptTerminalVendor new];
+    vendor.displayName = @"Spire";
+    vendor.uuid = @"PosMateExtension";
+    
+    void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
+        retToken = tokenObj;
+        retErr = error;
+        
+        [self.accept discoverTerminalsForVendor:vendor.uuid completion:^(NSArray *discoveredTerminals, NSError *error)
+         {
+             if (error)
+             {
+                 [expectation fulfill];
+                 NSLog(@"Error discovering terminals %@", error.description);
+             }
+             else if (discoveredTerminals.count > 0  )
+             {
+                 void (^completion)(AcceptConfigFilesStatus , NSError* ) = ^(AcceptConfigFilesStatus status, NSError* error)
+                 {
+                     updateStatus = status;
+                     if (status == AcceptConfigFilesStatusSuccess)
+                     {
+                         NSLog(@"Terminal firmware updated sucessfully");
+                     }
+                     else if(status == AcceptConfigFilesStatusUnnecessary){
+                         NSLog(@"Terminal firmware update not needed");
+                     }
+                     else{
+                         NSLog(@"Terminal firmware update status:%ld",(long)status);
+                     }
+                     
+                     [expectation fulfill];
+                     
+                 };
+                 
+                 void(^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress){
+                     NSLog(@"Terminal firmware update progress:%ld",(long)progress);
+                 };
+                 
+                 [self.accept  updateTerminalFirmware:[discoveredTerminals firstObject] vendor:vendor token:tokenObj.accessToken  config:nil progress:progress completion:completion];
+             }
+             else{
+                 updateStatus = AcceptConfigFilesStatusTerminalNotReady;
+                 NSLog(@"No terminals found");
+                 [expectation fulfill];
+                 
+             }
+         }];
+        
+        
+    };
+
+    
+    [self.accept requestAccessToken:testUsername password:testPassword config:nil completion:completion];
+    
+    [self waitForExpectationsWithTimeout:280 handler:nil];
+    
+    BOOL updateRunOK = updateStatus == AcceptConfigFilesStatusSuccess || updateStatus ==AcceptConfigFilesStatusUnnecessary;
+    
+    
+    XCTAssertTrue(updateRunOK,
+                  @"should return access token");
+    
+    
+}
+
 
 -(void)testZip{
     

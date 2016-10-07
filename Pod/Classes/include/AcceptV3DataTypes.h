@@ -91,6 +91,7 @@ typedef NS_ENUM(NSInteger, AcceptPayErrorCode) {
  *  @discussion Enumerator of errors when trying to do a transaction request, this is, using the function queryTransactions.
  **/
 typedef NS_ENUM(NSInteger, AcceptCommonErrorCode) {
+    AcceptUnsupportedFeature = -1000,
     AcceptTransactionsQueryTokenExpiredErrorCode = 0,
     AcceptTransactionsQueryNoConnectionErrorCode,
     AcceptWrongUserNameOrPasswordErrorCode,
@@ -115,6 +116,7 @@ typedef NS_ENUM(NSInteger, AcceptCommonErrorCode) {
  *  @discussion Enumerator of errors when trying to request, download, unzip and install config files in a terminal that requires it (chip compatible devices).
  **/
 typedef NS_ENUM(NSInteger, AcceptConfigFilesInfoErrorCode) {
+    AcceptConfigFilesUnsupportedFeature = -1000,
     AcceptConfigFilesInfoTimeoutErrorCode = 0,
     AcceptConfigFilesInfoNoConnectionErrorCode,         // no internet connection
     AcceptConfigFilesInfoNoProperResponseErrorCode,      //if backend did not response with version and url
@@ -158,6 +160,29 @@ typedef NS_ENUM(NSInteger, AcceptConfigFilesUIAlerts) {
     AcceptConfigFilesSuccess,
     AcceptConfigFilesUnnecessary,
     AcceptConfigFilesDeferredInstall
+} ;
+
+/**
+ *  @class AcceptConfigFilesProgress
+ *  @discussion Enumerator with the progress  during an config file update in terminal
+ **/
+typedef NS_ENUM(NSInteger, AcceptConfigFilesProgress) {
+    AcceptConfigFilesProgressUpdateWillStart,
+    AcceptConfigFilesProgressDownloading,
+    AcceptConfigFilesProgressUnzipping,
+    AcceptConfigFilesProgressUploading
+} ;
+
+/**
+ *  @class AcceptConfigFilesStatus
+ *  @discussion Enumerator with the status at the end of the config file update in terminal.
+ **/
+typedef NS_ENUM(NSInteger, AcceptConfigFilesStatus) {
+    AcceptConfigFilesStatusOnlineError = -2,
+    AcceptConfigFilesStatusTerminalNotReady = -1,
+    AcceptConfigFilesStatusSuccess=0,
+    AcceptConfigFilesStatusUnnecessary,
+    AcceptConfigFilesStatusDeferredInstall
 } ;
 
 /**

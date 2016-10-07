@@ -21,4 +21,5 @@
 - (void)revertToStandBy;
 - (void)setTerminalModelForVersion:(NSString*)version;
 - (NSString*) getModelName;
+- (BOOL) updatedConnectedAccessory:(NSString*)eeSerialNumber;
 @end

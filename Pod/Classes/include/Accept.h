@@ -82,7 +82,7 @@ extern NSString * const AcceptErrorDomain;
  *  @class AcceptTerminalVendor
  *  @discussion Terminal vendor class
  **/
-@interface AcceptTerminalVendor : NSObject
+@interface AcceptTerminalVendor : NSObject<NSCoding>
 
 /**
  */
@@ -99,7 +99,7 @@ extern NSString * const AcceptErrorDomain;
  *  @class AcceptTerminal
  *  @discussion Terminal model class
  **/
-@interface AcceptTerminal : NSObject
+@interface AcceptTerminal : NSObject<NSCoding>
 /**
  */
 @property (nonatomic, strong) NSString * uuid;
@@ -118,7 +118,7 @@ extern NSString * const AcceptErrorDomain;
  *  @class AcceptPrinterVendor
  *  @discussion Printer vendor class
  **/
-@interface AcceptPrinterVendor : NSObject
+@interface AcceptPrinterVendor : NSObject<NSCoding>
 /**
  */
 @property (nonatomic, strong) NSString * uuid;
@@ -134,7 +134,7 @@ extern NSString * const AcceptErrorDomain;
  *  @class AcceptPrinter
  *  @discussion Printer model class
  **/
-@interface AcceptPrinter : NSObject
+@interface AcceptPrinter : NSObject<NSCoding>
 /**
  */
 @property (nonatomic, strong) NSString * uuid;
@@ -298,8 +298,26 @@ typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerific
  *  @param completionAlertUI Block that receives the latest updated version or an error
  **/
 - (void) updateTerminalsForVendor:(NSString*)vendorUUID
-                         andToken:(NSString*)token andConfig:(AcceptDataServiceConfig*)config
-                       completion:(void (^)(NSInteger, NSError*))completionAlertUI;
+                         andToken:(NSString*)token
+                        andConfig:(AcceptDataServiceConfig*)config
+                       completion:(void (^)(NSInteger, NSError*))completionAlertUI __deprecated_msg("Use updateTerminal:vendor:token:config:progess:completion");
+
+/**
+ *  @brief Update terminals for a vendor. Chip compatible terminals receive config files from backend; this function will decide if the updates are needed according current version
+ *  @param terminal The terminal obtained using discoverTerminalsForVendor
+ *  @param vendor The vendor obtained using discoverSupportedVendors
+ *  @param token The user session token for authentication
+ *  @param config Instance needed to use backend services - will use backend config from accept.conf if nil
+ *  @param progress Progress of the config file update
+ *  @param completion Block that receives the update status or error
+ **/
+- (void) updateTerminal:(AcceptTerminal * _Nonnull)terminal
+                 vendor:(AcceptTerminalVendor*_Nonnull)vendor
+                  token:(NSString*_Nonnull)token
+                 config:(AcceptDataServiceConfig*)config
+               progress:(void (^)(AcceptConfigFilesProgress))progress
+             completion:(void (^)(AcceptConfigFilesStatus status, NSError* error))completion;
+
 
 /**
  *  @brief Update terminals firmware for a vendor. Chip compatible terminals receive firmware files from backend; this function will decide if the updates are needed according current version
@@ -313,7 +331,24 @@ typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerific
                                 andToken:(NSString*)token
                                andConfig:(AcceptDataServiceConfig*)config
                              andFirmware:(AcceptTerminalFirmware *)firmware
-                              completion:(void (^)(NSInteger, NSError*))completionAlertUI;
+                    completion:(void (^)(NSInteger, NSError*))completionAlertUI; __deprecated_msg("Use updateTerminalFirmware:vendor:token:config:firmware:progess:completion");
+
+/**
+ *  @brief Update terminal's firmware . Chip compatible terminals receive firmware files from backend; this function will decide if the updates are needed according current version
+ *  @param terminal The terminal obtained using discoverTerminalsForVendor
+ *  @param vendor The vendor obtained using discoverSupportedVendors
+ *  @param token The user session token for authentication
+ *  @param config Instance needed to use backend services
+ *  @param progress Progress of the config file update
+ *  @param completion Block that receives the update status or error
+ **/
+- (void) updateTerminalFirmware:(AcceptTerminal * _Nonnull)terminal
+                 vendor:(AcceptTerminalVendor*_Nonnull)vendor
+                  token:(NSString*_Nonnull)token
+                 config:(AcceptDataServiceConfig*)config
+               progress:(void (^)(AcceptConfigFilesProgress))progress
+             completion:(void (^)(AcceptConfigFilesStatus status, NSError* error))completion;
+
 
 /**
  *  @brief Discover supported printer vendors
@@ -553,7 +588,16 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
  *  @param vendorID Unique id of the terminal's vendor we are requesting the info
  *  @param completionBlock Block that will receive the terminal connection status.
  **/
-- (void)terminalConnectionStatus:(NSString*)vendorID completion:(void (^)(AcceptExtensionConnectionStatus))completionBlock;
+- (void)terminalConnectionStatus:(NSString*)vendorID completion:(void (^)(AcceptExtensionConnectionStatus))completionBlock __deprecated_msg("Use connectionStatus:completion");;
+
+/**
+ *  @brief Request the connection status of the specified terminal/device
+ *  @param terminal terminal  we are requesting the info
+ *  @param completion Block that will receive connection status of the terminal/device
+ **/
+- (void)connectionStatus:(AcceptTerminal*)terminal
+                  vendor:(AcceptTerminalVendor*)vendor
+              completion:(void (^)(AcceptExtensionConnectionStatus))completion;
 
 /**
  *  @brief List the backends from the Accept configuration file

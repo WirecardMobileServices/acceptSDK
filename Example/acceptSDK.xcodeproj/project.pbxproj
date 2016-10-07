@@ -64,6 +64,7 @@
 		C00069B61CC0CC71008AFA15 /* libZipArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZipArchive.a; path = "../../../Library/Developer/Xcode/DerivedData/acceptSDK-alpgafihjlddeiereyndvoqbvzyz/Build/Products/Debug-iphoneos/libZipArchive.a"; sourceTree = "<group>"; };
 		C0398E2C1B0DAB5000667215 /* accept.conf */ = {isa = PBXFileReference; lastKnownFileType = file; path = accept.conf; sourceTree = "<group>"; };
 		C05089E11BBD599200E30786 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0A840E01D9E58D7009A3DA5 /* AcceptDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AcceptDemo.entitlements; sourceTree = "<group>"; };
 		C0C5D19F1C23022A00FE31AD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C0C5D1AB1C23FA5E00FE31AD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0C5D1B11C23FBDF00FE31AD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -87,7 +88,7 @@
 		C0C640231AE9321D007A6D1A /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		C0C640241AE9321D007A6D1A /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		C0C640391AE93287007A6D1A /* AcceptDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcceptDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0DCB8321C8D768B0080BB07 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C0DCB8321C8D768B0080BB07 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C5CC115F2B77F3860D95104D /* libPods-AcceptDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AcceptDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D979734EB377EE6AAF826E9E /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89637AD9F52D2F491C44C05 /* Pods-AcceptDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AcceptDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AcceptDemo/Pods-AcceptDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		C0C63FFB1AE9321D007A6D1A /* AcceptDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C0A840E01D9E58D7009A3DA5 /* AcceptDemo.entitlements */,
 				5D2E8FF71C89C9C80062A2F2 /* fakereceipt.png */,
 				C0C63FFC1AE9321D007A6D1A /* AppDelegate.h */,
 				C0C63FFD1AE9321D007A6D1A /* AppDelegate.m */,
@@ -295,11 +297,21 @@
 				TargetAttributes = {
 					C05089E01BBD599200E30786 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = Y9GYNDA2G3;
+						ProvisioningStyle = Automatic;
 						TestTargetID = C0C640381AE93287007A6D1A;
 					};
 					C0C640381AE93287007A6D1A = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = Y9GYNDA2G3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -581,7 +593,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y9GYNDA2G3;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -589,7 +604,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AcceptDemo.app/AcceptDemo";
 			};
@@ -602,8 +616,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y9GYNDA2G3;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -611,7 +628,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AcceptDemo.app/AcceptDemo";
 			};
@@ -624,8 +640,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = AcceptDemo/AcceptDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y9GYNDA2G3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -646,7 +664,8 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "420ade76-40ca-47ce-ba41-3d03c0ed2f4a";
+				PROVISIONING_PROFILE = "56047aec-6917-4d2c-ab25-a620884c7054";
+				PROVISIONING_PROFILE_SPECIFIER = "WCD Wildcard";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -658,9 +677,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = AcceptDemo/AcceptDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = Y9GYNDA2G3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -681,7 +702,8 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "420ade76-40ca-47ce-ba41-3d03c0ed2f4a";
+				PROVISIONING_PROFILE = "72ec000c-96f9-4ebc-a830-c855d95da85c";
+				PROVISIONING_PROFILE_SPECIFIER = "WhiteLabel wildcard";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

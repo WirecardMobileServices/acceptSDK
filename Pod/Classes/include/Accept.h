@@ -38,23 +38,17 @@ extern NSString * const ACCEPT_SDK_VERSION;
  * Possible note texts (reasons) in transaction reversals
  */
 extern NSString * const  SignatureVerificationTimeout;
-/**
- */
+/// Merchant rejected customer signature message
 extern NSString * const  MerchantRejectedCustomerSignature;
-/**
- */
+/// Transaction declined by card message
 extern NSString * const  TransactionDeclinedByCard;
-/**
- */
+/// Advice not supported message
 extern NSString * const  AdviceNotSupported;
-/**
- */
+/// Capture not supported message
 extern NSString * const  CaptureNotSupported;
-/**
- */
+/// No EFT response messsage
 extern NSString * const  NoEFTResponse;
-/**
- */
+/// Transaction terminated by terminal message
 extern NSString * const  TransactionTerminatedByTerminal;
 
 
@@ -62,20 +56,15 @@ extern NSString * const  TransactionTerminatedByTerminal;
  *Current Vendors IDs supported by the SDK
  */
 extern NSString * const AcceptSpireVendorUUID;
-/**
- */
+/// BBPOS vendor UUID
 extern NSString * const AcceptbbPOSVendorUUID;
-/**
- */
+/// IDTECH  vendor UUID
 extern NSString * const AcceptIDTECHVendorUUID;
-/**
- */
+/// Datecs vendor UUID
 extern NSString * const AcceptDatecsVendorUUID;
-/**
- */
+/// Verifone vendor UUID
 extern NSString * const AcceptVeriFoneVendorUUID;
-/**
- */
+/// Accept error domain
 extern NSString * const AcceptErrorDomain;
 
 /**
@@ -84,14 +73,11 @@ extern NSString * const AcceptErrorDomain;
  **/
 @interface AcceptTerminalVendor : NSObject<NSCoding>
 
-/**
- */
+/// UUID
 @property (nonatomic, strong) NSString * uuid;
-/**
- */
+/// Display Name
 @property (nonatomic, strong) NSString * displayName;
-/**
- */
+/// Alternative display name
 @property (nonatomic, strong) NSString * alternativeDisplayName;
 @end
 
@@ -100,17 +86,13 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Terminal model class
  **/
 @interface AcceptTerminal : NSObject<NSCoding>
-/**
- */
+/// UUID
 @property (nonatomic, strong) NSString * uuid;
-/**
- */
+/// Display Name
 @property (nonatomic, strong) NSString * displayName;
-/**
- */
+/// Alternative display name
 @property (nonatomic, strong) NSString * alternativeDisplayName;
-/**
- */
+/// EAA Serial number
 @property (nonatomic, strong) NSString *  eaaSerialNumber;
 @end
 
@@ -119,14 +101,11 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Printer vendor class
  **/
 @interface AcceptPrinterVendor : NSObject<NSCoding>
-/**
- */
+/// UUID
 @property (nonatomic, strong) NSString * uuid;
-/**
- */
+/// Display name
 @property (nonatomic, strong) NSString * displayName;
-/**
- */
+/// Alternative display name
 @property (nonatomic, strong) NSString * alternativeDisplayName;
 @end
 
@@ -135,17 +114,13 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Printer model class
  **/
 @interface AcceptPrinter : NSObject<NSCoding>
-/**
- */
+/// UUID
 @property (nonatomic, strong) NSString * uuid;
-/**
- */
+/// Display name
 @property (nonatomic, strong) NSString * displayName;
-/**
- */
+/// Alternative display name
 @property (nonatomic, strong) NSString * alternativeDisplayName;
-/**
- */
+/// EAA serial number
 @property (nonatomic, strong) NSString * eaaSerialNumber;
 @end
 
@@ -154,11 +129,9 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Payment configuration core class.
  **/
 @interface AcceptPaymentConfigCore : NSObject
-/**
- */
+///
 @property (nonatomic, strong) AcceptDataServiceConfig * backendConfig;
-/**
- */
+///
 @property (nonatomic, strong) NSString * accessToken;
 @end
 /**
@@ -166,24 +139,19 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Payment configuration class. Content required to execute the payment flow
  **/
 @interface AcceptPaymentConfig : AcceptPaymentConfigCore
-/**
- */
+/// Vendor UUID
 @property (nonatomic, strong) NSString * vendorUUID;
-/**
- */
+/// EAA serial number
 @property (nonatomic, strong) NSString * _Nonnull eaaSerialNumber;
-/**
- */
+/// Basket
 @property (nonatomic, strong) AcceptBasket * basket;
-/**
- */
+/// Gratuity allowed
 @property (nonatomic) BOOL allowGratuity;
 /**
  * numeric data read from the Alipay barcode
  */
 @property (nonatomic, strong,nullable) NSString * alipayConsumerId;
-/**
- */
+/// Transaction type
 @property (nonatomic) AcceptTransactionType transactionType;
 @end
 
@@ -192,26 +160,19 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Signature request class. It should be given fulfilled once the signature image has been captured, to be included in the transaction body when required
  **/
 @interface AcceptSignatureRequest: NSObject
-/**
- */
+/// Cardholder name
 @property (nonatomic, strong) NSString *cardHolderName;
-/**
- */
+/// Card number
 @property (nonatomic, strong) NSString *cardNumber;
-/**
- */
+/// Card type
 @property (nonatomic, strong) NSString * cardType;
-/**
- */
+/// Issuer
 @property (nonatomic, strong) NSString * issuer;
-/**
- */
+/// Masked PAN
 @property (nonatomic, strong) NSString *maskedPAN;
-/**
- */
+/// Gratuity amount
 @property (nonatomic) NSInteger gratuityAmount;
-/**
- */
+/// Signature collection callback
 @property (nonatomic, copy) void(^signatureCallback)(UIImage*, NSError*);
 @end
 
@@ -220,11 +181,9 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Application selection request class. It should be given fulfilled once a prefered application has been chosen from the list (used in chip compatible terminals with no screen)
  **/
 @interface AcceptAppSelectionRequest: NSObject
-/**
- */
+/// Card applications
 @property (nonatomic, strong) NSArray *appsArray;
-/**
- */
+/// Card application selection callback
 @property (nonatomic, copy) void(^appSelectionCallback)(NSUInteger, NSError*);
 @end
 
@@ -233,17 +192,13 @@ extern NSString * const AcceptErrorDomain;
  *  @discussion Printer configuration class. Receipt Content or Receipt Image required to execute the printing flow
  **/
 @interface AcceptPrinterConfig : NSObject
-/**
- */
+/// Vendor UUID
 @property (nonatomic, strong) NSString * vendorUUID;
-/**
- */
+/// Printer UUID
 @property (nonatomic, strong) NSString * printerUUID;
-/**
- */
+/// Receipt data
 @property (nonatomic, strong) AcceptReceipt *receipt;
-/**
- */
+/// Receipt Image
 @property (nonatomic, strong) UIImage *receiptImage;
 @end
 
@@ -269,8 +224,7 @@ typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerific
 *  @discussion Main SDK class. It contains all public properties and functions
 **/
 @interface Accept : NSObject
-/**
- */
+///
 ///version Current SDK version
 @property (nonatomic, readonly) NSString * version;
 

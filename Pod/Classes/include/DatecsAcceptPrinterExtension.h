@@ -9,5 +9,9 @@
 #import "AcceptPrinterExtension.h"
 #import "DTDevices.h"
 
+/**
+ *  @class DatecsAcceptPrinterExtension
+ *  @discussion Datecs Printer extension
+ **/
 @interface DatecsAcceptPrinterExtension : AcceptPrinterExtension <DTDeviceDelegate>
 @end

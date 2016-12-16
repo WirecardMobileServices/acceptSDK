@@ -9,6 +9,10 @@
 //#import "AudioReaderSDK.h"
 #import "AcceptExtension.h"
 
+/**
+ *  @class DatecsAcceptExtension
+ *  @discussion Datecs Accept extension
+ **/
 @interface DatecsAcceptExtension : AcceptExtension
 
 @end

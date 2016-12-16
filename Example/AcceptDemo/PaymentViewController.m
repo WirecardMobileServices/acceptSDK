@@ -1445,7 +1445,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     
     if ([[[Utils sharedInstance] getSelectedPrinterVendor] isEqualToString: @"MPOPAcceptExtension"])
     {
-        UIImage *imgReceipt = [UIImage imageNamed:@"printfakereceipt.png"];
+        UIImage *imgReceipt = [UIImage imageNamed:@"fakereceipt.png"];
         printerConfig.receiptImage = imgReceipt;
     }
     else

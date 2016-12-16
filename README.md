@@ -28,7 +28,7 @@ Wirecard Technologies is using the acceptSDK in their Whitelabel application whi
 
 There are two ways how to install the SDK.
 
-1. Clone from GitHub and integrate the library as per the  [Integration Guide document](./docs/Integration Guide Accept SDK.pdf" "Integration Guide")
+1. Clone from GitHub and integrate the library as per the  [Integration Guide document]("./docs/Integration_Guide_Accept_SDK.pdf" "Integration Guide")
 2. acceptSDK is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -48,18 +48,18 @@ Read more about integrating the acceptSDK into your application in the attached 
 
 ## Contact
 
-Get in touch with [acceptSDK development team](mailto://mpos-svk@wirecard.com/ "acceptSDK") for acceptSDK support and mPOS Whitelabel solution
+Get in touch with [acceptSDK development team](mailto:mpos-svk@wirecard.com "acceptSDK") for acceptSDK support and mPOS Whitelabel solution
 
-Get in touch with [Wirecard mPOS retail team](mailto://retail.mpos@wirecard.com/ "mpor Retails") for Wirecard payment processing services
+Get in touch with [Wirecard mPOS retail team](mailto:retail.mpos@wirecard.com "mPOS Retails") for Wirecard payment processing services
 
 
 ## Documentation
 
 All the necessary documents are available in the ./docs subfolder.
 
-Refer to "Intergration Guide Accept SDK.pdf" for the details on how to use acceptSDK.
+Refer to "Intergration_Guide_Accept_SDK.pdf" for the details on how to use acceptSDK.
 
-If using accepdSDK pod the all the required libraries are taken care of by the pod.
+If using acceptSDK pod the all the required libraries are taken care of by the pod.
 
 API reference documentation is available in ./docs/Reference Documentation subfolder
 

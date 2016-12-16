@@ -14,10 +14,11 @@
     #import <acceptSDK/Accept.h>
 #endif
 
+#import "Utils.h"
+
 #define testUsername @"YOUR_USERNAME"
 #define testPassword @"YOUR_PASSWORD"
-
-#define MANUAL_TESTS NO
+#define MANUAL_TESTS  NO
 
 @interface Accept_DemoTests : XCTestCase
 @property (nonatomic, strong) Accept *accept;
@@ -36,7 +37,32 @@
     [super tearDown];
     self.accept = nil;
 }
-
+-(AcceptBasketItem *)addBasketItem:(NSInteger)quantity amount:(NSDecimalNumber *)amount note:(NSString *)note tax:(int)tax chargeType:(NSString*)chargeType
+{
+    
+    AcceptBasketItem *basketItem= [[AcceptBasketItem alloc] init];
+    basketItem.quantity = quantity;
+    NSDecimalNumber *decAmount = amount;
+    decAmount = [decAmount decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"100"]];
+    basketItem.grossPrice =  decAmount;
+    basketItem.note = note;
+    NSDecimalNumber *decTax = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d",tax]];
+    decTax = [decTax decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"10000"]];
+    basketItem.taxRate = decTax ;
+    if ([chargeType isEqualToString:CHARGE_TYPE_SERVICE])
+    {
+        basketItem.itemType = ACCEPT_ITEM_CHARGE_TYPE_SERVICE_CHARGE;
+    }
+    else if ([chargeType isEqualToString:CHARGE_TYPE_TIP])
+    {
+        basketItem.itemType = ACCEPT_ITEM_CHARGE_TYPE_TIP;
+    }
+    else
+    {
+        basketItem.itemType = ACCEPT_ITEM_CHARGE_TYPE_NORMAL;
+    }
+    return basketItem;
+}
 - (void)testDiscoverSupportedVendorsAndTerminals {
     
     //Check Vendors
@@ -290,6 +316,157 @@
     
 }
 
+- (void)testSpirePayment {
+    
+    if (MANUAL_TESTS == NO) {
+        NSLog(@"Test to be run only in manual mode - with device attached and terminal paired");
+        XCTAssertTrue(YES,
+                      @"run only in manual mode");
+        return ;
+    }
+    //Check Vendors
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Spire Payment"];
+    __block AcceptAccessToken* retToken;
+    __block NSError* retErr;
+    __block AcceptConfigFilesStatus updateStatus = AcceptConfigFilesStatusTerminalNotReady;
+    
+    AcceptTerminalVendor *vendor = [AcceptTerminalVendor new];
+    vendor.displayName = @"Spire";
+    vendor.uuid = @"PosMateExtension";
+    
+    void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
+        retToken = tokenObj;
+        retErr = error;
+        
+        [self.accept discoverTerminalsForVendor:vendor.uuid completion:^(NSArray *discoveredTerminals, NSError *error)
+         {
+             if (error)
+             {
+                 [expectation fulfill];
+                 NSLog(@"Error discovering terminals %@", error.description);
+             }
+             else if (discoveredTerminals.count > 0  )
+             {
+                 void (^completion)(AcceptTransaction*, NSError*) = ^(AcceptTransaction *transaction, NSError *error)
+                 {
+                     if (error || !transaction)
+                     {
+                         NSLog(@"Payment failure:%@",error);
+                         
+                     }
+                     else
+                     {
+                         if ([transaction.state isEqualToString:@"approved"]|| [transaction.state isEqualToString:@"authorized"]) {
+                          NSLog(@"Success");
+                         
+                         }
+                         else{
+                              NSLog(@"Payment failure:%@",transaction.technicalMessage);
+                         }
+                         
+                     }
+                 };
+                 
+                 void(^progress)(AcceptStateUpdate) = ^(AcceptStateUpdate update)
+                 {
+                     NSLog(@"Payment progress:%ld",(long)update);
+                 };
+                 
+                 
+                 void(^signature)(AcceptSignatureRequest * ) = ^(AcceptSignatureRequest *  signatureRequest)
+                 {
+                     NSLog(@">>> PaymentViewController - requestSignature");
+                     //NOTE: Here is expected to open a view for manually inserting a signature. Demo app fakes the proccess sending a PNG file with it. It is also recommendable that the picture file does not excceed 4-6 kb in size
+                     NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"signature_sample" withExtension:@"png"];
+                     NSString*stringPath = [imgPath absoluteString];
+                     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringPath]];
+                     UIImage *signatureImage = [[UIImage alloc] initWithData:data];
+                     signatureRequest.signatureCallback(signatureImage, nil);
+                 };
+                 
+                 void (^signatureVerification)(AcceptTransaction*, AcceptSignatureVerificationResultCallback,NSError*) = ^(AcceptTransaction *transaction,AcceptSignatureVerificationResultCallback signatureVerificationCallbackMerchantResponse, NSError *error)
+                 {
+                     
+                     if (signatureVerificationCallbackMerchantResponse) {
+                         //implement the confirmation for the signature Approval/Rejection and call signatureVerificationCallbackMerchantResponse with Approved or Rejected accordingly
+                         signatureVerificationCallbackMerchantResponse(AcceptSignatureVerificationResultApproved);
+                     }
+                     else{
+                         if (error || !transaction) {
+                             
+                             NSLog(@"Signature verification error:%@",error);
+                         }
+                         else{
+                              NSLog(@"Signature approved - Payment Success");
+                             //            [weakSelf paymentSuccess:transaction];
+                         }
+                     }
+                     
+                 };
+                 
+                 void(^appSelection)(AcceptAppSelectionRequest * ) = ^(AcceptAppSelectionRequest * appSelectionRequest)
+                 {
+                     appSelectionRequest.appSelectionCallback(0,nil); //select first app in the list
+                     
+                 };
+                 
+                 AcceptTerminal *terminal = [discoveredTerminals firstObject];
+                 
+                 AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
+                 
+                 
+                 paymentConfig.vendorUUID = vendor.uuid;
+                 paymentConfig.eaaSerialNumber = terminal.eaaSerialNumber;
+                 paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
+                 paymentConfig.transactionType = AcceptTransactionTypePurchase;
+                 //Initializing the basket
+                 AcceptBasket *basket = [[AcceptBasket alloc] init];
+                 basket.currencyAsISO4217Code = @"EUR";
+                 basket.netTaxation = [NSNumber numberWithInt:1] ; //Set to 0 for tax inclusive
+                                                                   //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
+                                                                   //basket.lat, basket.lng
+                 
+                 //Adding the payment item to the basket
+                 AcceptBasketItem *basketItem =
+                 [self addBasketItem:1 //This is the number of items. We could have more than one with the same price
+                              amount:[NSDecimalNumber decimalNumberWithString:@"1000"] //10 EUR
+                                note:@"Here we can add some description of the payment"
+                                 tax:0 //value indicating the tax % (note: 7% is indicated by 700; 7 would be 0.07%)
+                          chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
+                 
+                 [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+                 paymentConfig.basket = basket;
+                 
+                 //We execute the payment
+                 [self.accept startPay:paymentConfig completion:completion progress:progress signature:signature signatureVerification:signatureVerification appSelection:appSelection];
+                 
+                 
+             }
+             else{
+                 updateStatus = AcceptConfigFilesStatusTerminalNotReady;
+                 NSLog(@"No terminals found");
+                 [expectation fulfill];
+                 
+             }
+         }];
+        
+        
+    };
+    
+    
+    [self.accept requestAccessToken:testUsername  password:testPassword config:nil completion:completion];
+    
+    [self waitForExpectationsWithTimeout:180 handler:nil];
+    
+    BOOL updateRunOK = updateStatus == AcceptConfigFilesStatusSuccess || updateStatus ==AcceptConfigFilesStatusUnnecessary;
+    
+    
+    
+    XCTAssertTrue(updateRunOK,
+                  @"should return access token");
+    
+    
+}
 
 -(void)testZip{
     

@@ -7,6 +7,10 @@
 
 #import "AcceptExtension.h"
 
+/**
+ *  @class UnimagAcceptExtension
+ *  @discussion Unimag extension
+ **/
 @interface UnimagAcceptExtension : AcceptExtension
 
 @end

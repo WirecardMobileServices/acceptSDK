@@ -13,22 +13,16 @@
  *  @discussion User payment parameters
  **/
 @interface AcceptPaymentParameters : NSObject
-/**
- */
+/// Customers email
 @property (nonatomic, strong) NSString * customerEmail;
-/**
- */
+/// Customers phone
 @property (nonatomic, strong) NSString * customerPhone;
-/**
- */
+/// Flag if receipt was requested already
 @property (nonatomic)  bool receiptRequested;
-/**
- */
+/// note
 @property (nonatomic, strong) NSString * note;
-/**
- */
+/// Application crytogram to update the transaction with
 @property (nonatomic, strong) NSString * applicationCryptogram;
-/**
- */
+/// Signature image to update the transaction with
 @property (nonatomic, strong) UIImage * signatureImage;
 @end

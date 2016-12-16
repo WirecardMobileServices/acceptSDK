@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <ExternalAccessory/ExternalAccessory.h>
 #import "StarIoExtManager.h"
+
+/**
+ *  @class MPOPAcceptExtension
+ *  @discussion Stario MPOP extension
+ **/
 @interface MPOPAcceptExtension : AcceptPrinterExtension <StarIoExtManagerDelegate>
 
 @end

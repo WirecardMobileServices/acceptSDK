@@ -26,20 +26,15 @@ typedef NS_ENUM(NSInteger, AcceptBasketItemType) {
  *  @discussion Basket item info
  **/
 @interface AcceptBasketItem : NSObject
-/**
- */
+/// Gross price
 @property (nonatomic, strong) NSDecimalNumber * grossPrice;
-/**
- */
+/// Item note
 @property (nonatomic, strong) NSString * note;
-/**
- */
+/// Quentity
 @property (nonatomic) NSUInteger quantity;
-/**
- */
+/// Tax rate
 @property (nonatomic) NSDecimalNumber *taxRate;
-/**
- */
+/// Item type
 @property (nonatomic) AcceptBasketItemType itemType;
 
 /**

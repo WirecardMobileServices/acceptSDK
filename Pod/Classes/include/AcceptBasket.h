@@ -12,26 +12,21 @@
  *  @discussion Basket info class
  **/
 @interface AcceptBasket : NSObject
-/**
- */
+/// Transaction Unique ID
 @property (nonatomic, strong) NSString * transactionUniqueId;
-/**
- */
+/// Basket Items
 @property (nonatomic, readonly) NSMutableArray * items;
-/**
- */
+/// Payment note
 @property (nonatomic, strong) NSString * note;
-/**
- */
-@property NSNumber *lat, *lng;
-/**
- */
+/// Latitude
+@property NSNumber *lat;
+/// Longitude
+@property NSNumber *lng;
+/// Currency code
 @property (nonatomic, strong) NSString * currencyAsISO4217Code;
-/**
- */
+/// Net taxation
 @property (nonatomic, strong) NSNumber * netTaxation;
-/**
- */
+/// Discount
 @property (nonatomic, strong) NSDecimalNumber * discount;
 
 /**

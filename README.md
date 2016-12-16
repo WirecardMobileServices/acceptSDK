@@ -28,7 +28,7 @@ Wirecard Technologies is using the acceptSDK in their Whitelabel application whi
 
 There are two ways how to install the SDK.
 
-1. Clone from GitHub and integrate the library as per the  [Integration Guide document]("./docs/Integration_Guide_Accept_SDK.pdf" "Integration Guide")
+1. Clone from GitHub and integrate the library as per the  [Integration Guide document](./docs/Integration_Guide_Accept_SDK.pdf "Integration Guide")
 2. acceptSDK is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 

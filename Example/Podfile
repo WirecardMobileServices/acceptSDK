@@ -1,7 +1,7 @@
 platform :ios, :deployment_target => "7.0"
 
 def shared_dependencies
-   pod "Accept", :path => '../'
+   pod "acceptSDK", :path => '../'
 end
 
 target 'AcceptDemo' do

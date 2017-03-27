@@ -13,7 +13,7 @@
 #define kAcceptTransactionStatus_Rejected         @"rejected"
 #define kAcceptTransactionStatus_Reversed         @"reversed"
 #define kAcceptTransactionStatus_New              @"new"
-#define kAcceptTransactionStatus_Authorized       @"preauthorized"
+#define kAcceptTransactionStatus_Authorized       @"authorized"
 #define kAcceptTransactionStatus_Preauthorized    @"preauthorized"
 #define kAcceptTransactionStatus_Bookbacked       @"bookbacked"
 #define kAcceptTransactionStatus_Chargebacked     @"chargebacked"
@@ -29,6 +29,7 @@
 #define kTransactionUpdateFailedPrevFailed @"Transaction update failed, prev failed"
 #define kValidAppDataFailed @"Can't find valid Transaction And Application data"
 #define kTransactionRejected @"Transaction declined"
+#define kTransactionFailed @"Transaction failed"
 #define kDeviceRootedError @"Transactions cannot be run on rooted device"
 
 /**

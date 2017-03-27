@@ -169,7 +169,7 @@ typedef enum {
     NSLog(@">>> UserViewController - doLogin");
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     __weak UserViewController *weakSelf = self;
-    void (^completionBlock)(NSString*, NSError*) = ^(NSString *accessToken, NSError *error)
+    void (^completionBlock)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken *accessToken, NSError *error)
     {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         if (accessToken) {
@@ -184,14 +184,14 @@ typedef enum {
     [self loginWithUsername:self.emailTf.text andPassword:self.passwordTf.text completionBlock:completionBlock];
 }
 
--(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password completionBlock:(void (^)(NSString*, NSError*))completionBlock
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password completionBlock:(void (^)(AcceptAccessToken*, NSError*))completionBlock
 {
     NSLog(@">>> UserViewController - loginWithUsername");
     [Utils checkConnectivity];
     [self.accept requestAccessToken:username password:password config:[[Utils sharedInstance] backendConfig] completion:^(AcceptAccessToken *accessToken, NSError *error)
     {
         NSLog(@"The current token will expire in %d seconds. You can make use of this info in advance or wait for the user to do some online action that will get an expiration response - then the user can be logged out in a fashion manner.", [accessToken.expireInSeconds intValue]);
-        [[Utils sharedInstance] setAccessToken:(accessToken.accessToken)? : @""];
+        [[Utils sharedInstance] setAccessTokenObject:accessToken];
         self.error = error;
         self.errorObject = nil;
         
@@ -201,7 +201,7 @@ typedef enum {
         {
             AcceptCommonErrorCode errCode = ((AcceptCommonErrorCode)self.error.code);
             self.errorObject = [NSValue value:&errCode withObjCType:@encode(NSUInteger)];
-            completionBlock(accessToken.accessToken, error);
+            completionBlock(accessToken, error);
         }
         else
         {
@@ -215,9 +215,9 @@ typedef enum {
                 }
             };
             
-            [self.accept  queryConfigFile:[[Utils sharedInstance] accessToken]  config:[[Utils sharedInstance] backendConfig] andCurrentVersion:@"0" completion:completionConfig];
+            [self.accept  queryConfigFile:[[Utils sharedInstance] accessTokenObject].accessToken  config:[[Utils sharedInstance] backendConfig] andCurrentVersion:@"0" completion:completionConfig];
             
-            [self.accept  requestMerchantInfo:[[Utils sharedInstance] accessToken]  config:[[Utils sharedInstance] backendConfig] completion:^(AcceptUserResponse *response, NSError *error)
+            [self.accept  requestMerchantInfo:[[Utils sharedInstance] accessTokenObject].accessToken  config:[[Utils sharedInstance] backendConfig] completion:^(AcceptUserResponse *response, NSError *error)
             {
                 //Response contains merchant data such as taxRates, currencies, locale, amount limits, etc
                 self.userResponse = response;
@@ -385,7 +385,7 @@ typedef enum {
         
         [self.accept requestAccessToken:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:self.passwordTf.text config:[[Utils sharedInstance] backendConfig] completion:^(AcceptAccessToken *accessToken, NSError *error)
         {
-            [[Utils sharedInstance] setAccessToken: (accessToken.accessToken)? : @""];
+            [[Utils sharedInstance] setAccessTokenObject:accessToken];
             self.error = error;
             self.errorObject = nil;
             
@@ -406,9 +406,9 @@ typedef enum {
                     }
                 };
                 
-                [self.accept queryConfigFile:[[Utils sharedInstance] accessToken] config:[[Utils sharedInstance] backendConfig] andCurrentVersion:@"0" completion:completionConfig];
+                [self.accept queryConfigFile:[[Utils sharedInstance] accessTokenObject].accessToken config:[[Utils sharedInstance] backendConfig] andCurrentVersion:@"0" completion:completionConfig];
 
-                [self.accept requestMerchantInfo:[[Utils sharedInstance] accessToken]  config:[[Utils sharedInstance] backendConfig] completion:^(AcceptUserResponse *response, NSError *error)
+                [self.accept requestMerchantInfo:[[Utils sharedInstance] accessTokenObject].accessToken  config:[[Utils sharedInstance] backendConfig] completion:^(AcceptUserResponse *response, NSError *error)
                 {
                     self.userResponse = response;
                     completionBlock(accessToken.accessToken, error);
@@ -444,7 +444,7 @@ typedef enum {
         }
     };
     
-    [self.accept changePasswordForToken:[[Utils sharedInstance] accessToken]  newPassword:self.passwordTf.text reNewPassword:self.forgotTf.text config:[[Utils sharedInstance] backendConfig]  completion:completionBlock];
+    [self.accept changePasswordForToken:[[Utils sharedInstance] accessTokenObject].accessToken  newPassword:self.passwordTf.text reNewPassword:self.forgotTf.text config:[[Utils sharedInstance] backendConfig]  completion:completionBlock];
 }
 
 -(void) passwordChanged:(NSError *)error

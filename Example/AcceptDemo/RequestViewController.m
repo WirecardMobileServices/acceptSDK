@@ -270,7 +270,7 @@ typedef enum {
     NSString *strQuery = [dict valueForKey:@"query"];
     if (strQuery) query.queryPhrase = strQuery;
 
-    [self.accept queryTransactions:[[Utils sharedInstance]accessToken] config:[[Utils sharedInstance] backendConfig] query:query completion:^(NSArray *arr, NSError *error)
+    [self.accept queryTransactions:[[Utils sharedInstance]accessTokenObject].accessToken config:[[Utils sharedInstance] backendConfig] query:query completion:^(NSArray *arr, NSError *error)
     {
         completionBlock(arr, error);
     }];
@@ -394,7 +394,7 @@ typedef enum {
         }
     };
 
-    [self.accept queryStatistics:[[Utils sharedInstance] accessToken] config:[[Utils sharedInstance] backendConfig]
+    [self.accept queryStatistics:[[Utils sharedInstance] accessTokenObject].accessToken config:[[Utils sharedInstance] backendConfig]
                             from:[NSDate dateWithTimeInterval:-1036800 sinceDate:[NSDate date]] //one year ago
                               to:[NSDate date]
                          groupBy:accessGroupBy

@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.198] - 2017-03-27
+### Added
+- SSL certificates for backends
+- Request DEP report for Austria
+
+### Fixed
+- Error object populated in the case of terminated transaction
+- Spire terminal reverts to Standby after payment flow completion
+
+
 ## [1.6.195] - 2016-12-16
 ### Added
 - SSL certificates for backends

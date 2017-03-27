@@ -15,7 +15,7 @@
 #define CURRENCY_CODE_DEFAULT_VALUE @"EUR"
 #define LOCALE_DEFAULT_VALUE @"en_DE"
 #define kRefreshBT 5 //secs
-#define kTokenTimer 300 //secs (5 min)
+#define kTokenTimer 900 //secs (5 min)
 #define kPaymentTimeout 20 //secs
 #define kHistoryTimer 20 //secs
 #define kYearOfAppBDay 2013
@@ -45,7 +45,7 @@
 @property (nonatomic, strong) NSNumberFormatter *currencyFormatter;
 @property (nonatomic,strong) AcceptDataServiceConfig *backendConfig;
 @property (nonatomic,strong) Accept *accept;
-@property (nonatomic,strong) __block NSString *accessToken;
+@property (nonatomic,strong) __block AcceptAccessToken *accessTokenObject;
 @property (nonatomic,strong) NSArray *taxAmounts;
 @property (nonatomic,strong) NSArray *currencies;
 @property(nonatomic) BOOL tokenIsValid;

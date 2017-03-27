@@ -450,7 +450,7 @@ static Utils *sharedInstance = nil;
 
 -(void) startTokenTimer
 {
-    self.tokenTimer = [NSTimer scheduledTimerWithTimeInterval:kTokenTimer target:self selector:@selector(tokenTimerDidExpire) userInfo:nil repeats:YES];
+    self.tokenTimer = [NSTimer scheduledTimerWithTimeInterval:[self.accessTokenObject.expireInSeconds doubleValue] target:self selector:@selector(tokenTimerDidExpire) userInfo:nil repeats:YES];
 }
 
 -(void) tokenTimerDidExpire

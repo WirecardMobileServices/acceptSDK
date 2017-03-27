@@ -297,4 +297,12 @@
  **/
 - (AcceptInventory*) requestInventory:(NSString*)accessToken currentVersion:(NSString*)version error:(NSError**)error;
 
+/**
+ *  @brief Generate DEP report on demand
+ *  @param accessToken access token
+ *  @param error return error
+ *  @return YES if no error
+ **/
+- (BOOL) requestDEPReport:(NSString*)accessToken error:(NSError**)error;
+
 @end

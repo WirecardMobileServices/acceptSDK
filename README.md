@@ -39,7 +39,6 @@ It is possible to use acceptSDK with core functionality and one of supported ter
 E.g. to use acceptSDK and Spire PosMate smart terminal please modify your podfile as follows:
 
 ```
-pod "acceptSDK/Core"
 pod "acceptSDK/Spire"
 ```
 

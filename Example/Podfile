@@ -1,14 +1,14 @@
 platform :ios, :deployment_target => "7.0"
 
 def shared_dependencies
-   pod "acceptSDK", :path => '../'
-end
-
-target 'AcceptDemo' do
-	shared_dependencies
+   pod "acceptSDK/Spire", :path => '../'
 end
 
 target 'Tests' do
+    shared_dependencies
+end
+
+target 'AcceptDemo' do
     shared_dependencies
 end
 

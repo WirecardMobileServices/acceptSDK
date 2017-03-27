@@ -332,7 +332,7 @@ NSLog(@"version:%@",
                              
                          };
                          
-                         [[[Utils sharedInstance] accept]  updateTerminalsForVendor:iSelectedVendor andToken:[[Utils sharedInstance] accessToken]  andConfig:[[Utils sharedInstance] backendConfig]  completion:completionAlertUI];
+                         [[[Utils sharedInstance] accept]  updateTerminalsForVendor:iSelectedVendor andToken:[[Utils sharedInstance] accessTokenObject].accessToken  andConfig:[[Utils sharedInstance] backendConfig]  completion:completionAlertUI];
                      }
                  }];
             }
@@ -345,7 +345,7 @@ NSLog(@"version:%@",
     
     NSString * version = @"0";
     
-    [[[Utils sharedInstance] accept]  queryConfigFile:[[Utils sharedInstance] accessToken] config:[[Utils sharedInstance] backendConfig]  andCurrentVersion:version completion:completionConfig];
+    [[[Utils sharedInstance] accept]  queryConfigFile:[[Utils sharedInstance] accessTokenObject].accessToken config:[[Utils sharedInstance] backendConfig]  andCurrentVersion:version completion:completionConfig];
 }
 
 #pragma mark - PickerViewDelegate methods
@@ -723,7 +723,7 @@ NSLog(@"version:%@",
     if (self.transaction && self.transaction.uniqueId.length >0 && self.transaction.reversible)
     {
         [self.accept requestOperationOnPaymentWithID:self.transaction.uniqueId
-                                      andAccessToken:[[Utils sharedInstance] accessToken]
+                                      andAccessToken:[[Utils sharedInstance] accessTokenObject].accessToken
                                               config:[[Utils sharedInstance] backendConfig]
                                            operation:AcceptOperationOnPaymentCapture
                              paymentUpdateParameters:nil //this is used for sending receipt through email, phone number, etc.
@@ -783,7 +783,7 @@ NSLog(@"version:%@",
         self.infolbl.text = @"Waiting for device...";
         return; //we reject the payment here. There will be a notification calling startPayment after timer is done.
     }
-    else if ([Utils sharedInstance].accessToken.length == 0)
+    else if ([Utils sharedInstance].accessTokenObject.accessToken.length == 0)
     {
         [Utils showAlertWithTitle:@"Error" andMessage:@"Not token found, please login"];
         return;
@@ -841,7 +841,7 @@ NSLog(@"version:%@",
             }
             else{
                 
-                [weakSelf performSelectorOnMainThread:@selector(paymentDone:) withObject:transaction waitUntilDone:NO];
+                [weakSelf performSelectorOnMainThread:@selector(confirmSignature) withObject:transaction waitUntilDone:NO];
                 //            [weakSelf paymentSuccess:transaction];
             }
         }
@@ -909,7 +909,7 @@ NSLog(@"version:%@",
     //Preparing payment configuration
     AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
     paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
-    paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+    paymentConfig.accessToken = [Utils sharedInstance].accessTokenObject.accessToken;
     paymentConfig.vendorUUID = [NSString string];
     paymentConfig.eaaSerialNumber = [NSString string];
     paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
@@ -991,7 +991,7 @@ NSLog(@"version:%@",
     //Preparing payment configuration
     AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
     paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
-    paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+    paymentConfig.accessToken = [Utils sharedInstance].accessTokenObject.accessToken;
     paymentConfig.vendorUUID = vendorUUID;
     paymentConfig.eaaSerialNumber = terminalEAASerialNumber;
     paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
@@ -1012,6 +1012,9 @@ NSLog(@"version:%@",
              chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
     
     [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+                                         //add custom fields if required
+    basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+    
     paymentConfig.basket = basket;
     
     //We execute the payment
@@ -1033,7 +1036,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     //Preparing payment configuration
     AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
     paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
-    paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+    paymentConfig.accessToken = [Utils sharedInstance].accessTokenObject.accessToken;
     paymentConfig.vendorUUID = vendorUUID;
     paymentConfig.eaaSerialNumber = terminalEAASerialNumber;
     paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
@@ -1267,6 +1270,14 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     if(self.transaction.capturable){
         [self.captureB setEnabled:YES];
     }
+}
+
+-(void)confirmSignature
+{
+    NSLog(@">>> PaymentViewController - confirmSignature");
+    [Utils showAlertWithTitle:@"Confirm" andMessage:@"Please confirm the signature on the terminal"];
+    
+
 }
 
 -(void)paymentProgress:(AcceptStateUpdate)update
@@ -1623,7 +1634,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     if (self.transaction && self.transaction.uniqueId.length >0 && self.transaction.reversible)
     {
         [self.accept requestOperationOnPaymentWithID:self.transaction.uniqueId
-                                      andAccessToken:[[Utils sharedInstance] accessToken]
+                                      andAccessToken:[[Utils sharedInstance] accessTokenObject].accessToken
                                               config:[[Utils sharedInstance] backendConfig]
                                            operation:AcceptOperationOnPaymentReverse
                              paymentUpdateParameters:nil //this is used for sending receipt through email, phone number, etc.
@@ -1661,7 +1672,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
         
         AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
         paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
-        paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+        paymentConfig.accessToken = [Utils sharedInstance].accessTokenObject.accessToken;
         paymentConfig.vendorUUID = iSelectedVendorUUID;
         paymentConfig.eaaSerialNumber = terminal.eaaSerialNumber;
         paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
@@ -1696,7 +1707,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             else //update requires means the newest version on backend is different from your current.
             {
                 [weakSelf.accept updateTerminalFirmwareForVendor:iSelectedVendor
-                                                        andToken:[[Utils sharedInstance] accessToken]
+                                                        andToken:[[Utils sharedInstance] accessTokenObject].accessToken
                                                        andConfig:[[Utils sharedInstance] backendConfig]
                                                      andFirmware:firmware
                                                       completion:completionAlertUI];
@@ -1820,7 +1831,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
         //Preparing payment configuration
         AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
         paymentConfig.backendConfig = [Utils sharedInstance].backendConfig;
-        paymentConfig.accessToken = [Utils sharedInstance].accessToken;
+        paymentConfig.accessToken = [Utils sharedInstance].accessTokenObject.accessToken;
         paymentConfig.vendorUUID = [NSString string];
         paymentConfig.eaaSerialNumber = [NSString string];
         paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment

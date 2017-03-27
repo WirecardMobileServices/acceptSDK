@@ -28,6 +28,8 @@
 @property (nonatomic, strong) NSNumber * netTaxation;
 /// Discount
 @property (nonatomic, strong) NSDecimalNumber * discount;
+/// Additional information linked to this payment
+@property (nonatomic,strong) NSDictionary *customFields;
 
 /**
  *  @brief Calculate the total for the basket

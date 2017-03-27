@@ -5,10 +5,11 @@
 //  Copyright (c) 2015 Wirecard GmbH. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "ZipArchive.h"
-#ifdef ACCEPT_SDK_SOURCE_AVAILABLE
+
+#if ACCEPT_SDK_SOURCE_AVAILABLE == 1
     #import <Accept/Accept.h>
 #else
     #import <acceptSDK/Accept.h>
@@ -16,9 +17,9 @@
 
 #import "Utils.h"
 
-#define testUsername @"YOUR_USERNAME"
-#define testPassword @"YOUR_PASSWORD"
-#define MANUAL_TESTS  NO
+#define testUsername @"YOURUSERNAME"
+#define testPassword @"YOURPASSWORD"
+#define MANUAL_TESTS  NO //set to YES if you want to test terminal communication and you have terminal on hand
 
 @interface Accept_DemoTests : XCTestCase
 @property (nonatomic, strong) Accept *accept;
@@ -334,6 +335,8 @@
     vendor.displayName = @"Spire";
     vendor.uuid = @"PosMateExtension";
     
+    __block BOOL paymentOK = NO;
+    
     void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
         retToken = tokenObj;
         retErr = error;
@@ -351,6 +354,7 @@
                  {
                      if (error || !transaction)
                      {
+                         paymentOK = NO;
                          NSLog(@"Payment failure:%@",error);
                          
                      }
@@ -358,13 +362,15 @@
                      {
                          if ([transaction.state isEqualToString:@"approved"]|| [transaction.state isEqualToString:@"authorized"]) {
                           NSLog(@"Success");
-                         
+                           paymentOK = YES;
                          }
                          else{
+                             paymentOK = NO;
                               NSLog(@"Payment failure:%@",transaction.technicalMessage);
                          }
                          
                      }
+                     [expectation fulfill];
                  };
                  
                  void(^progress)(AcceptStateUpdate) = ^(AcceptStateUpdate update)
@@ -426,6 +432,9 @@
                                                                    //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
                                                                    //basket.lat, basket.lng
                  
+                 //add custom fields if required
+                 basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+                 
                  //Adding the payment item to the basket
                  AcceptBasketItem *basketItem =
                  [self addBasketItem:1 //This is the number of items. We could have more than one with the same price
@@ -436,6 +445,7 @@
                  
                  [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
                  paymentConfig.basket = basket;
+                 paymentConfig.accessToken = retToken.accessToken;
                  
                  //We execute the payment
                  [self.accept startPay:paymentConfig completion:completion progress:progress signature:signature signatureVerification:signatureVerification appSelection:appSelection];
@@ -456,102 +466,14 @@
     
     [self.accept requestAccessToken:testUsername  password:testPassword config:nil completion:completion];
     
-    [self waitForExpectationsWithTimeout:180 handler:nil];
-    
-    BOOL updateRunOK = updateStatus == AcceptConfigFilesStatusSuccess || updateStatus ==AcceptConfigFilesStatusUnnecessary;
+    [self waitForExpectationsWithTimeout:280 handler:nil];
     
     
     
-    XCTAssertTrue(updateRunOK,
-                  @"should return access token");
+    XCTAssertTrue(paymentOK,
+                  @"Error occured");
     
     
-}
-
--(void)testZip{
-    
-    //test zip
-    NSDictionary *dict1 = @{@"test1":@"this1"};
-
-    NSString *strDir  = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    [dict1 writeToFile:[strDir stringByAppendingPathComponent:@"test-zip1.plist"] atomically:YES];
-
-    NSDictionary *dict2 = @{@"test2":@"this2"};
-    [dict2 writeToFile:[strDir stringByAppendingPathComponent:@"test-zip2.plist"] atomically:YES];
-
-    NSArray *arrFiles = @[[strDir stringByAppendingPathComponent:@"test-zip1.plist"],[strDir stringByAppendingPathComponent:@"test-zip2.plist"]];
-
-
-    [[NSFileManager defaultManager] createDirectoryAtPath:[strDir stringByAppendingPathComponent:@"testZip"] withIntermediateDirectories:YES attributes:nil error:nil];
-
-    ZipArchive *zipArchive = [[ZipArchive alloc] init];
-    
-    if ([zipArchive CreateZipFile2:[strDir stringByAppendingPathComponent:@"test.zip"]]) {
-        
-        for (NSString *filePath in arrFiles) {
-
-            if (![zipArchive addFileToZip:filePath newname:[filePath lastPathComponent] ]) {
-                [zipArchive CloseZipFile2];
-                XCTAssert(YES , @"Failed to add file to the archive");
-
-                
-            };
-        }
-        
-    }
-    else{
-        XCTAssert(YES , @"Failed to create the archive");
-        
-    }
-    
-    if (![zipArchive CloseZipFile2]) {
-        XCTAssert(YES , @"Failed to close the archive");
-    }
-    
-    ZipArchive *zipArchive1 = [[ZipArchive alloc] init];
-    if (![zipArchive1 UnzipOpenFile: [strDir stringByAppendingPathComponent:@"test.zip"]]){
-        XCTAssert(YES , @"ZipArchive cannot open zipped file.");
-    }
-    if (![zipArchive1 UnzipFileTo:[strDir stringByAppendingPathComponent:@"testZip"] overWrite:YES]){
-            XCTAssert(YES , @"ZipArchive cannot unzip zipped file.");
-
-    };
-
-    if(![zipArchive1 UnzipCloseFile]){
-        XCTAssert(YES , @"ZipArchive failed to close the zip file.");
-    }
-    
-    NSDictionary *dictUnzipped1 = [[NSDictionary alloc] initWithContentsOfFile:[[strDir stringByAppendingPathComponent:@"testZip"] stringByAppendingPathComponent:@"test-zip1.plist"]];
-
-    NSDictionary *dictUnzipped2 = [[NSDictionary alloc] initWithContentsOfFile:[[strDir stringByAppendingPathComponent:@"testZip"] stringByAppendingPathComponent:@"test-zip2.plist"]];
-    
-    BOOL mismatchDict1 = YES;
-
-    for (NSString *key in [dict1 allKeys]) {
-        if (![[dictUnzipped1 valueForKey:key] isEqualToString:[dict1 valueForKey:key]]) {
-            mismatchDict1 = YES;
-            break;
-        }
-        else{
-            mismatchDict1 = NO;
-        }
-    }
-
-    BOOL mismatchDict2 = YES;
-
-    for (NSString *key in [dict2 allKeys]) {
-        if (![[dictUnzipped2 valueForKey:key] isEqualToString:[dict2 valueForKey:key]]) {
-            mismatchDict2 = YES;
-            break;
-        }
-        else{
-            mismatchDict2 = NO;
-        }
-    }
-    
-    XCTAssert(!mismatchDict1 || !mismatchDict2 , @"Files are not identical after zip and unzip.");
-    
-
 }
 
 

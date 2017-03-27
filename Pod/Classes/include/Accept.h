@@ -153,6 +153,7 @@ extern NSString * const AcceptErrorDomain;
 @property (nonatomic, strong,nullable) NSString * alipayConsumerId;
 /// Transaction type
 @property (nonatomic) AcceptTransactionType transactionType;
+
 @end
 
 /**
@@ -575,5 +576,26 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
 - (void) connectBarcodeScanner:(AcceptPrinterConfig*)config
                     completion:(void (^)(BOOL, NSError*))completion
                andDataReceived:(void (^)(NSData*))barcodeDataReceived;
+
+/**
+ *  @brief Start the printing flow
+ *  @param config Instance needed to use the printer
+ *  @param completion Block that will receive the success as a boolean and an error if it exists
+ *  @param progress Block with the progress status
+ *  @return
+ **/
+- (void) startPrint:(AcceptPrinterConfig*)config
+         completion:(void (^)(BOOL, NSError*))completion
+           progress:(void (^)(AcceptPrinterStateUpdate))progress;
+
+/**
+ *  @brief Generate DEP report on demand
+ *  @param accessToken access token
+ *  @param config Instance needed to use backend services
+ *  @param completion Block that will receive the YES if success or NO and an Error in the case of error producing the DEP report
+ **/
+- (void) requestDEPreport:(NSString*)accessToken
+                   config:(AcceptDataServiceConfig*)config
+               completion:(void (^)(BOOL, NSError*))completion;
 
 @end

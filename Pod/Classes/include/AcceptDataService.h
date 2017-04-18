@@ -203,6 +203,16 @@
 - (NSArray*) requestTransactions:(NSString*)accessToken query:(AcceptTransactionsQuery*)query error:(NSError**)error;
 
 /**
+ *  @brief Get transaction
+ *  @param accessToken access token
+ *  @param uniqueId Transaction unique Id
+ *  @param error return error
+ **/
+- (AcceptTransaction*) getTransaction:(NSString*)accessToken
+                             uniqueId:(NSString*)uniqueId
+                                error:(NSError**)error;
+
+/**
  *  @brief Get transaction statistics
  *  @param accessToken access token
  *  @param from From date

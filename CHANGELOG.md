@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.199] - 2017-04-18
+### Fixed
+- Double completion in updateTerminalFirmware
+### Added
+- ATrust functionality for Austria
+ 
 ## [1.6.198] - 2017-03-27
 ### Added
 - SSL certificates for backends

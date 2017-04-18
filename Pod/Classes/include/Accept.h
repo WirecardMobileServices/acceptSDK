@@ -286,7 +286,7 @@ typedef void (^AcceptSignatureVerificationResultCallback)(AcceptSignatureVerific
                                 andToken:(NSString*)token
                                andConfig:(AcceptDataServiceConfig*)config
                              andFirmware:(AcceptTerminalFirmware *)firmware
-                    completion:(void (^)(NSInteger, NSError*))completionAlertUI; __deprecated_msg("Use updateTerminalFirmware:vendor:token:config:firmware:progess:completion");
+                    completion:(void (^)(NSInteger, NSError*))completionAlertUI; __deprecated_msg("WARNING: Use updateTerminalFirmware:vendor:token:config:firmware:progess:completion instead");
 
 /**
  *  @brief Update terminal's firmware . Chip compatible terminals receive firmware files from backend; this function will decide if the updates are needed according current version

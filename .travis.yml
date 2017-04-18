@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode8.2.1
+osx_image: xcode8.3
 language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
@@ -16,5 +16,5 @@ install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - ruby -rsimctl -e 'SimCtl.warmup("iPhone 5", "iOS 9.3", 60)'
 script:
-- set -o pipefail && travis_retry xcodebuild test -workspace Example/acceptSDK.xcworkspace -scheme AcceptDemo -destination 'platform=iOS Simulator,name=iPhone 5,OS=9.3' ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- set -o pipefail && xcodebuild test -workspace Example/acceptSDK.xcworkspace -scheme AcceptDemo -destination 'platform=iOS Simulator,name=iPhone 5,OS=9.3' ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - pod lib lint --quick

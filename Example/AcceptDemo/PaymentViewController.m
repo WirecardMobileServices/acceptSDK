@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.amountTf.inputAccessoryView = self.keyboardToolbar;
     self.amountTf.keyboardType = UIKeyboardTypeNumberPad;
     self.printerTf.inputAccessoryView = self.keyboardToolbar;
@@ -72,8 +72,8 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
     self.currencyTf.inputAccessoryView = self.keyboardToolbar;
     self.currencyTf.inputView = self.pickerCurrency;
     self.accept = [[Utils sharedInstance] accept];
-NSLog(@"version:%@",
-      [self.accept version]);
+    NSLog(@"version:%@",
+          [self.accept version]);
     
     [self populateVendorsList];
     [self populatePrinterVendors];
@@ -105,7 +105,7 @@ NSLog(@"version:%@",
     [self.tokenlbl setText:([[Utils sharedInstance] tokenIsValid])? @"Valid token" : @"Token expired or empty, please login"];
     [self.revertB setEnabled:(self.transaction != nil)];
     [self.captureB setEnabled:(self.transaction != nil)];
-
+    
 }
 
 - (void)applicationEnteredForeground:(NSNotification *)notification
@@ -217,7 +217,7 @@ NSLog(@"version:%@",
 
 -(void)handleError:(NSError*) error
 {
-    NSLog(@">>> PaymentViewController - handleError: %ld", (error)? error.code : -12345);
+    NSLog(@">>> PaymentViewController - handleError: %ld", (long)((error)? error.code : -12345));
     NSString *message;
     switch (error.code)
     {
@@ -332,7 +332,25 @@ NSLog(@"version:%@",
                              
                          };
                          
-                         [[[Utils sharedInstance] accept]  updateTerminalsForVendor:iSelectedVendor andToken:[[Utils sharedInstance] accessTokenObject].accessToken  andConfig:[[Utils sharedInstance] backendConfig]  completion:completionAlertUI];
+                         void (^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress)
+                         {
+                             [self.infolbl setText:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
+                         };
+                         
+                         AcceptTerminalVendor *currentVendor;
+                         for(AcceptTerminalVendor *vendor in self.arrVendors)
+                         {
+                             if ([vendor.uuid isEqualToString:iSelectedVendor])
+                             {
+                                 currentVendor = vendor;
+                             }
+                         }
+                         
+                         [[[Utils sharedInstance] accept] updateTerminal:discoveredTerminals.firstObject
+                                                                  vendor:currentVendor
+                                                                   token:[[Utils sharedInstance] accessTokenObject].accessToken
+                                                                  config:[[Utils sharedInstance] backendConfig]
+                                                                progress:progress completion:completionAlertUI];
                      }
                  }];
             }
@@ -733,7 +751,7 @@ NSLog(@"version:%@",
     {
         [Utils showAlertWithTitle:@"Error" andMessage:@"No transaction to reverse"];
     }
-
+    
 }
 
 -(IBAction)opTapPay:(id)sender
@@ -743,7 +761,7 @@ NSLog(@"version:%@",
     
     if ([[Utils sharedInstance] tokenExpired])
     {
-       [Utils showAlertWithTitle:@"Error" andMessage:@"The token expired, please login again"];
+        [Utils showAlertWithTitle:@"Error" andMessage:@"The token expired, please login again"];
         return;
     }
     
@@ -776,7 +794,7 @@ NSLog(@"version:%@",
 
 -(void)payWithCard:(AcceptTransactionType) transactionType
 {
-
+    
     NSLog(@">>> PaymentViewController - startPayment");
     if ([[Utils sharedInstance] isPaymentTimerOngoing]) //There was a swipe timeout, device will need some time before being able to retry the payment.
     {
@@ -872,7 +890,7 @@ NSLog(@"version:%@",
          else if (terminal)
          {
              [self doPaymentThroughVendor:iSelectedVendorUUID
-                         vendorTerminalEAASerialNumber:terminal.eaaSerialNumber
+            vendorTerminalEAASerialNumber:terminal.eaaSerialNumber
                                  currency:iSelectedCurrency
                           transactionType:transactionType
                                completion:completion
@@ -882,7 +900,7 @@ NSLog(@"version:%@",
                              appSelection:appSelection];
          }
      }];
-
+    
 }
 
 -(void)payWithCash
@@ -933,7 +951,7 @@ NSLog(@"version:%@",
     paymentConfig.basket = basket;
     
     [self.accept startCashPayment:paymentConfig completion:completion progress:progress];
-
+    
 }
 
 -(void)payWithAlipay
@@ -977,14 +995,14 @@ NSLog(@"version:%@",
 }
 
 -(void)doPaymentThroughVendor:(NSString *)vendorUUID
-    vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
-    currency:(NSString *)currency
-    transactionType:(AcceptTransactionType) transactionType
-    completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
-    progress:(void (^)(AcceptStateUpdate))progress
-    signature:(void (^)(AcceptSignatureRequest * ))signature
-    signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback, NSError*))signatureVerification
-    appSelection:(void (^)(AcceptAppSelectionRequest * ))appSelection
+vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
+                     currency:(NSString *)currency
+              transactionType:(AcceptTransactionType) transactionType
+                   completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
+                     progress:(void (^)(AcceptStateUpdate))progress
+                    signature:(void (^)(AcceptSignatureRequest * ))signature
+        signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback, NSError*))signatureVerification
+                 appSelection:(void (^)(AcceptAppSelectionRequest * ))appSelection
 {
     NSLog(@">>> PaymentViewController - doPaymentThroughVendor");
     
@@ -1012,24 +1030,24 @@ NSLog(@"version:%@",
              chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
     
     [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
-                                         //add custom fields if required
+    //add custom fields if required
     basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
     
     paymentConfig.basket = basket;
     
     //We execute the payment
     [self.accept startPay:paymentConfig completion:completion progress:progress signature:signature signatureVerification:signatureVerification appSelection:appSelection];
-
+    
 }
 
 -(void)doAutorizeTransaction:(NSString *)vendorUUID
 vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
-                     currency:(NSString *)currency
-                   completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
-                     progress:(void (^)(AcceptStateUpdate))progress
-                    signature:(void (^)(AcceptSignatureRequest * ))signature
-        signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback, NSError*))signatureVerification
-                 appSelection:(void (^)(AcceptAppSelectionRequest * ))appSelection
+                    currency:(NSString *)currency
+                  completion:(void (^)(AcceptTransaction *transaction, NSError *error))completion
+                    progress:(void (^)(AcceptStateUpdate))progress
+                   signature:(void (^)(AcceptSignatureRequest * ))signature
+       signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationResultCallback, NSError*))signatureVerification
+                appSelection:(void (^)(AcceptAppSelectionRequest * ))appSelection
 {
     NSLog(@">>> PaymentViewController - doPaymentThroughVendor");
     
@@ -1097,7 +1115,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     NSLog(@">>> PaymentViewController - paymentFailure");
     
     AcceptPayErrorCode errorCode =  (AcceptPayErrorCode) error.code;
- 
+    
     if (self.btTimer)
     {
         [self.btTimer invalidate];
@@ -1175,7 +1193,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                 }
                 else
                 {
-                   errorMessage = [NSString stringWithFormat:@"Data processing error:\n%@",underlyingErrorStr];
+                    errorMessage = [NSString stringWithFormat:@"Data processing error:\n%@",underlyingErrorStr];
                 }
             }
                 break;
@@ -1194,7 +1212,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             case AcceptTransactionNotApprovedErrorCode:
                 if ([Utils contains:[underlyingErrorStr uppercaseString] substring:@"PIN entered incorrectly too often"])
                 {
-                   errorMessage = @"PIN blocked";
+                    errorMessage = @"PIN blocked";
                 }
                 else if ([Utils contains:[underlyingErrorStr uppercaseString] substring:@"PIN"])
                 {
@@ -1202,7 +1220,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                 }
                 else
                 {
-                   errorMessage = [NSString stringWithFormat:@"Transaction Rejected:\n%@", underlyingErrorStr];
+                    errorMessage = [NSString stringWithFormat:@"Transaction Rejected:\n%@", underlyingErrorStr];
                 }
                 break;
             case AcceptSignatureRequestErrorCode:
@@ -1240,19 +1258,19 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                 }
                 else
                 {
-                    errorMessage = [NSString stringWithFormat:@"Unknown Payment Error:%ld",errorCode];
+                    errorMessage = [NSString stringWithFormat:@"Unknown Payment Error:%ld",(long)errorCode];
                 }
             }
                 break;
         }
         
-    NSLog(@"Error message - %@", errorMessage);
+        NSLog(@"Error message - %@", errorMessage);
         
-    [Utils showAlertWithTitle:@"Error" andMessage:errorMessage];
-            self.infolbl.text = errorMessage;
+        [Utils showAlertWithTitle:@"Error" andMessage:errorMessage];
+        self.infolbl.text = errorMessage;
         
     }
-
+    
 }
 
 -(void)paymentDone:(AcceptTransaction *)transaction
@@ -1265,7 +1283,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     else{
         [Utils showAlertWithTitle:@"Failure" andMessage:[NSString stringWithFormat:@"%@:%@",@"The payment was declined",transaction.technicalMessage]];
     }
-
+    
     [self.revertB setEnabled:YES];
     if(self.transaction.capturable){
         [self.captureB setEnabled:YES];
@@ -1277,7 +1295,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     NSLog(@">>> PaymentViewController - confirmSignature");
     [Utils showAlertWithTitle:@"Confirm" andMessage:@"Please confirm the signature on the terminal"];
     
-
+    
 }
 
 -(void)paymentProgress:(AcceptStateUpdate)update
@@ -1338,7 +1356,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             progressMessage = @"Please insert the card";
             break;
         case AcceptStateCheckingCard:
-             progressMessage = @"Card is being checked, please wait";
+            progressMessage = @"Card is being checked, please wait";
             break;
         case AcceptStateRemoveCard:
             progressMessage = @"Please remove the card";
@@ -1357,7 +1375,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             progressMessage = @"Please write the PIN";
             break;
         case AcceptStateCorrectPIN:
-              progressMessage = @"PIN is correct";
+            progressMessage = @"PIN is correct";
             break;
         case AcceptStatePINEntryLastTry:
             progressMessage = @"Be careful writing your PIN now! This is your last chance before the card is blocked";
@@ -1369,7 +1387,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             //Do nothing in Demo App, but in a more complex UI, the merchant will need to see the signature in another view for being able to confim when some device (ie Posmate) requires it
             break;
         default:
-            progressMessage = [NSString stringWithFormat:@"Unknown Payment Progress state :%ld",update];
+            progressMessage = [NSString stringWithFormat:@"Unknown Payment Progress state :%ld",(long)update];
             break;
     }
     
@@ -1430,7 +1448,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
 -(IBAction)onPrint:(id)sender
 {
     NSLog(@">>> PaymentViewController - requestAppSelection");
-     __weak PaymentViewController *weakSelf = self;
+    __weak PaymentViewController *weakSelf = self;
     
     void (^completion)(BOOL, NSError*) = ^(BOOL success, NSError *error)
     {
@@ -1463,7 +1481,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     {
         printerConfig.receipt = [self getAcceptReceipt];
     }
-
+    
     [self.accept startPrint:printerConfig completion:completion progress:progress];
     
 }
@@ -1490,7 +1508,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             message = @"Printing done";
             break;
         default:
-            message = [NSString stringWithFormat:@"Unknown Print Progress state :%ld",update];
+            message = [NSString stringWithFormat:@"Unknown Print Progress state :%ld",(long)update];
             break;
     }
     
@@ -1536,7 +1554,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                 break;
             default:
             {
-               errorMessage = [NSString stringWithFormat:@"Unknown Print Error:%ld",errorCode];
+                errorMessage = [NSString stringWithFormat:@"Unknown Print Error:%ld",(long)errorCode];
                 
             }
                 break;
@@ -1627,7 +1645,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             title = @"Error";
             message = @"Online data processing error";
         }
-
+        
         [Utils showAlertWithTitle:title andMessage:message];
     };
     
@@ -1650,6 +1668,15 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
 {
     __weak PaymentViewController *weakSelf = self;
     NSString *iSelectedVendor = [[Utils sharedInstance] getSelectedVendor];
+    
+    AcceptTerminalVendor *currentVendor;
+    for(AcceptTerminalVendor *vendor in self.arrVendors)
+    {
+        if ([vendor.uuid isEqualToString:iSelectedVendor])
+        {
+            currentVendor = vendor;
+        }
+    }
     if ([iSelectedVendor rangeOfString:AcceptSpireVendorUUID].location == NSNotFound)
     {
         [Utils showAlertWithTitle:@"Error" andMessage:@"Selected terminal does not support firmware updates."];
@@ -1685,8 +1712,13 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^
                  {
                      //An error of kind "Terminal cancelled file download" could happen because your terminal has a wrong image, or the firmware is badly named in backend (i.e. a production labelled as test firmware or viceversa). If problem persist and is reproducible in other devices, please ask terminal support for help.
-                     [Utils showAlertWithTitle:@"Operation" andMessage:[NSString stringWithFormat: @"Alert code: %ld and error %@", alertCode, error.description]];
+                     [Utils showAlertWithTitle:@"Operation" andMessage:[NSString stringWithFormat: @"Alert code: %ld and error %@", (long)alertCode, error.description]];
                  }];
+            };
+            
+            void (^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress)
+            {
+                [self.infolbl setText:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
             };
             
             if (error)
@@ -1700,17 +1732,17 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^
                  {
-                      [Utils showAlertWithTitle:@"Info" andMessage:@"No firmware update required"];
+                     [Utils showAlertWithTitle:@"Info" andMessage:@"No firmware update required"];
                  }];
                 
             }
             else //update requires means the newest version on backend is different from your current.
             {
-                [weakSelf.accept updateTerminalFirmwareForVendor:iSelectedVendor
-                                                        andToken:[[Utils sharedInstance] accessTokenObject].accessToken
-                                                       andConfig:[[Utils sharedInstance] backendConfig]
-                                                     andFirmware:firmware
-                                                      completion:completionAlertUI];
+                [weakSelf.accept updateTerminalFirmware:terminal
+                                                 vendor:currentVendor
+                                                  token:[[Utils sharedInstance] accessTokenObject].accessToken
+                                                 config:[[Utils sharedInstance] backendConfig]
+                                               progress:progress completion:completionAlertUI];
                 
                 //We reset the config files log in the iOS device as firmware update cleans it up on the terminal as well
                 NSMutableDictionary *terminalVersionDict = [[NSMutableDictionary alloc] init];
@@ -1786,7 +1818,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     
     void (^completion)(BOOL, NSError*) = ^(BOOL success, NSError *error)
     {
-
+        
     };
     
     AcceptPrinterConfig *printerConfig = [[AcceptPrinterConfig alloc] init];
@@ -1835,7 +1867,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
         paymentConfig.vendorUUID = [NSString string];
         paymentConfig.eaaSerialNumber = [NSString string];
         paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
-       // paymentConfig.alipayConsumerId = @"286006334965846411" ; //numeric data read from the Alipay barcode
+        // paymentConfig.alipayConsumerId = @"286006334965846411" ; //numeric data read from the Alipay barcode
         paymentConfig.alipayConsumerId = barcodeData; // real bar code data
         //Initializing the basket
         AcceptBasket *basket = [[AcceptBasket alloc] init];

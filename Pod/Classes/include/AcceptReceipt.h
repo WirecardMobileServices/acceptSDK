@@ -135,4 +135,10 @@
 @property (nonatomic,strong) NSString *localisedDiscountHeader;
 /// Formatted discount
 @property (nonatomic,strong) NSString *discount;
+/// ATrust ID
+@property (nonatomic, strong) NSString* atrust_id;
+/// ATrust Cashier ID
+@property (nonatomic, strong) NSString* cashier_id;
+/// ATrust Cashier ID localized header
+@property (nonatomic, strong) NSString* localised_cashier_id;
 @end

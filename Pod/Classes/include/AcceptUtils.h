@@ -101,6 +101,12 @@
  **/
 + (BOOL) shouldAskForPINOnlineCheck:(NSString*)bin serviceCode:(NSString*)serviceCode;
 /**
+ *  @brief Check if card has chip pased on the service code
+ *  @param serviceCode Merchant service code
+ *  @return YES if card has contact chip
+ **/
++ (BOOL) hasChipBasedOn:(NSString*)serviceCode;
+/**
  *  @brief Check if the BIN is Amex scheme
  *  @param bin Card BIN
  *  @return YES if BIN is Amex scheme

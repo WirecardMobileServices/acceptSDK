@@ -40,7 +40,8 @@ typedef NS_ENUM(NSInteger, AcceptStateUpdate ) {
     AcceptStateGratuityEntryStarted,
     AcceptStateApplicationSelectionStarted,
     AcceptStateApplicationSelectionFinished,
-    AcceptStateFollowInstructionsOnConsumerDevice //on device CVM for contactless
+    AcceptStateFollowInstructionsOnConsumerDevice, //on device CVM for contactless
+    AcceptStateOnlineATrustWait
 };
 
 /**

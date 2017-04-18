@@ -372,6 +372,14 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 @property (nonatomic, strong) NSDictionary* customFields;
 /// Discount
 @property (nonatomic) NSDecimalNumber *discount;
+/// ATrust ID
+@property (nonatomic, strong) NSString* atrust_id;
+/// ATrust qr payload
+@property (nonatomic, strong) NSString* qr_payload;
+/// ATrust Cashier ID
+@property (nonatomic, strong) NSString* cashier_id;
+/// Receipt Ready to print - there is a delay in the case of ATrust transactions, if false then query the transaction details again
+@property (nonatomic) BOOL receipt_ready;
 /**
  * @discussion Get the receipt data from this transaction
  */

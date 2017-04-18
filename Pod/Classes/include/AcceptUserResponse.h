@@ -149,6 +149,11 @@
 @property (nonatomic) BOOL rksv_ready;
 /// RKSV Initiated - Austrian cash management
 @property (nonatomic) BOOL rksv_initiated;
+/// How many milliseconds to wait till the initial transaction detail request to get the receipt data - Atrust has a delay in responding
+@property (nonatomic) NSUInteger wait_for_receipt_ms;
+/// How many milliseconds to wait till the initial transaction detail request
+@property (nonatomic) NSUInteger refresh_receipt_freq_ms;
+
 @end
 
 /**

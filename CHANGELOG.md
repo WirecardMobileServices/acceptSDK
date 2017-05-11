@@ -1,12 +1,17 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
-## [1.6.199] - 2017-04-18
+## [1.6.200] - 2017-05-11
 ### Fixed
-- Double completion in updateTerminalFirmware
+- Proper handling of the terminals in the case more than one terminal of the same type is paired and being used
+ 
+## [1.6.199] - 2017-04-18
 ### Added
 - ATrust functionality for Austria
- 
+
+### Fixed
+- Double completion in updateTerminalFirmware
+
 ## [1.6.198] - 2017-03-27
 ### Added
 - SSL certificates for backends

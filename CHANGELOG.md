@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.202] - 2017-06-12
+### Fixed
+- Missing TID in the Contactless flow
+- Terminal configuration update - fix for B/T communication
+
 ## [1.6.200] - 2017-05-11
 ### Fixed
 - Proper handling of the terminals in the case more than one terminal of the same type is paired and being used

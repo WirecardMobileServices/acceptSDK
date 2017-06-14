@@ -824,6 +824,7 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
     
     void (^completion)(AcceptTransaction*, NSError*) = ^(AcceptTransaction *transaction, NSError *error)
     {
+        NSLog(@"%@",[[transaction getAcceptReceiptData] receiptDescription]);
         if (error || !transaction)
         {
             [weakSelf paymentFailure:error transaction:transaction];

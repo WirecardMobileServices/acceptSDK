@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.203] - 2017-06-14
+### Fixed
+- Receipt Description amounts
+
 ## [1.6.202] - 2017-06-12
 ### Fixed
 - Missing TID in the Contactless flow

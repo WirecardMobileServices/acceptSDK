@@ -17,8 +17,8 @@
 
 #import "Utils.h"
 
-#define testUsername @"YOURUSERNAME"
-#define testPassword @"YOURPASSWORD"
+#define testUsername @"rdt"
+#define testPassword @"rdtest123"
 #define MANUAL_TESTS  NO //set to YES if you want to test terminal communication and you have terminal on hand
 
 @interface Accept_DemoTests : XCTestCase
@@ -363,6 +363,7 @@
                          if ([transaction.state isEqualToString:@"approved"]|| [transaction.state isEqualToString:@"authorized"]) {
                           NSLog(@"Success");
                            paymentOK = YES;
+                             NSLog(@"%@", [[transaction getAcceptReceiptData] receiptDescription]);
                          }
                          else{
                              paymentOK = NO;

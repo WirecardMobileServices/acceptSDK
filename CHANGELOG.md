@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.204] - 2017-06-16
+### Fixed
+- Cancel Payment - pay completion crash 
+
 ## [1.6.203] - 2017-06-14
 ### Fixed
 - Receipt Description amounts

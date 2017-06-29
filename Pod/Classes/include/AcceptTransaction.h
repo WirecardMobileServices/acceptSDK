@@ -236,6 +236,28 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 -(NSString *)receiptDescription;
 @end
 
+
+/**
+ *  @class AcceptSubMerchant
+ *  @discussion Sub Merchant data
+ **/
+@interface AcceptSubMerchant : NSObject
+/// Sub Merchant ID
+@property (nonatomic, strong) NSString  *subMerchantId;
+///
+@property (nonatomic, strong) NSString  *name;
+///
+@property (nonatomic, strong) NSString  *country;
+///
+@property (nonatomic, strong) NSString  *state;
+///
+@property (nonatomic, strong) NSString  *city;
+///
+@property (nonatomic, strong) NSString  *street;
+///
+@property (nonatomic, strong) NSString  *postalCode;
+@end
+
 /**
  *  @class AcceptTransaction
  *  @discussion Complete Payment item info
@@ -378,6 +400,9 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 @property (nonatomic, strong) NSString* qr_payload;
 /// ATrust Cashier ID
 @property (nonatomic, strong) NSString* cashier_id;
+/// Sub Merchant
+@property (nonatomic, strong) AcceptSubMerchant* subMerchant;
+
 /// Receipt Ready to print - there is a delay in the case of ATrust transactions, if false then query the transaction details again
 @property (nonatomic) BOOL receipt_ready;
 /**

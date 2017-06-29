@@ -1,9 +1,13 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.205] - 2017-06-29
+### Added
+- Payment Custom Data - Custom Fields and Sub Merchant
+
 ## [1.6.204] - 2017-06-16
 ### Fixed
-- Cancel Payment - pay completion crash 
+- Cancel Payment - pay completion crash
 
 ## [1.6.203] - 2017-06-14
 ### Fixed

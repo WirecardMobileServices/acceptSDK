@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AcceptTransaction.h"
 
 /**
  *  @class AcceptBasket
@@ -30,7 +31,8 @@
 @property (nonatomic, strong) NSDecimalNumber * discount;
 /// Additional information linked to this payment
 @property (nonatomic,strong) NSDictionary *customFields;
-
+/// Information about Sub Merchant
+@property (nonatomic,strong) AcceptSubMerchant *subMerchant;
 /**
  *  @brief Calculate the total for the basket
  *  @param handler Number handler efining decimal behaviour

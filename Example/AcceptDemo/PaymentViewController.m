@@ -949,6 +949,21 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
              chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
     
     [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+    
+    //add custom fields if required
+    basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+    
+    //add sub merchant data if required
+    AcceptSubMerchant *subMerchant = [AcceptSubMerchant new];
+    subMerchant.subMerchantId = @"1234567889";
+    subMerchant.name = @"MySubMerchant";
+    subMerchant.country = @"Germany";
+    subMerchant.state = @"";
+    subMerchant.city =@"Munich";
+    subMerchant.street = @"1 Circular";
+    subMerchant.postalCode = @"12345";
+    basket.subMerchant = subMerchant;
+    
     paymentConfig.basket = basket;
     
     [self.accept startCashPayment:paymentConfig completion:completion progress:progress];
@@ -1033,6 +1048,18 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
     //add custom fields if required
     basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+    
+    //add sub merchant data if required
+    AcceptSubMerchant *subMerchant = [AcceptSubMerchant new];
+    subMerchant.subMerchantId = @"1234567889";
+    subMerchant.name = @"MySubMerchant";
+    subMerchant.country = @"Germany";
+    subMerchant.state = @"";
+    subMerchant.city =@"Munich";
+    subMerchant.street = @"1 Circular";
+    subMerchant.postalCode = @"12345";
+
+    basket.subMerchant = subMerchant;
     
     paymentConfig.basket = basket;
     
@@ -1886,6 +1913,22 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
                  chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
         
         [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+        
+        
+        //add custom fields if required
+        basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+        
+        //add sub merchant data if required
+        AcceptSubMerchant *subMerchant = [AcceptSubMerchant new];
+        subMerchant.subMerchantId = @"1234567889";
+        subMerchant.name = @"MySubMerchant";
+        subMerchant.country = @"Germany";
+        subMerchant.state = @"";
+        subMerchant.city =@"Munich";
+        subMerchant.street = @"1 Circular";
+        subMerchant.postalCode = @"12345";
+        basket.subMerchant = subMerchant;
+        
         paymentConfig.basket = basket;
         
         [self.accept startAlipayPayment:paymentConfig completion:completion progress:progress];

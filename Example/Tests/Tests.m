@@ -17,8 +17,8 @@
 
 #import "Utils.h"
 
-#define testUsername @"rdt"
-#define testPassword @"rdtest123"
+#define testUsername @"yourTestUsername"
+#define testPassword @"yourTestPassword"
 #define MANUAL_TESTS  NO //set to YES if you want to test terminal communication and you have terminal on hand
 
 @interface Accept_DemoTests : XCTestCase
@@ -317,6 +317,123 @@
     
 }
 
+-(void)testCashPayment{
+    if (MANUAL_TESTS == NO) {
+        NSLog(@"Test to be run only in manual mode - with device attached and terminal paired");
+        XCTAssertTrue(YES,
+                      @"run only in manual mode");
+        return ;
+    }
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@"Cash Payment"];
+    __block AcceptAccessToken* retToken;
+    __block NSError* retErr;
+
+    __block BOOL paymentOK = NO;
+    
+    
+    void(^progress)(AcceptStateUpdate) = ^(AcceptStateUpdate update)
+    {
+        NSLog(@"Payment progress:%ld",(long)update);
+    };
+    
+    void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
+        retToken = tokenObj;
+        retErr = error;
+        
+        if (error)
+        {
+            [expectation fulfill];
+            NSLog(@"Error discovering terminals %@", error.description);
+            return;
+        }
+        
+        AcceptPaymentConfig* paymentConfig = [[AcceptPaymentConfig alloc] init];
+        
+        
+        paymentConfig.allowGratuity = NO; //Gratuity is an optional feature for the payment
+        paymentConfig.transactionType = AcceptTransactionTypePurchase;
+        //Initializing the basket
+        AcceptBasket *basket = [[AcceptBasket alloc] init];
+        basket.currencyAsISO4217Code = @"EUR";
+        basket.netTaxation = [NSNumber numberWithInt:1] ; //Set to 0 for tax inclusive
+                                                          //Note: Basket has the option for setting latitude and longitude, in case the need the location in the payment info
+                                                          //basket.lat, basket.lng
+        
+        //add custom fields if required
+        basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+        
+        //add SubMerchant data if required
+        AcceptSubMerchant *subMerchant = [AcceptSubMerchant new];
+        subMerchant.subMerchantId = @"1234567889";
+        subMerchant.name = @"MySubMerchant";
+        subMerchant.country = @"Germany";
+        subMerchant.state = @"";
+        subMerchant.city =@"Munich";
+        subMerchant.street = @"1 Circular";
+        subMerchant.postalCode = @"12345";
+        basket.subMerchant = subMerchant;
+        
+        //add Payment Engine details:
+        basket.peFunctionID = @"MyPEFunctionID";
+        basket.peJobID = @"MyPEJobID";
+        
+        //add Elasti Engine details:
+        basket.eeDescriptor = @"MyEEDescriptor";
+        basket.eeOrderNumber = @"MyEEOrderNumber";
+        
+        //Adding the payment item to the basket
+        AcceptBasketItem *basketItem =
+        [self addBasketItem:1 //This is the number of items. We could have more than one with the same price
+                     amount:[NSDecimalNumber decimalNumberWithString:@"1000"] //10 EUR
+                       note:@"Here we can add some description of the payment"
+                        tax:0 //value indicating the tax % (note: 7% is indicated by 700; 7 would be 0.07%)
+                 chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
+        
+        [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
+        paymentConfig.basket = basket;
+        paymentConfig.accessToken = retToken.accessToken;
+        
+        
+        [self.accept startCashPayment:paymentConfig completion:^(AcceptTransaction *transaction, NSError *paymentError) {
+            
+            if (paymentError || !transaction)
+            {
+                paymentOK = NO;
+                NSLog(@"Payment failure:%@",paymentError);
+                
+            }
+            else
+            {
+                if ([transaction.state isEqualToString:@"approved"]|| [transaction.state isEqualToString:@"authorized"]) {
+                    NSLog(@"Success");
+                    paymentOK = YES;
+                    NSLog(@"%@", [[transaction getAcceptReceiptData] receiptDescription]);
+                }
+                else{
+                    paymentOK = NO;
+                    NSLog(@"Payment failure:%@",transaction.technicalMessage);
+                }
+                
+            }
+            [expectation fulfill];
+
+            
+        } progress:progress];
+    };
+    
+
+    
+    
+    [self.accept requestAccessToken:testUsername  password:testPassword config:nil completion:completion];
+    
+    [self waitForExpectationsWithTimeout:280 handler:nil];
+    
+    
+    
+    XCTAssertTrue(paymentOK,
+                  @"Error occured");
+}
+
 - (void)testSpirePayment {
     
     if (MANUAL_TESTS == NO) {
@@ -336,6 +453,7 @@
     vendor.uuid = @"PosMateExtension";
     
     __block BOOL paymentOK = NO;
+
     
     void (^completion)(AcceptAccessToken*, NSError*) = ^(AcceptAccessToken* tokenObj, NSError* error) {
         retToken = tokenObj;
@@ -444,9 +562,30 @@
                                  tax:0 //value indicating the tax % (note: 7% is indicated by 700; 7 would be 0.07%)
                           chargeType:@"NONE"/*there are 4 types of charge: NONE, NORMAL, TIP and SERVICE_CHARGE*/];
                  
+                 //add SubMerchant data if required
+                 AcceptSubMerchant *subMerchant = [AcceptSubMerchant new];
+                 subMerchant.subMerchantId = @"1234567889";
+                 subMerchant.name = @"MySubMerchant";
+                 subMerchant.country = @"Germany";
+                 subMerchant.state = @"";
+                 subMerchant.city =@"Munich";
+                 subMerchant.street = @"1 Circular";
+                 subMerchant.postalCode = @"12345";
+                 basket.subMerchant = subMerchant;
+                 
+                 //add Payment Engine details:
+                 basket.peFunctionID = @"MyPEFunctionID";
+                 basket.peJobID = @"MyPEJobID";
+                 
+                 //add Elasti Engine details:
+                 basket.eeDescriptor = @"MyEEDescriptor";
+                 basket.eeOrderNumber = @"MyEEOrderNumber";
+                 basket.customFields = @{@"myCustomOrderID":@"customOrderID"};
+                 
                  [basket.items addObject:basketItem]; //Note that a basket could include many items on it repeating the precious lines for each payment item
                  paymentConfig.basket = basket;
                  paymentConfig.accessToken = retToken.accessToken;
+                 
                  
                  //We execute the payment
                  [self.accept startPay:paymentConfig completion:completion progress:progress signature:signature signatureVerification:signatureVerification appSelection:appSelection];
@@ -464,6 +603,8 @@
         
     };
     
+    
+
     
     [self.accept requestAccessToken:testUsername  password:testPassword config:nil completion:completion];
     

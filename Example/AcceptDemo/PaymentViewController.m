@@ -964,6 +964,14 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
     subMerchant.postalCode = @"12345";
     basket.subMerchant = subMerchant;
     
+    //add Payment Engine details:
+    basket.peFunctionID = @"MyPEFunctionID";
+    basket.peJobID = @"MyPEJobID";
+    
+    //add Elasti Engine details:
+    basket.eeDescriptor = @"MyEEDescriptor";
+    basket.eeOrderNumber = @"MyEEOrderNumber";
+    
     paymentConfig.basket = basket;
     
     [self.accept startCashPayment:paymentConfig completion:completion progress:progress];

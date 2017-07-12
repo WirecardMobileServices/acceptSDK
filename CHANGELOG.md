@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.206] - 2017-07-12
+### Added
+- Elastic Engine and Payment Engine custom attributes
+
 ## [1.6.205] - 2017-06-29
 ### Added
 - Payment Custom Data - Custom Fields and Sub Merchant

@@ -402,6 +402,14 @@ typedef NS_ENUM(NSInteger,AcceptTransactionType) {
 @property (nonatomic, strong) NSString* cashier_id;
 /// Sub Merchant
 @property (nonatomic, strong) AcceptSubMerchant* subMerchant;
+/// Payment Engine Function ID
+@property (nonatomic, strong) NSString * peFunctionID;
+/// Payment Engine Job ID
+@property (nonatomic, strong) NSString * peJobID;
+/// Elastic Engine Order Number
+@property (nonatomic, strong) NSString * eeOrderNumber;
+/// Elastic Engine Payment Descriptor
+@property (nonatomic, strong) NSString * eeDescriptor;
 
 /// Receipt Ready to print - there is a delay in the case of ATrust transactions, if false then query the transaction details again
 @property (nonatomic) BOOL receipt_ready;

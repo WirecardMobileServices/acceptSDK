@@ -33,6 +33,14 @@
 @property (nonatomic,strong) NSDictionary *customFields;
 /// Information about Sub Merchant
 @property (nonatomic,strong) AcceptSubMerchant *subMerchant;
+/// Payment Engine Function ID
+@property (nonatomic, strong) NSString * peFunctionID;
+/// Payment Engine Job ID
+@property (nonatomic, strong) NSString * peJobID;
+/// Elastic Engine Order Number
+@property (nonatomic, strong) NSString * eeOrderNumber;
+/// Elastic Engine Payment Descriptor
+@property (nonatomic, strong) NSString * eeDescriptor;
 /**
  *  @brief Calculate the total for the basket
  *  @param handler Number handler efining decimal behaviour

@@ -64,7 +64,7 @@
 		7E6B8CC849FD3E7139C2DBC6 /* libPods-AcceptDemoTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AcceptDemoTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9185071A57193311D898BA /* acceptSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = acceptSDK.podspec; path = ../acceptSDK.podspec; sourceTree = "<group>"; };
 		9667B281E12920F0D00F82E6 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C0398E2C1B0DAB5000667215 /* accept.conf */ = {isa = PBXFileReference; lastKnownFileType = file; path = accept.conf; sourceTree = "<group>"; };
+		C0398E2C1B0DAB5000667215 /* accept.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = accept.conf; sourceTree = "<group>"; };
 		C05089E11BBD599200E30786 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C052753A1E607C2000732528 /* AcceptDemoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcceptDemoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C052753D1E607C2000732528 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };

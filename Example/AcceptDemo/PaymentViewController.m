@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
 @property (weak, nonatomic) IBOutlet UIButton *captureB;
 @property(nonatomic, weak) IBOutlet UIButton *revertB;
 @property(nonatomic, weak) IBOutlet UIButton *printB;
-@property(nonatomic, weak) IBOutlet UILabel *infolbl;
+@property(nonatomic, weak) IBOutlet UITextView *infolbl;
 @property(nonatomic, weak) IBOutlet UILabel *tokenlbl;
 @property (nonatomic,strong) NSArray *arrVendors;
 @property (nonatomic,strong) NSArray *arrCurrency;
@@ -334,7 +334,7 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
                          
                          void (^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress)
                          {
-                             [self.infolbl setText:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
+                             [self updateInfoLabel:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
                          };
                          
                          AcceptTerminalVendor *currentVendor;
@@ -1069,6 +1069,14 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
 
     basket.subMerchant = subMerchant;
     
+    //add Payment Engine details:
+    basket.peFunctionID = @"MyPEFunctionID";
+    basket.peJobID = @"MyPEJobID";
+    
+    //add Elasti Engine details:
+    basket.eeDescriptor = @"MyEEDescriptor";
+    basket.eeOrderNumber = @"MyEEOrderNumber";
+    
     paymentConfig.basket = basket;
     
     //We execute the payment
@@ -1313,6 +1321,14 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
 {
     NSLog(@">>> PaymentViewController - paymentDone");
     self.transaction = transaction;
+    [self updateInfoLabel:[NSString stringWithFormat:@"Transaction:\n\tStatus:%@\n\tCustom Fields:%@\n\tPE:%@\n\tEE:%@\n\tSubMerchant:%@"
+                           ,transaction.state
+                           ,transaction.customFields
+                           ,[NSString stringWithFormat:@"\n\tpe_job_id:%@\n\tpe_function_id%@",transaction.peJobID, transaction.peFunctionID]
+                           ,[NSString stringWithFormat:@"\n\tee_descriptor:%@\n\tee_order_number%@",transaction.eeDescriptor, transaction.eeOrderNumber]
+                           ,[NSString stringWithFormat:@"\n\tsubMerchantID:%@\n\tName:%@\n\tStreet:%@\n\tCity:%@\n\tPostal Code:%@\n\tCountry%@",transaction.subMerchant.subMerchantId, transaction.subMerchant.name, transaction.subMerchant.street, transaction.subMerchant.city,transaction.subMerchant.postalCode, transaction.subMerchant.country]]];
+
+    
     if ([transaction.state isEqualToString:@"approved"]|| [transaction.state isEqualToString:@"authorized"]) {
         [Utils showAlertWithTitle:@"Success" andMessage:@"The payment was accepted"];
     }
@@ -1428,10 +1444,16 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     }
     
     NSLog(@"Progress status - %@", progressMessage);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateInfoLabel:progressMessage];
+    });
     
-    [self.infolbl setText:progressMessage];
 }
-
+-(void)updateInfoLabel:(NSString *)text{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.infolbl setText:text];
+    });
+}
 -(void)initialisationProgressTimerEnded
 {
     NSLog(@">>> PaymentViewController - initialisationProgressTimerEnded");
@@ -1490,12 +1512,12 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     {
         if (error || !success) {
             [weakSelf printFailure:error];
-            [weakSelf.infolbl setText:@"Printing failed, please check the printer"];
+            [weakSelf updateInfoLabel:@"Printing failed, please check the printer"];
         }
         else
         {
             [weakSelf printSuccess];
-            [weakSelf.infolbl setText:@"Printing successful"];
+            [weakSelf updateInfoLabel:@"Printing successful"];
         }
         
     };
@@ -1506,7 +1528,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     AcceptPrinterConfig *printerConfig = [[AcceptPrinterConfig alloc] init];
     printerConfig.vendorUUID = [[Utils sharedInstance] getSelectedPrinterVendor];
     printerConfig.printerUUID = [[Utils sharedInstance] getSelectedPrinter];
-    [self.infolbl setText:@"Printing started"];
+    [self updateInfoLabel:@"Printing started"];
     
     if ([[[Utils sharedInstance] getSelectedPrinterVendor] isEqualToString: @"MPOPAcceptExtension"])
     {
@@ -1548,7 +1570,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             break;
     }
     
-    [self.infolbl setText:message];
+    [self updateInfoLabel:message];
 }
 
 
@@ -1754,7 +1776,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
             
             void (^progress)(AcceptConfigFilesProgress) = ^(AcceptConfigFilesProgress progress)
             {
-                [self.infolbl setText:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
+                [self updateInfoLabel:[NSString stringWithFormat:@"Progress updating terminal, code: %ld", (long)progress]];
             };
             
             if (error)
@@ -1812,7 +1834,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     
     if (![[[Utils sharedInstance] getSelectedPrinterVendor] isEqualToString: @"MPOPAcceptExtension"])
     {
-        [weakSelf.infolbl setText:@"Current printer disconnected or does not have cash drawer"];
+        [weakSelf updateInfoLabel:@"Current printer disconnected or does not have cash drawer"];
         return;
     }
     
@@ -1820,12 +1842,12 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     {
         if (error || !success) {
             [weakSelf printFailure:error];
-            [weakSelf.infolbl setText:@"Opening drawer failed, please check the drawer"];
+            [weakSelf updateInfoLabel:@"Opening drawer failed, please check the drawer"];
         }
         else
         {
             [weakSelf printSuccess];
-            [weakSelf.infolbl setText:@"Drawer was opened"];
+            [weakSelf updateInfoLabel:@"Drawer was opened"];
         }
         
     };
@@ -1834,7 +1856,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     printerConfig.vendorUUID = [[Utils sharedInstance] getSelectedPrinterVendor];
     printerConfig.printerUUID = [[Utils sharedInstance] getSelectedPrinter];
     printerConfig.receipt = nil;//
-    [self.infolbl setText:@"Trying to open the drawer"];
+    [self updateInfoLabel:@"Trying to open the drawer"];
     
     [self.accept openCashDrawer:printerConfig completion:completion];
 }
@@ -1849,7 +1871,7 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
     void (^barcodeDataReceived)(NSData*) = ^(NSData* data)
     {
         NSLog(@"Barcode Data received! %@", data);
-        [weakSelf.infolbl setText:@"Barcode data received!"];
+        [weakSelf updateInfoLabel:@"Barcode data received!"];
     };
     
     void (^completion)(BOOL, NSError*) = ^(BOOL success, NSError *error)
@@ -1936,6 +1958,14 @@ vendorTerminalEAASerialNumber:(NSString *)terminalEAASerialNumber
         subMerchant.street = @"1 Circular";
         subMerchant.postalCode = @"12345";
         basket.subMerchant = subMerchant;
+        
+        //add Payment Engine details:
+        basket.peFunctionID = @"MyPEFunctionID";
+        basket.peJobID = @"MyPEJobID";
+        
+        //add Elasti Engine details:
+        basket.eeDescriptor = @"MyEEDescriptor";
+        basket.eeOrderNumber = @"MyEEOrderNumber";
         
         paymentConfig.basket = basket;
         

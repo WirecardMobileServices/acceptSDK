@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.207] - 2017-08-10
+### Added
+- SSL Certificates udpate for MPOS and FiveByFive backends
+
 ## [1.6.206] - 2017-07-12
 ### Added
 - Elastic Engine and Payment Engine custom attributes

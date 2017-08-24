@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.208] - 2017-08-24
+### Added
+- SSL Certificates udpate for sdk-integration backend
+
 ## [1.6.207] - 2017-08-10
 ### Added
 - SSL Certificates udpate for MPOS and FiveByFive backends

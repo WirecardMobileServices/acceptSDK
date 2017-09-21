@@ -49,6 +49,8 @@
 @property (nonatomic) BOOL isCaptureRequired;
 /// Service code
 @property (nonatomic, strong) NSString *serviceCode;
+// Pin Wrong in a Contactless Online Transaction
+@property (nonatomic) BOOL contaclessOnlinePinWrong;
 @end
 
 

@@ -434,7 +434,7 @@ signatureVerification:(void (^)(AcceptTransaction*,AcceptSignatureVerificationRe
                completion:(void (^)(AcceptTransaction*, NSError*))completion;
 
 /**
- *  @brief Cancel the payment flow. This is usually called from UI (cancel button when available) or some error from signature or completion block. Notice that an improper usage of this function (for example during online communication or level 2 flow in terminal) can produce unexpected errors
+ *  @brief Cancel the payment flow ONLY if the situation/terminal allows it. For Miura terminals, this function works anytime. For other terminals (ie Spire ones), it ONLY works when waiting signature input -- the call will be IGNORED by the hardware otherwise, as they are designed to accept only cancellation through keypad.
  **/
 - (void) cancelPay;
 

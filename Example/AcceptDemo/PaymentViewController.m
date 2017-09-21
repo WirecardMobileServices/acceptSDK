@@ -323,7 +323,7 @@ typedef NS_ENUM(NSInteger, TransactionMode) {
                          {
                              if (alertCode > 0)
                              {
-                                 if (alertCode == AcceptConfigFilesSuccess || (!version && alertCode == AcceptConfigFilesUnnecessary))
+                                 if (alertCode == AcceptConfigFilesStatusSuccess || (!version && alertCode == AcceptConfigFilesStatusUnnecessary))
                                  {
                                      //For keeping track of what version of config files was installed on what device, we set it up on user preferences with the function below. You are free to do it differently, but consider that regular checkings for config files are mandatory to avoid issues with your payments.
                                      [[Utils sharedInstance] setTerminalConfigurationUploads:dictTerminal];

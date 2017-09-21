@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.209] - 2017-09-08
+### Fixed
+- Authorize transaction offline flow 
+- Demo app configuration update status check
+
+
 ## [1.6.208] - 2017-08-24
 ### Added
 - SSL Certificates udpate for sdk-integration backend

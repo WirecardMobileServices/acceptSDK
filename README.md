@@ -1,9 +1,9 @@
 
 # acceptSDK
 
-<img src="https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/logo.png" alt="acceptSDK" width=240 height=95>
+<img src="https://raw.githubusercontent.com/WirecardMobileServices/acceptSDK/master/docs/logo.png" alt="acceptSDK" width=240 height=95>
 
-[![CI Status](http://img.shields.io/travis/mposSVK/acceptSDK.svg?style=flat)](https://travis-ci.org/mposSVK/acceptSDK)
+[![CI Status](http://img.shields.io/travis/WirecardMobileServices/acceptSDK.svg?style=flat)](https://travis-ci.org/WirecardMobileServices/acceptSDK)
 [![Version](https://img.shields.io/cocoapods/v/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
 [![License](https://img.shields.io/cocoapods/l/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
 [![Platform](https://img.shields.io/cocoapods/p/acceptSDK.svg?style=flat)](http://cocoapods.org/pods/acceptSDK)
@@ -20,7 +20,7 @@ accept.|Pay Way|Lexware pay|Accept SGP|M1 pay|
 ##Whitelabel solution
 Wirecard Technologies is using the acceptSDK in their Whitelabel application which is fully integrated professional mPOS solution. The **Whitelabel** app is **VISA and Mastercard certified** and utilises the Wirecard infrastructure for card payment processing.
 
-[<img src="https://raw.githubusercontent.com/mposSVK/acceptSDK/master/docs/SDK_arch.jpg" alt="Whitelabel architecture" width=274 height=515>](./docs/SDK_arch.jpg "Whitelabel Architecture")
+[<img src="https://raw.githubusercontent.com/WirecardMobileServices/acceptSDK/master/docs/SDK_arch.jpg" alt="Whitelabel architecture" width=274 height=515>](./docs/SDK_arch.jpg "Whitelabel Architecture")
 
 *Overview of Whitelabel app functions and SDK architecture*
 

@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     ss.public_header_files = '**/*.{h}'    
     ss.resources = ['Pod/Assets/*.xml', 'Pod/Classes/lib/acceptResources.bundle']
     ss.dependency 'ZipArchive', '~> 1.4'
-    ss.dependency 'KissXML', '5.1.2'        
+    ss.dependency 'KissXML', '~> 5.2.2'        
   end  
    
   s.subspec 'IDTech' do |ss|

@@ -1,15 +1,13 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
-## [1.6.210] - 2018-05-10
-### Changed
-- SSL certificates update
-- Minimum iOS version set to 8.0
-- KissXML update
+## [1.6.212] - 2018-08-23
+### Added
+- SSL Certificates udpate for integration backend
 
 ## [1.6.209] - 2017-09-08
 ### Fixed
-- Authorize transaction offline flow
+- Authorize transaction offline flow 
 - Demo app configuration update status check
 
 
@@ -45,7 +43,7 @@ All notable changes to acceptSDK will be documented in this file.
 ## [1.6.200] - 2017-05-11
 ### Fixed
 - Proper handling of the terminals in the case more than one terminal of the same type is paired and being used
-
+ 
 ## [1.6.199] - 2017-04-18
 ### Added
 - ATrust functionality for Austria

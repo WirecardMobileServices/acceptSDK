@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.213] - 2018-08-28
+### Added
+- SSL Certificates corrections
+
 ## [1.6.212] - 2018-08-23
 ### Added
 - SSL Certificates udpate for integration backend

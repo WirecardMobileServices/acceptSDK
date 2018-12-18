@@ -24,6 +24,8 @@ Pod::Spec.new do |s|
   s.xcconfig     = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
   s.libraries = 'stdc++.6', 'z.1', 'xml2'
   s.frameworks    = 'Foundation', 'SystemConfiguration', 'MediaPlayer', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'ExternalAccessory', 'CoreBluetooth'
+  s.deprecated = true
+  s.deprecated_in_favor_of = 'WDePOS'
 
   s.subspec 'Core' do |ss|
     ss.vendored_libraries  = ['Pod/Classes/lib/libAccept.a']

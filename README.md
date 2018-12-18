@@ -1,5 +1,7 @@
 
-# acceptSDK
+# DEPRECATED acceptSDK
+
+acceptSDK development has stopped and has been replaced by the new Wirecard ePOS SDK. You can find it in its [Github page](https://github.com/WirecardMobileServices/Wirecard-ePOS-iOS), [CocoaPods page](http://cocoapods.org/pods/WDePOS), and its [Development Portal](https://wirecardmobileservices.github.io/Wirecard-ePOS-Developer/int-setup-ios-cocoa/)
 
 <img src="https://raw.githubusercontent.com/WirecardMobileServices/acceptSDK/master/docs/logo.png" alt="acceptSDK" width=240 height=95>
 

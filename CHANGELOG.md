@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.214] - 2019-03-20
+### Added
+- iOS 12.1 mandatory update
+
 ## [1.6.213] - 2018-08-28
 ### Added
 - SSL Certificates corrections

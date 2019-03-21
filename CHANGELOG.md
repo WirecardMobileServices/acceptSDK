@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.215] - 2019-03-21
+### Added
+- Swift version added
+
 ## [1.6.214] - 2019-03-20
 ### Added
 - iOS 12.1 mandatory update

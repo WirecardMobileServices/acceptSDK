@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.217] - 2019-04-16
+### Added
+- Version up
+
 ## [1.6.216] - 2019-04-16
 ### Fixed
 - Spire terminal data parsing fix

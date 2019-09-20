@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to acceptSDK will be documented in this file.
 
+## [1.6.218] - 2019-09-19
+### Added
+- iOS 13 NSData description fix
+
 ## [1.6.217] - 2019-04-16
 ### Added
 - Version up

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "acceptSDK"
-  s.version       = "1.6.218"
+  s.version       = "1.6.219"
   s.summary       = "Accept Payment Platform"
   s.homepage      = "http://www.wirecard.com/e-commerce/"
   s.license       = { :type => 'Commercial', :file => 'LICENSE' }
